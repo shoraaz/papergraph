@@ -1,3 +1,14 @@
+---
+title: PaperGraph — Agentic Research Copilot
+emoji: 🧠
+colorFrom: blue
+colorTo: indigo
+sdk: gradio
+sdk_version: 5.16.0
+app_file: app.py
+pinned: false
+---
+
 # PaperGraph
 
 **An agentic RAG system that refuses to guess.** Ask it about a paper that isn't in its corpus, and it says so — plainly, once, with nothing tacked on. Ask it to check a claim, and it will tell you when a paper's abstract overreaches beyond what its own results actually show. Every retrieval, grading, and correction step streams live to the UI as it happens, not after the fact.
