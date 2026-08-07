@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Secrets — never commit real credentials
+.env
+
+# Data — regenerable via etl.py, not source code. Downloaded PDFs bloat
+# the repo and shouldn't live in git; re-run etl.py to repopulate.
+data/pdfs/
+
+# ETL run logs — local debugging artifacts, not part of the project
+etl_run.log
+etl_run_err.log
+*.log
+temp_graph.html

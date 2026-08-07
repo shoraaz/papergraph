@@ -1,0 +1,93 @@
+[
+  {
+    "id": "q01",
+    "question": "What is the core mechanism of Self-RAG?",
+    "ground_truth": "Self-RAG trains a language model to adaptively retrieve passages on-demand and uses special reflection tokens (Retrieve, ISREL, ISSUP, ISUSE) to decide when retrieval is needed, whether retrieved passages are relevant, whether the generation is supported by the passage, and whether the response is useful. This allows selective, on-demand retrieval rather than always retrieving, and enables self-critique of generated outputs.",
+    "relevant_paper_ids": ["2310.11511v1"],
+    "category": "factual"
+  },
+  {
+    "id": "q02",
+    "question": "How does Corrective RAG (CRAG) improve over standard RAG?",
+    "ground_truth": "CRAG introduces a lightweight retrieval evaluator that assesses the quality of retrieved documents and assigns a confidence score. Based on the score, it triggers one of three corrective actions: use the documents directly if confident, perform web search if very unconfident, or combine both. It also uses a decompose-then-recompose algorithm to strip irrelevant content from retrieved documents before using them.",
+    "relevant_paper_ids": ["2401.15884v3"],
+    "category": "factual"
+  },
+  {
+    "id": "q03",
+    "question": "What is the difference between Self-RAG and Corrective RAG?",
+    "ground_truth": "Self-RAG focuses on training the LLM itself to decide when to retrieve and to self-critique retrieved content using reflection tokens baked into the model. Corrective RAG (CRAG) is a plug-in post-retrieval correction module that evaluates retrieval quality and triggers web search as a fallback when documents are poor. Self-RAG changes the model; CRAG changes the retrieval pipeline around the model.",
+    "relevant_paper_ids": ["2310.11511v1", "2401.15884v3"],
+    "category": "comparison"
+  },
+  {
+    "id": "q04",
+    "question": "What does DuetRAG propose and what datasets did it evaluate on?",
+    "ground_truth": "DuetRAG proposes a collaborative retrieval-augmented generation framework that uses two complementary retrievers working in parallel combining their results to improve coverage. The paper evaluates on Natural Questions and TriviaQA datasets, but the evaluation is limited to these specific benchmarks with specific base models, so the generality of gains is not fully established.",
+    "relevant_paper_ids": ["2405.13002v1"],
+    "category": "factual"
+  },
+  {
+    "id": "q05",
+    "question": "What is GFM-RAG and why does it use graph neural networks?",
+    "ground_truth": "GFM-RAG (Graph Foundation Model for RAG) proposes a graph neural network-based retriever that models relationships between query and knowledge graph entities. It uses GNNs because standard dense retrievers treat documents independently, missing multi-hop relational reasoning that graph structure naturally encodes. GFM-RAG pre-trains a graph foundation model on diverse knowledge graphs to enable zero-shot transfer to new domains.",
+    "relevant_paper_ids": ["2502.01113v3"],
+    "category": "factual"
+  },
+  {
+    "id": "q06",
+    "question": "How does Metacognitive RAG decide whether to retrieve?",
+    "ground_truth": "Metacognitive RAG equips LLMs with a metacognitive module that assesses the model's own knowledge confidence before deciding to retrieve. If the model estimates it already knows the answer reliably from its parametric memory, retrieval is skipped; if uncertain, retrieval is triggered. This reduces unnecessary retrieval calls and the noise they can introduce.",
+    "relevant_paper_ids": ["2402.11626v1"],
+    "category": "factual"
+  },
+  {
+    "id": "q07",
+    "question": "What role does community structure play in CommunityKG-RAG?",
+    "ground_truth": "CommunityKG-RAG leverages community detection algorithms on knowledge graphs to identify semantically coherent clusters of entities. During retrieval, it uses these community structures to guide which subgraph regions to search, improving fact-checking by retrieving evidence from topically related entity neighborhoods rather than isolated triples.",
+    "relevant_paper_ids": ["2408.08535v1"],
+    "category": "factual"
+  },
+  {
+    "id": "q08",
+    "question": "What metrics does the RGB benchmark paper use to evaluate RAG systems?",
+    "ground_truth": "The RGB benchmark paper evaluates RAG systems on four abilities: noise robustness (handling irrelevant documents), negative rejection (declining to answer when no relevant document exists), information integration (combining information from multiple documents), and counterfactual robustness (handling conflicts between retrieved documents and parametric knowledge).",
+    "relevant_paper_ids": ["2309.01431v2"],
+    "category": "factual"
+  },
+  {
+    "id": "q09",
+    "question": "How does MASS-RAG coordinate multiple agents for retrieval?",
+    "ground_truth": "MASS-RAG (Multi-Agent Synthesis RAG) uses a coordinator agent that decomposes complex queries into sub-questions and routes each to specialized retriever agents. The agents retrieve evidence independently, and a synthesis agent aggregates and deduplicates the results before generating the final answer, improving coverage on multi-hop and multi-aspect questions.",
+    "relevant_paper_ids": ["2604.18509v2"],
+    "category": "factual"
+  },
+  {
+    "id": "q10",
+    "question": "Compare how Self-RAG and Metacognitive RAG handle the decision to retrieve.",
+    "ground_truth": "Self-RAG embeds retrieval decision tokens into the language model itself, fine-tuned to generate a special Retrieve token when retrieval is needed during generation. Metacognitive RAG adds an external metacognitive module that assesses confidence in parametric knowledge before generation begins. Self-RAG decides dynamically mid-generation and requires model fine-tuning; Metacognitive RAG decides upfront and is a plug-in module.",
+    "relevant_paper_ids": ["2310.11511v1", "2402.11626v1"],
+    "category": "comparison"
+  },
+  {
+    "id": "q11",
+    "question": "What should I read before studying GFM-RAG?",
+    "ground_truth": "Before studying GFM-RAG, you should understand graph neural networks (GNNs) and knowledge graph retrieval. GFM-RAG assumes familiarity with GNN architectures such as message passing, multi-hop reasoning over graphs, and pre-training paradigms. Within RAG literature, understanding standard dense retrieval would also be helpful prerequisite reading.",
+    "relevant_paper_ids": ["2502.01113v3"],
+    "category": "graph"
+  },
+  {
+    "id": "q12",
+    "question": "What papers in the corpus cite or build on Self-RAG?",
+    "ground_truth": "Corrective RAG (CRAG) explicitly positions itself relative to Self-RAG, noting that Self-RAG requires model retraining while CRAG is model-agnostic. Several other papers in the corpus reference Self-RAG as a key prior work in the selective retrieval literature.",
+    "relevant_paper_ids": ["2310.11511v1", "2401.15884v3"],
+    "category": "graph"
+  },
+  {
+    "id": "q13",
+    "question": "Does the RGB benchmark paper claim their evaluation covers all major LLMs?",
+    "ground_truth": "The RGB benchmark paper evaluates a limited set of LLMs on their four RAG robustness dimensions; it does not claim comprehensive coverage of all major LLMs. The evaluation is scoped to selected models available at publication time.",
+    "relevant_paper_ids": ["2309.01431v2"],
+    "category": "claim_verification"
+  }
+]
