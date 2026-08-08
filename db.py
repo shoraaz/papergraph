@@ -147,19 +147,20 @@ def get_embedder() -> Any:
 
 def get_reranker() -> Any:
     """
-    Local cross-encoder reranker — lazy loaded, same rationale as
-    get_embedder(): keep server startup fast, only pay the model-load
-    cost when a vector_db is actually constructed for a real request.
-
-    BAAI/bge-reranker-v2-m3 via Agno's native SentenceTransformerReranker
-    (agno.knowledge.reranker.sentence_transformer) — confirmed via Agno's
-    own docs as the documented local/no-API-key reranker option,
-    alongside CohereReranker (needs COHERE_API_KEY), InfinityReranker
-    (needs a separate self-hosted server), and BedrockReranker (AWS).
-    Matches this project's existing local-first embedder choice.
+    Local cross-encoder reranker — lazy loaded.
+    Set ENABLE_RERANKER=false in env (e.g. on 512MB free-tier hosting like Render)
+    to skip loading the heavy ~600MB cross-encoder model and use native Qdrant hybrid search.
     """
-    from agno.knowledge.reranker.sentence_transformer import SentenceTransformerReranker
-    return SentenceTransformerReranker(model=RERANKER_MODEL)
+    if os.environ.get("ENABLE_RERANKER", "true").lower() not in ("true", "1", "yes"):
+        print("[db] ENABLE_RERANKER is disabled — using native Qdrant hybrid search.")
+        return None
+
+    try:
+        from agno.knowledge.reranker.sentence_transformer import SentenceTransformerReranker
+        return SentenceTransformerReranker(model=RERANKER_MODEL)
+    except Exception as e:
+        print(f"[db] Warning: Could not load local reranker ({e}). Falling back to native Qdrant hybrid search.")
+        return None
 
 
 class WorkspaceScopedQdrant(Qdrant):
