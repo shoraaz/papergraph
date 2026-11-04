@@ -205,12 +205,14 @@ class SnapshotGraphStore:
     async def upsert_paper(self, paper, teaches, requires, cites) -> None:
         raise ReadOnlyStoreError("The demo graph is a read-only snapshot; run with STORE_PROFILE=full to ingest.")
 
-    async def export_snapshot(self, workspaces: Sequence[str] = ()) -> GraphSnapshot:
-        edges = [ConceptEdge(p, "TEACHES", c) for p, cs in self.teaches.items() for c in cs]
-        edges += [ConceptEdge(p, "REQUIRES", c) for p, cs in self.requires.items() for c in cs]
+    async def export_snapshot(self, workspaces: Sequence[str] = ("shared",)) -> GraphSnapshot:
+        keep = {p.paper_id for p in self._visible(workspaces)}
+        edges = [ConceptEdge(p, "TEACHES", c) for p, cs in self.teaches.items() if p in keep for c in cs]
+        edges += [ConceptEdge(p, "REQUIRES", c) for p, cs in self.requires.items() if p in keep for c in cs]
+        used = {e.concept for e in edges}
         return GraphSnapshot(
-            papers=list(self.papers.values()),
-            concepts=list(self.concepts.values()),
+            papers=[p for pid, p in self.papers.items() if pid in keep],
+            concepts=[c for name, c in self.concepts.items() if name in used],
             concept_edges=edges,
-            cites=[(a, b) for a, bs in self.cites.items() for b in bs],
+            cites=[(a, b) for a, bs in self.cites.items() if a in keep for b in bs],
         )

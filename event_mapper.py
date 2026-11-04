@@ -266,7 +266,7 @@ class RunTraceBuilder:
                 return steps, deltas
 
             if agent_name == "ClaimVerifier" and content is not None and hasattr(content, "claim"):
-                self.claims.append(content.model_dump())
+                self.claims.append(claim_card(content.model_dump()))
                 return steps, deltas
 
         # --- Leader's final answer streaming in, token by token -------------
@@ -294,6 +294,21 @@ class RunTraceBuilder:
                 self.final_answer = "".join(self._answer_buffer)
 
         return steps, deltas
+
+
+def claim_card(check: dict) -> dict:
+    """ClaimCheck -> the card shape the UI renders (verdict drives colour).
+    Precedence mirrors the team's instructions: a contradiction outranks
+    an overstatement, which outranks plain support."""
+    if check.get("contradiction_found"):
+        verdict = "contradicted"
+    elif check.get("overstated"):
+        verdict = "overstated"
+    elif check.get("is_supported"):
+        verdict = "supported"
+    else:
+        verdict = "unsupported"
+    return {**check, "verdict": verdict, "note": check.get("scope_caveat") or check.get("explanation")}
 
 
 def _parse_tool_result(result: Any) -> Any:
