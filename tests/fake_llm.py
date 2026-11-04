@@ -66,7 +66,7 @@ def decide(body: dict) -> dict:
         return {"text": FINAL}
     if "get_prerequisites" in tools and "search_corpus" in tools:  # Retriever
         if seen == 0:
-            return {"tool": ("search_corpus", {"query": "Self-RAG outperforms ChatGPT results"})}
+            return {"tool": ("search_corpus", {"query": "Self-RAG outperforms ChatGPT results", "paper_id": None, "section": None})}
         return {"text": "search_corpus returned Self-RAG results passages (2310.11511v1)."}
     if "search_corpus" in tools:  # ClaimVerifier
         if seen == 0:

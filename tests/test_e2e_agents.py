@@ -47,6 +47,13 @@ async def test_real_team_run_streams_trace_answer_and_claims(client, fake_llm, m
     for title, member in zip(plans, ["retriever", "grader", "claimverifier"]):
         assert title.startswith("team leader delegates to") and member in title
 
+    # Optional tool params are declared nullable (Groq rejects null vs "string").
+    retriever_req = next(r for r in fake_llm.state.requests if any(
+        t["function"]["name"] == "search_corpus" for t in r.get("tools") or []))
+    schema = next(t["function"]["parameters"] for t in retriever_req["tools"] if t["function"]["name"] == "search_corpus")
+    assert schema["properties"]["section"]["type"] == ["string", "null"]
+    assert schema["properties"]["query"]["type"] == "string"
+
     retrieves = [s for s in steps if s["kind"] == "retrieve"]
     assert any("search_corpus" in s["title"] and "Retriever" in s["title"] for s in retrieves)
     verifier = [s for s in retrieves if "ClaimVerifier" in s["title"]]
