@@ -16,7 +16,7 @@ from typing import Any, Optional
 
 # ---------------------------------------------------------------------------
 # Cosmetic constants — must match the color/glyph vocabulary already
-# defined in PaperGraph_dc.html's CSS custom properties.
+# defined in frontend/index.html's CSS custom properties.
 # ---------------------------------------------------------------------------
 
 COLORS = {
@@ -41,13 +41,9 @@ GLYPHS = {
     "error": "!",
 }
 
-# Tool names that count as "retrieval" for trace purposes (KnowledgeTools'
-# think/search/analyze loop, plus Neo4jTools' raw Cypher access). Mem0's
-# tool calls (add_memory, search_memory, etc.) are deliberately excluded —
-# memory bookkeeping isn't part of the RAG story this UI is telling.
-_GRAPH_TOOL_MARKERS = ("cypher", "run_cypher_query")
-_VECTOR_TOOL_MARKERS = ("search_knowledge", "think", "analyze")
-
+# Retrieval tools, by exact name (tools.py owns the list). Anything else an
+# agent might call is not part of the RAG story and isn't shown.
+from tools import GRAPH_TOOLS, VECTOR_TOOLS  # noqa: E402
 
 @dataclass
 class TraceStep:
@@ -99,7 +95,7 @@ class RunTraceBuilder:
 
     Usage:
         builder = RunTraceBuilder()
-        for event in team.run(message, stream=True, stream_events=True):
+        async for event in team.arun(message, stream=True, stream_events=True):
             steps, deltas = builder.feed(event)
             for step in steps:
                 yield {"event": "step", "data": step.to_dict()}
@@ -211,25 +207,29 @@ class RunTraceBuilder:
             started_at = self._pending_starts.pop(call_id, None)
             elapsed_ms = f"{time.time() - started_at:.2f}s" if started_at else ""
 
-            is_graph_tool = any(marker in tool_name.lower() for marker in _GRAPH_TOOL_MARKERS)
-            is_vector_tool = any(marker in tool_name.lower() for marker in _VECTOR_TOOL_MARKERS)
+            is_graph_tool = tool_name in GRAPH_TOOLS
+            is_vector_tool = tool_name in VECTOR_TOOLS
             if not (is_graph_tool or is_vector_tool):
-                return steps, deltas  # Mem0 or other non-retrieval tool call — not shown in trace
+                return steps, deltas
 
             kind_key = "retrieve_graph" if is_graph_tool else "retrieve_vector"
-            query_str = args.get("query", "") or str(args)
-            result_rows = _coerce_result_to_rows(result)
+            query_str = args.get("query") or args.get("paper_id") or args.get("concept") or ""
+            filters = {k: v for k, v in args.items() if k in ("paper_id", "section") and v and is_vector_tool}
+            if filters:
+                query_str += "  [" + ", ".join(f"{k}={v}" for k, v in filters.items()) + "]"
+            parsed = _parse_tool_result(result)
+            result_rows = _rows_from_tool(tool_name, parsed)
 
             steps.append(
                 TraceStep(
                     kind="retrieve",
                     glyph=GLYPHS[kind_key],
                     color=COLORS[kind_key],
-                    title=f"{'Knowledge graph · Cypher' if is_graph_tool else 'Vector store'} · {agent_name}",
-                    body=_summarize_retrieval(result_rows, is_graph_tool),
+                    title=f"{'Knowledge graph' if is_graph_tool else 'Vector store'} · {tool_name} · {agent_name}",
+                    body=_summarize_retrieval(tool_name, parsed, result_rows),
                     ms=elapsed_ms,
                     query=query_str,
-                    detail_label="CYPHER" if is_graph_tool else "RETRIEVED CHUNKS",
+                    detail_label="GRAPH RESULT" if is_graph_tool else "RETRIEVED CHUNKS",
                     detail=_format_result_preview(result_rows),
                 )
             )
@@ -296,39 +296,75 @@ class RunTraceBuilder:
         return steps, deltas
 
 
-def _coerce_result_to_rows(result: Any) -> list:
-    """Neo4jTools returns a real Python list of dicts. KnowledgeTools'
-    search_knowledge returns a JSON-string-encoded list (observed in
-    testing: result starts with '[{"name": ...'). Normalize both to a
-    Python list so downstream formatting is uniform."""
-    if isinstance(result, list):
-        return result
+def _parse_tool_result(result: Any) -> Any:
+    """tools.py returns JSON strings; Agno may hand them back as str or
+    already-decoded. Normalize to Python objects."""
     if isinstance(result, str):
         import json
 
         try:
-            parsed = json.loads(result)
-            return parsed if isinstance(parsed, list) else [parsed]
+            return json.loads(result)
         except (json.JSONDecodeError, TypeError):
-            return [result] if result else []
-    return [] if result is None else [result]
+            return result
+    return result
+
+
+def _rows_from_tool(tool_name: str, parsed: Any) -> list:
+    if not isinstance(parsed, dict):
+        return [] if parsed in (None, "") else [parsed]
+    if "results" in parsed:  # search_corpus
+        return [
+            f"[{r.get('score')}] {r.get('paper_id')} · {r.get('section')} — {str(r.get('text', ''))[:160]}"
+            for r in parsed["results"]
+        ]
+    if tool_name == "get_prerequisites":
+        if not parsed.get("paper_found"):
+            return []
+        rows = [f"{s['step']}. {s['title']} ({s['paper_id']}) — {', '.join(s['covers'])}" for s in parsed.get("reading_order", [])]
+        rows += [f"untaught: {c}" for c in parsed.get("untaught_concepts", [])]
+        return rows or [f"outcome: {parsed.get('outcome')}"]
+    if tool_name == "get_paper_details":
+        if not parsed.get("paper_found"):
+            return []
+        return [
+            f"{parsed.get('paper_id')} · {parsed.get('title')}",
+            "teaches: " + ", ".join(parsed.get("teaches", [])),
+            "requires: " + ", ".join(parsed.get("requires", [])),
+        ]
+    if "papers" in parsed:  # find_papers / papers_teaching_concept
+        return [f"{p.get('paper_id')} · {p.get('title')}" for p in parsed["papers"]]
+    if "error" in parsed:
+        return [f"error: {parsed['error']}"]
+    return [parsed]
 
 
 def _format_result_preview(rows: list, max_items: int = 6) -> list[str]:
     if not rows:
-        return ["(no rows returned)"]
-    lines = [str(row)[:200] for row in rows[:max_items]]
+        return ["(nothing returned)"]
+    lines = [str(row)[:240] for row in rows[:max_items]]
     if len(rows) > max_items:
         lines.append(f"… {len(rows) - max_items} more")
     return lines
 
 
-def _summarize_retrieval(rows: list, is_graph_tool: bool) -> str:
+def _summarize_retrieval(tool_name: str, parsed: Any, rows: list) -> str:
+    if tool_name == "get_prerequisites" and isinstance(parsed, dict):
+        if not parsed.get("paper_found"):
+            return "Paper not found in the corpus graph."
+        outcome = parsed.get("outcome")
+        n = max(len(parsed.get("reading_order", [])) - 1, 0)
+        if outcome == "partial":
+            return f"Reading plan with {n} prerequisite paper(s); {len(parsed.get('untaught_concepts', []))} concept(s) have no in-corpus teacher."
+        if outcome == "no_prerequisites_recorded":
+            return "Paper found; the graph records no prerequisites for it."
+        return f"Complete reading plan: {n} prerequisite paper(s) before the target."
+    if tool_name == "get_paper_details" and isinstance(parsed, dict):
+        return "Paper found in the graph." if parsed.get("paper_found") else "Paper not found in the corpus graph."
     if not rows:
-        return "Query returned no rows — nothing relevant found."
-    if is_graph_tool:
-        return f"Graph query returned {len(rows)} row(s)."
-    return f"Retrieved {len(rows)} chunk(s) from the corpus."
+        return "Nothing relevant found."
+    if tool_name in VECTOR_TOOLS:
+        return f"Retrieved {len(rows)} chunk(s) from the corpus (hybrid dense + BM25)."
+    return f"Graph lookup returned {len(rows)} result(s)."
 
 
 def _extract_error_text(event: Any) -> str:
