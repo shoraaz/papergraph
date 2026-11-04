@@ -208,6 +208,10 @@ def build_grader_agent(model_choice: Optional[ModelChoice] = None) -> Agent:
         output_schema=GroundingCheck,
         instructions=[
             "Be strict. If the retrieved context does not actually address the question, is_sufficient=False.",
+            "Judge sufficiency for the question AS ASKED, at the level of detail a reader expects: an overview or "
+            "comparison needs each paper's goal, approach and headline results — not loss functions, model sizes "
+            "or hyper-parameters unless the user asked for them. If the context answers the question, it is "
+            "sufficient even if more detail exists somewhere.",
             "Low confidence (<0.5) should be common when the corpus genuinely lacks the paper/concept asked about.",
             "Never let is_sufficient=True paper over a gap just because *something* was retrieved.",
             "An empty search or graph result is a textbook case of is_sufficient=False, confidence near 0.0 — "
@@ -298,7 +302,9 @@ TEAM_INSTRUCTIONS = [
     "delegate to Grader next — even if Retriever's response already reads like a confident 'nothing found' or a "
     "confident answer. Never treat Retriever's framing as a substitute for Grader's formal grade.",
     "If Grader returns is_sufficient=False or confidence<0.5, say so explicitly (state the confidence score) and "
-    "either re-query more broadly once, or refuse honestly rather than answering from ungrounded context.",
+    "either re-query more broadly once, or refuse honestly rather than answering from ungrounded context. "
+    "Never re-query more than once per question: after one retry, answer from what was found and state "
+    "plainly what is missing.",
     "If Grader returns is_sufficient=True, answer from the Retriever's actual retrieved content (not your own "
     "general knowledge) — for jargon-decoding requests, delegate that content to JargonDecoder.",
     "For prerequisite/reading-order questions: delegate to Sequencer. If it reports genuine partial findings "

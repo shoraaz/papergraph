@@ -128,7 +128,7 @@ class Settings:
     max_concurrent_runs: int = field(default_factory=lambda: _int("MAX_CONCURRENT_RUNS", 40))
     max_runs_per_client: int = field(default_factory=lambda: _int("MAX_RUNS_PER_CLIENT", 2))
     run_timeout_s: float = field(default_factory=lambda: _float("RUN_TIMEOUT_S", 280.0))  # Vercel caps functions at 300 s
-    agent_tool_call_limit: int = field(default_factory=lambda: _int("AGENT_TOOL_CALL_LIMIT", 6))
+    agent_tool_call_limit: int = field(default_factory=lambda: _int("AGENT_TOOL_CALL_LIMIT", 4))
     team_tool_call_limit: int = field(default_factory=lambda: _int("TEAM_TOOL_CALL_LIMIT", 10))
     trust_proxy_headers: bool = field(default_factory=lambda: _bool("TRUST_PROXY_HEADERS", True))
     key_check_ttl_s: int = field(default_factory=lambda: _int("KEY_CHECK_TTL_S", 600))
