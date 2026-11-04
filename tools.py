@@ -45,6 +45,31 @@ def _dump(obj) -> str:
     return json.dumps(obj, ensure_ascii=False)
 
 
+def as_agent_tool(fn: Callable):
+    """Wrap a tool for an agent with a schema that lets optional params be null.
+
+    Providers that validate tool calls strictly (Groq) reject `"section": null`
+    against a plain `"type": "string"` schema, failing the whole run when a
+    model spells "not set" as null instead of omitting the key. Optional
+    params are declared ["<type>", "null"]; the functions already treat None
+    as "not set"."""
+    from agno.tools.function import Function
+
+    base = Function.from_callable(fn)
+    params = base.parameters
+    required = set(params.get("required", []))
+    for name, prop in params.get("properties", {}).items():
+        if name not in required and isinstance(prop.get("type"), str):
+            prop["type"] = [prop["type"], "null"]
+    return Function(
+        name=base.name,
+        description=base.description,
+        parameters=params,
+        entrypoint=fn,
+        skip_entrypoint_processing=True,
+    )
+
+
 @dataclass
 class Toolset:
     search_corpus: Callable
@@ -56,6 +81,9 @@ class Toolset:
     @property
     def graph(self) -> list[Callable]:
         return [self.find_papers, self.get_paper_details, self.get_prerequisites, self.papers_teaching_concept]
+
+    def for_agent(self, *fns: Callable) -> list:
+        return [as_agent_tool(fn) for fn in fns]
 
 
 def build_toolset(stores: Stores, workspaces: Sequence[str]) -> Toolset:

@@ -186,7 +186,7 @@ def build_retriever_agent(tools: Toolset, model_choice: Optional[ModelChoice] = 
         name="Retriever",
         role="Retrieve relevant passages and/or graph facts for a query, choosing the right tool(s).",
         model=_member_model(model_choice),
-        tools=[tools.search_corpus, *tools.graph],
+        tools=tools.for_agent(tools.search_corpus, *tools.graph),
         tool_call_limit=settings.agent_tool_call_limit,
         instructions=[
             TOOL_GUIDE,
@@ -229,7 +229,7 @@ def build_sequencer_agent(tools: Toolset, model_choice: Optional[ModelChoice] = 
         name="Sequencer",
         role="Determine prerequisite reading order for a paper using the concept-dependency graph.",
         model=_member_model(model_choice),
-        tools=tools.graph,
+        tools=tools.for_agent(*tools.graph),
         tool_call_limit=settings.agent_tool_call_limit,
         instructions=[
             TOOL_GUIDE,
@@ -270,7 +270,7 @@ def build_claim_verifier_agent(tools: Toolset, model_choice: Optional[ModelChoic
         name="ClaimVerifier",
         role="Check whether claims in a paper's abstract/intro are backed by its own results section.",
         model=_member_model(model_choice),
-        tools=[tools.search_corpus, tools.find_papers],
+        tools=tools.for_agent(tools.search_corpus, tools.find_papers),
         tool_call_limit=settings.agent_tool_call_limit,
         output_schema=ClaimCheck,
         instructions=[
