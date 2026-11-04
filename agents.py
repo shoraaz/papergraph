@@ -281,6 +281,9 @@ def build_claim_verifier_agent(tools: Toolset, model_choice: Optional[ModelChoic
             "general improvement)? Compare datasets, models and conditions covered vs. how the claim is phrased.",
             "If overstated=True, fill scope_caveat with the specific limitation being glossed over.",
             "If the results section is not in the retrieved context, say so rather than guessing.",
+            "Budget: at most 3 search_corpus calls. If a result carries a `note` saying the filter is "
+            "exhausted, or a search returns chunks you already have, stop searching and give your verdict "
+            "from the evidence in hand — a verdict with a stated limitation beats running out of time.",
         ],
     )
 

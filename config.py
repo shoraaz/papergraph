@@ -127,7 +127,7 @@ class Settings:
     # we answer 503/429 immediately with Retry-After instead.
     max_concurrent_runs: int = field(default_factory=lambda: _int("MAX_CONCURRENT_RUNS", 40))
     max_runs_per_client: int = field(default_factory=lambda: _int("MAX_RUNS_PER_CLIENT", 2))
-    run_timeout_s: float = field(default_factory=lambda: _float("RUN_TIMEOUT_S", 150.0))
+    run_timeout_s: float = field(default_factory=lambda: _float("RUN_TIMEOUT_S", 280.0))  # Vercel caps functions at 300 s
     agent_tool_call_limit: int = field(default_factory=lambda: _int("AGENT_TOOL_CALL_LIMIT", 6))
     team_tool_call_limit: int = field(default_factory=lambda: _int("TEAM_TOOL_CALL_LIMIT", 10))
     trust_proxy_headers: bool = field(default_factory=lambda: _bool("TRUST_PROXY_HEADERS", True))

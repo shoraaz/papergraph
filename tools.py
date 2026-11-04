@@ -84,7 +84,17 @@ def build_toolset(stores: Stores, workspaces: Sequence[str]) -> Toolset:
             paper_id=normalize_paper_ref(paper_id) if paper_id else None,
             sections=sections,
         )
-        return _dump({"query": query, "results": [h.to_dict() for h in hits[:MAX_K]], "count": len(hits)})
+        out = {"query": query, "results": [h.to_dict() for h in hits[:MAX_K]], "count": len(hits)}
+        if (paper_id or sections) and len(hits) < 6:
+            # Filtered to a small slice of one paper and got fewer hits than
+            # asked for: that IS the whole slice. Say so, or models keep
+            # rephrasing the query and burn calls on identical results.
+            out["note"] = (
+                f"These {len(hits)} chunk(s) are everything indexed for this filter. "
+                "Re-searching with the same paper/section filter will return the same chunks; "
+                "work with what you have."
+            )
+        return _dump(out)
 
     async def find_papers(query: str) -> str:
         """Look up papers in the corpus by arXiv id or by title words.
