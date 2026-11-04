@@ -1,10 +1,10 @@
 .venv
 .git
-data
-tests
-eval
-loadtest
-docs
+/data
+/tests
+/eval
+/loadtest
+/docs
 *.log
 __pycache__
 Dockerfile
