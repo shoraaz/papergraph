@@ -1,0 +1,11 @@
+.venv
+.git
+.github
+data
+eval
+loadtest
+docs
+tests
+**/__pycache__
+*.log
+.env

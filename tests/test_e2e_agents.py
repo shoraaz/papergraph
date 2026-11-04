@@ -13,7 +13,7 @@ from agno.models.openai.like import OpenAILike
 import agents
 import server
 from tests.fake_llm import make_app
-from tests.test_server import KEY, SESSION, body, client, parse_sse  # noqa: F401  (fixture)
+from tests.test_server import KEY, body, client, parse_sse  # noqa: F401,F811  (client is a fixture)
 
 
 @pytest.fixture

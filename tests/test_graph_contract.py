@@ -43,7 +43,7 @@ def fixture_snapshot() -> GraphSnapshot:
 
 
 async def _neo4j_store():
-    neo4j = pytest.importorskip("neo4j")
+    pytest.importorskip("neo4j")
     from stores.neo4j_store import Neo4jGraphStore
 
     store = Neo4jGraphStore(NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD)
@@ -51,6 +51,8 @@ async def _neo4j_store():
         await store.ensure_ready()
     except Exception as e:  # pragma: no cover - environment dependent
         await store.close()
+        if os.environ.get("REQUIRE_DB_TESTS"):  # CI: a missing service is a failure, not a skip
+            raise
         pytest.skip(f"Neo4j not reachable at {NEO4J_URI}: {e}")
     async with store._driver.session() as s:
         await s.run("MATCH (n) DETACH DELETE n")

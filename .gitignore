@@ -21,3 +21,6 @@ etl_run.log
 etl_run_err.log
 *.log
 temp_graph.html
+
+# Test / tooling caches
+.pytest_cache/

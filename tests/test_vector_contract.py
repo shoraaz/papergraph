@@ -26,6 +26,8 @@ async def _server_store() -> QdrantVectorStore:
         await client.get_collections()
     except Exception as e:  # pragma: no cover - environment dependent
         await client.close()
+        if os.environ.get("REQUIRE_DB_TESTS"):  # CI: a missing service is a failure, not a skip
+            raise
         pytest.skip(f"Qdrant not reachable at {QDRANT_URL}: {e}")
     store = QdrantVectorStore(client, f"test_{uuid.uuid4().hex[:8]}", HashingEmbedder(384), embedded=False)
     await store.ensure_ready()

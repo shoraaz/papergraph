@@ -87,7 +87,11 @@ class Settings:
     dense_model: str = field(default_factory=lambda: os.environ.get("DENSE_MODEL", "BAAI/bge-small-en-v1.5"))
     dense_dim: int = field(default_factory=lambda: _int("DENSE_DIM", 384))
     sparse_model: str = field(default_factory=lambda: os.environ.get("SPARSE_MODEL", "Qdrant/bm25"))
-    model_cache_dir: str | None = field(default_factory=lambda: os.environ.get("MODEL_CACHE_DIR") or None)
+    # Serverless filesystems are read-only except /tmp (Vercel sets VERCEL=1).
+    model_cache_dir: str | None = field(
+        default_factory=lambda: os.environ.get("MODEL_CACHE_DIR")
+        or ("/tmp/fastembed_cache" if os.environ.get("VERCEL") else None)
+    )
     enable_reranker: bool = field(default_factory=lambda: _bool("ENABLE_RERANKER", False))
     rerank_model: str = field(
         default_factory=lambda: os.environ.get("RERANK_MODEL", "Xenova/ms-marco-MiniLM-L-6-v2")
