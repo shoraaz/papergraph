@@ -1,3 +1,32 @@
 {
-  "replays": []
+  "replays": [
+    {
+      "file": "20261104-203311-what-should-i-read-before-self-rag.json",
+      "question": "What should I read before Self-RAG?\u201d",
+      "title": "What should I read before Self-RAG?\u201d",
+      "model": "gemini-3.5-flash-lite",
+      "recorded_at": "2026-11-04T15:03:11Z"
+    },
+    {
+      "file": "20261104-205812-tell-me-about-corrective-rag-crag.json",
+      "question": "Tell me about Corrective RAG (CRAG)",
+      "title": "Tell me about Corrective RAG (CRAG)",
+      "model": "qwen/qwen3.8-27b",
+      "recorded_at": "2026-11-04T15:28:12Z"
+    },
+    {
+      "file": "20261104-220833-tell-me-about-corrective-rag-crag.json",
+      "question": "Tell me about Corrective RAG (CRAG)",
+      "title": "Tell me about Corrective RAG (CRAG)",
+      "model": "openai/gpt-oss-120b",
+      "recorded_at": "2026-11-04T16:38:33Z"
+    },
+    {
+      "file": "20261104-221936-what-should-i-read-before-self-rag.json",
+      "question": "\u201cWhat should I read before Self-RAG?\u201d",
+      "title": "\u201cWhat should I read before Self-RAG?\u201d",
+      "model": "openai/gpt-oss-120b",
+      "recorded_at": "2026-11-04T16:49:36Z"
+    }
+  ]
 }

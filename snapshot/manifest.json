@@ -1,0 +1,13 @@
+{
+ "exported_at": "2026-11-04T14:56:11Z",
+ "dense_model": "BAAI/bge-small-en-v1.5",
+ "dense_dim": 384,
+ "sparse_model": "Qdrant/bm25",
+ "papers": 19,
+ "concepts": 90,
+ "chunks": 314,
+ "source": {
+  "qdrant": "http://localhost:6333",
+  "neo4j": "bolt://localhost:7687"
+ }
+}

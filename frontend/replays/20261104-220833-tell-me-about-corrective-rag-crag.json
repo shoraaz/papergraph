@@ -1,0 +1,7792 @@
+{
+ "question": "Tell me about Corrective RAG (CRAG)",
+ "provider": "groq",
+ "model": "openai/gpt-oss-120b",
+ "recorded_at": "2026-11-04T16:38:33Z",
+ "events": [
+  {
+   "t": 2282,
+   "event": "step",
+   "data": {
+    "kind": "plan",
+    "glyph": "◆",
+    "color": "var(--blue)",
+    "title": "Team leader delegates to retriever",
+    "body": "Retrieve relevant passages, abstracts, or sections from the corpus about the concept \"Corrective RAG (CRAG)\". Provide any available definitions, descriptions, methodology, and key findings. Return the raw retrieved text.",
+    "ms": "",
+    "detailLabel": "DELEGATION",
+    "detail": [
+     "delegate_task_to_member(member_id=\"retriever\", task=\"Retrieve relevant passages, abstracts, or sections from the corpus about the concept \"Corrective RAG (CRAG)\". Provide any available definitions, descriptions, methodology, and key findings. Return the raw retrieved text.\")"
+    ]
+   }
+  },
+  {
+   "t": 3938,
+   "event": "step",
+   "data": {
+    "kind": "retrieve",
+    "glyph": "⬡",
+    "color": "var(--blue)",
+    "title": "Knowledge graph · papers_teaching_concept · Retriever",
+    "body": "Nothing relevant found.",
+    "ms": "0.00s",
+    "detailLabel": "GRAPH RESULT",
+    "detail": [
+     "(nothing returned)"
+    ],
+    "query": "Corrective RAG"
+   }
+  },
+  {
+   "t": 4772,
+   "event": "step",
+   "data": {
+    "kind": "retrieve",
+    "glyph": "▤",
+    "color": "var(--green)",
+    "title": "Vector store · search_corpus · Retriever",
+    "body": "Retrieved 4 chunk(s) from the corpus (hybrid dense + BM25).",
+    "ms": "0.28s",
+    "detailLabel": "RETRIEVED CHUNKS",
+    "detail": [
+     "[0.5714] 2401.15884v3 · results — TFLOPs per token\nexecuting time(s)\nRAG\n26.5\n0.363\nCRAG\n27.2\n0.512\nSelf-RAG\n26.5∼132.4\n0.741\nSelf-CRAG\n27.2∼80.2\n0.908\nTable 6: computational overhead assessment",
+     "[0.5] 2509.10467v1 · methods — Faithfulness\nAnswer Relevancy\nContext Precision\nRAG\n0.68\n0.70\n0.58\nIKG-RAG\n0.72\n0.80\n0.69\nDSKG-RAG\n0.83\n0.87\n0.85\n5",
+     "[0.5] 2401.15884v3 · introduction — a substantial amount of irrelevant information,\nimpeding the models from acquiring accurate\nknowledge and potentially misleading them, result-\ning in issues suc",
+     "[0.3333] 2401.15884v3 · results — Table 1 presents the results on four datasets. The\nmodel coupling the proposed method with standard\nRAG is named CRAG and that coupling with Self-\nRAG is named "
+    ],
+    "query": "\"Corrective RAG\""
+   }
+  },
+  {
+   "t": 5746,
+   "event": "step",
+   "data": {
+    "kind": "retrieve",
+    "glyph": "▤",
+    "color": "var(--green)",
+    "title": "Vector store · search_corpus · Retriever",
+    "body": "Retrieved 2 chunk(s) from the corpus (hybrid dense + BM25).",
+    "ms": "0.16s",
+    "detailLabel": "RETRIEVED CHUNKS",
+    "detail": [
+     "[0.5] 2401.15884v3 · abstract — Corrective Retrieval Augmented Generation\nShi-Qi Yan1*, Jia-Chen Gu2*, Yun Zhu3, Zhen-Hua Ling1\n1National Engineering Research Center of Speech and Language Inf",
+     "[0.3333] 2401.15884v3 · abstract — Large language models (LLMs) inevitably\nexhibit hallucinations since the accuracy of\ngenerated texts cannot be secured solely by\nthe parametric knowledge they e"
+    ],
+    "query": "2401.15884v3  [paper_id=2401.15884v3, section=abstract]"
+   }
+  },
+  {
+   "t": 6810,
+   "event": "step",
+   "data": {
+    "kind": "retrieve",
+    "glyph": "▤",
+    "color": "var(--green)",
+    "title": "Vector store · search_corpus · Retriever",
+    "body": "Retrieved 4 chunk(s) from the corpus (hybrid dense + BM25).",
+    "ms": "0.33s",
+    "detailLabel": "RETRIEVED CHUNKS",
+    "detail": [
+     "[0.75] 2401.15884v3 · results — Table 1 presents the results on four datasets. The\nmodel coupling the proposed method with standard\nRAG is named CRAG and that coupling with Self-\nRAG is named ",
+     "[0.6667] 2401.15884v3 · results — Appendix B.3 for more implementation details of\nour proposed methods. From these results, we can\nconclude the following findings:\nFirst, the proposed method can",
+     "[0.5769] 2401.15884v3 · results — Accuracy\nOur Retrieval Evaluator (T5-based)\n84.3\nChatGPT\n58.0\nChatGPT-CoT\n62.4\nChatGPT-few-shot\n64.7\nTable 4: Evaluation of our retrieval evaluator and\nChatGPT ",
+     "[0.3611] 2401.15884v3 · discussion — Preliminary experiments of employ-\ning only the Correct and Incorrect actions show\nthat the efficacy of CRAG was easily affected by\nthe accuracy of the retrieva"
+    ],
+    "query": "CRAG  [paper_id=2401.15884v3]"
+   }
+  },
+  {
+   "t": 75319,
+   "event": "step",
+   "data": {
+    "kind": "plan",
+    "glyph": "◆",
+    "color": "var(--blue)",
+    "title": "Team leader delegates to grader",
+    "body": "Assess the retrieved passages about Corrective RAG (CRAG) for relevance and sufficiency to answer a user query asking \"Tell me about Corrective RAG (CRAG)\". Provide a grade with is_sufficient (bool) and confidence (0-1).",
+    "ms": "",
+    "detailLabel": "DELEGATION",
+    "detail": [
+     "delegate_task_to_member(member_id=\"grader\", task=\"Assess the retrieved passages about Corrective RAG (CRAG) for relevance and sufficiency to answer a user query asking \"Tell me about Corrective RAG (CRAG)\". Provide a grade with is_sufficient (bool) and confidence (0-1).\")"
+    ]
+   }
+  },
+  {
+   "t": 94927,
+   "event": "step",
+   "data": {
+    "kind": "grade",
+    "glyph": "✓",
+    "color": "var(--green)",
+    "title": "Self-RAG grader · sufficient",
+    "body": "The retrieved excerpts contain a definition, high‑level methodology, evaluation results and discussion of CRAG, fully covering what a user needs to know about Corrective RAG.",
+    "ms": "",
+    "detailLabel": "GRADER OUTPUT",
+    "detail": [
+     "{\n  \"is_sufficient\": true,\n  \"confidence\": 0.97,\n  \"reasoning\": \"The retrieved excerpts contain a definition, high‑level methodology, evaluation results and discussion of CRAG, fully covering what a user needs to know about Corrective RAG.\",\n  \"missing_info\": null\n}"
+    ],
+    "score": 0.97,
+    "verdict": "sufficient"
+   }
+  },
+  {
+   "t": 106617,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 106618,
+   "event": "delta",
+   "data": {
+    "text": "Correct"
+   }
+  },
+  {
+   "t": 106626,
+   "event": "delta",
+   "data": {
+    "text": "ive"
+   }
+  },
+  {
+   "t": 106627,
+   "event": "delta",
+   "data": {
+    "text": " Retrieval"
+   }
+  },
+  {
+   "t": 106628,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 106642,
+   "event": "delta",
+   "data": {
+    "text": "Aug"
+   }
+  },
+  {
+   "t": 106643,
+   "event": "delta",
+   "data": {
+    "text": "mented"
+   }
+  },
+  {
+   "t": 106644,
+   "event": "delta",
+   "data": {
+    "text": " Generation"
+   }
+  },
+  {
+   "t": 106644,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 106646,
+   "event": "delta",
+   "data": {
+    "text": "CR"
+   }
+  },
+  {
+   "t": 106647,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 106648,
+   "event": "delta",
+   "data": {
+    "text": ")**"
+   }
+  },
+  {
+   "t": 106675,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 106676,
+   "event": "delta",
+   "data": {
+    "text": "*"
+   }
+  },
+  {
+   "t": 106677,
+   "event": "delta",
+   "data": {
+    "text": "Correct"
+   }
+  },
+  {
+   "t": 106678,
+   "event": "delta",
+   "data": {
+    "text": "ive"
+   }
+  },
+  {
+   "t": 106679,
+   "event": "delta",
+   "data": {
+    "text": " R"
+   }
+  },
+  {
+   "t": 106680,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 106681,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 106682,
+   "event": "delta",
+   "data": {
+    "text": "CR"
+   }
+  },
+  {
+   "t": 106683,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 106706,
+   "event": "delta",
+   "data": {
+    "text": ")*"
+   }
+  },
+  {
+   "t": 106707,
+   "event": "delta",
+   "data": {
+    "text": " is"
+   }
+  },
+  {
+   "t": 106708,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 106708,
+   "event": "delta",
+   "data": {
+    "text": " recent"
+   }
+  },
+  {
+   "t": 106709,
+   "event": "delta",
+   "data": {
+    "text": " extension"
+   }
+  },
+  {
+   "t": 106710,
+   "event": "delta",
+   "data": {
+    "text": " to"
+   }
+  },
+  {
+   "t": 106712,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 106712,
+   "event": "delta",
+   "data": {
+    "text": " standard"
+   }
+  },
+  {
+   "t": 106714,
+   "event": "delta",
+   "data": {
+    "text": " Retrieval"
+   }
+  },
+  {
+   "t": 106714,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 106716,
+   "event": "delta",
+   "data": {
+    "text": "Aug"
+   }
+  },
+  {
+   "t": 106716,
+   "event": "delta",
+   "data": {
+    "text": "mented"
+   }
+  },
+  {
+   "t": 106717,
+   "event": "delta",
+   "data": {
+    "text": " Generation"
+   }
+  },
+  {
+   "t": 106718,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 106719,
+   "event": "delta",
+   "data": {
+    "text": "R"
+   }
+  },
+  {
+   "t": 106720,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 106721,
+   "event": "delta",
+   "data": {
+    "text": ")"
+   }
+  },
+  {
+   "t": 106744,
+   "event": "delta",
+   "data": {
+    "text": " framework"
+   }
+  },
+  {
+   "t": 106744,
+   "event": "delta",
+   "data": {
+    "text": " that"
+   }
+  },
+  {
+   "t": 106746,
+   "event": "delta",
+   "data": {
+    "text": " aims"
+   }
+  },
+  {
+   "t": 106746,
+   "event": "delta",
+   "data": {
+    "text": " to"
+   }
+  },
+  {
+   "t": 106747,
+   "event": "delta",
+   "data": {
+    "text": " make"
+   }
+  },
+  {
+   "t": 106748,
+   "event": "delta",
+   "data": {
+    "text": " generation"
+   }
+  },
+  {
+   "t": 106749,
+   "event": "delta",
+   "data": {
+    "text": " more"
+   }
+  },
+  {
+   "t": 106750,
+   "event": "delta",
+   "data": {
+    "text": " robust"
+   }
+  },
+  {
+   "t": 106751,
+   "event": "delta",
+   "data": {
+    "text": " when"
+   }
+  },
+  {
+   "t": 106752,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 106753,
+   "event": "delta",
+   "data": {
+    "text": " retrieved"
+   }
+  },
+  {
+   "t": 106754,
+   "event": "delta",
+   "data": {
+    "text": " documents"
+   }
+  },
+  {
+   "t": 106754,
+   "event": "delta",
+   "data": {
+    "text": " are"
+   }
+  },
+  {
+   "t": 106755,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 106757,
+   "event": "delta",
+   "data": {
+    "text": " low"
+   }
+  },
+  {
+   "t": 106758,
+   "event": "delta",
+   "data": {
+    "text": " relevance"
+   }
+  },
+  {
+   "t": 106759,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 106760,
+   "event": "delta",
+   "data": {
+    "text": " quality"
+   }
+  },
+  {
+   "t": 106761,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 106762,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 106764,
+   "event": "delta",
+   "data": {
+    "text": "---"
+   }
+  },
+  {
+   "t": 106765,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 106767,
+   "event": "delta",
+   "data": {
+    "text": "###"
+   }
+  },
+  {
+   "t": 106767,
+   "event": "delta",
+   "data": {
+    "text": " Why"
+   }
+  },
+  {
+   "t": 106769,
+   "event": "delta",
+   "data": {
+    "text": " CR"
+   }
+  },
+  {
+   "t": 106769,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 106771,
+   "event": "delta",
+   "data": {
+    "text": " was"
+   }
+  },
+  {
+   "t": 106771,
+   "event": "delta",
+   "data": {
+    "text": " introduced"
+   }
+  },
+  {
+   "t": 106772,
+   "event": "delta",
+   "data": {
+    "text": "  \n"
+   }
+  },
+  {
+   "t": 106773,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 106774,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 106775,
+   "event": "delta",
+   "data": {
+    "text": "Hall"
+   }
+  },
+  {
+   "t": 106776,
+   "event": "delta",
+   "data": {
+    "text": "uc"
+   }
+  },
+  {
+   "t": 106778,
+   "event": "delta",
+   "data": {
+    "text": "inations"
+   }
+  },
+  {
+   "t": 106779,
+   "event": "delta",
+   "data": {
+    "text": " in"
+   }
+  },
+  {
+   "t": 106780,
+   "event": "delta",
+   "data": {
+    "text": " L"
+   }
+  },
+  {
+   "t": 106781,
+   "event": "delta",
+   "data": {
+    "text": "LM"
+   }
+  },
+  {
+   "t": 106782,
+   "event": "delta",
+   "data": {
+    "text": "s"
+   }
+  },
+  {
+   "t": 106783,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 106783,
+   "event": "delta",
+   "data": {
+    "text": " –"
+   }
+  },
+  {
+   "t": 106785,
+   "event": "delta",
+   "data": {
+    "text": " Large"
+   }
+  },
+  {
+   "t": 106794,
+   "event": "delta",
+   "data": {
+    "text": " language"
+   }
+  },
+  {
+   "t": 106795,
+   "event": "delta",
+   "data": {
+    "text": " models"
+   }
+  },
+  {
+   "t": 106797,
+   "event": "delta",
+   "data": {
+    "text": " can"
+   }
+  },
+  {
+   "t": 106809,
+   "event": "delta",
+   "data": {
+    "text": " generate"
+   }
+  },
+  {
+   "t": 106810,
+   "event": "delta",
+   "data": {
+    "text": " false"
+   }
+  },
+  {
+   "t": 106812,
+   "event": "delta",
+   "data": {
+    "text": " statements"
+   }
+  },
+  {
+   "t": 106814,
+   "event": "delta",
+   "data": {
+    "text": " because"
+   }
+  },
+  {
+   "t": 106816,
+   "event": "delta",
+   "data": {
+    "text": " they"
+   }
+  },
+  {
+   "t": 106818,
+   "event": "delta",
+   "data": {
+    "text": " rely"
+   }
+  },
+  {
+   "t": 106820,
+   "event": "delta",
+   "data": {
+    "text": " solely"
+   }
+  },
+  {
+   "t": 106825,
+   "event": "delta",
+   "data": {
+    "text": " on"
+   }
+  },
+  {
+   "t": 106826,
+   "event": "delta",
+   "data": {
+    "text": " param"
+   }
+  },
+  {
+   "t": 106828,
+   "event": "delta",
+   "data": {
+    "text": "etric"
+   }
+  },
+  {
+   "t": 106830,
+   "event": "delta",
+   "data": {
+    "text": " knowledge"
+   }
+  },
+  {
+   "t": 106832,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 106834,
+   "event": "delta",
+   "data": {
+    "text": "  \n"
+   }
+  },
+  {
+   "t": 106835,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 106838,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 106839,
+   "event": "delta",
+   "data": {
+    "text": "V"
+   }
+  },
+  {
+   "t": 106841,
+   "event": "delta",
+   "data": {
+    "text": "ulnerability"
+   }
+  },
+  {
+   "t": 106842,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 106844,
+   "event": "delta",
+   "data": {
+    "text": " standard"
+   }
+  },
+  {
+   "t": 106845,
+   "event": "delta",
+   "data": {
+    "text": " R"
+   }
+  },
+  {
+   "t": 106847,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 106848,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 106851,
+   "event": "delta",
+   "data": {
+    "text": " –"
+   }
+  },
+  {
+   "t": 106851,
+   "event": "delta",
+   "data": {
+    "text": " Conventional"
+   }
+  },
+  {
+   "t": 106852,
+   "event": "delta",
+   "data": {
+    "text": " R"
+   }
+  },
+  {
+   "t": 106853,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 106854,
+   "event": "delta",
+   "data": {
+    "text": " simply"
+   }
+  },
+  {
+   "t": 106855,
+   "event": "delta",
+   "data": {
+    "text": " feeds"
+   }
+  },
+  {
+   "t": 106857,
+   "event": "delta",
+   "data": {
+    "text": " all"
+   }
+  },
+  {
+   "t": 106858,
+   "event": "delta",
+   "data": {
+    "text": " retrieved"
+   }
+  },
+  {
+   "t": 106860,
+   "event": "delta",
+   "data": {
+    "text": " documents"
+   }
+  },
+  {
+   "t": 106860,
+   "event": "delta",
+   "data": {
+    "text": " into"
+   }
+  },
+  {
+   "t": 106862,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 106863,
+   "event": "delta",
+   "data": {
+    "text": " generator"
+   }
+  },
+  {
+   "t": 106865,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 106866,
+   "event": "delta",
+   "data": {
+    "text": " even"
+   }
+  },
+  {
+   "t": 106868,
+   "event": "delta",
+   "data": {
+    "text": " if"
+   }
+  },
+  {
+   "t": 106869,
+   "event": "delta",
+   "data": {
+    "text": " many"
+   }
+  },
+  {
+   "t": 106872,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 106874,
+   "event": "delta",
+   "data": {
+    "text": " those"
+   }
+  },
+  {
+   "t": 106875,
+   "event": "delta",
+   "data": {
+    "text": " documents"
+   }
+  },
+  {
+   "t": 106876,
+   "event": "delta",
+   "data": {
+    "text": " are"
+   }
+  },
+  {
+   "t": 106881,
+   "event": "delta",
+   "data": {
+    "text": " irrelevant"
+   }
+  },
+  {
+   "t": 106882,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 106884,
+   "event": "delta",
+   "data": {
+    "text": " contain"
+   }
+  },
+  {
+   "t": 106886,
+   "event": "delta",
+   "data": {
+    "text": " non"
+   }
+  },
+  {
+   "t": 106888,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 106890,
+   "event": "delta",
+   "data": {
+    "text": "essential"
+   }
+  },
+  {
+   "t": 106892,
+   "event": "delta",
+   "data": {
+    "text": " text"
+   }
+  },
+  {
+   "t": 106938,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 106940,
+   "event": "delta",
+   "data": {
+    "text": " This"
+   }
+  },
+  {
+   "t": 106942,
+   "event": "delta",
+   "data": {
+    "text": " can"
+   }
+  },
+  {
+   "t": 106943,
+   "event": "delta",
+   "data": {
+    "text": " amplify"
+   }
+  },
+  {
+   "t": 106945,
+   "event": "delta",
+   "data": {
+    "text": " halluc"
+   }
+  },
+  {
+   "t": 106946,
+   "event": "delta",
+   "data": {
+    "text": "inations"
+   }
+  },
+  {
+   "t": 106947,
+   "event": "delta",
+   "data": {
+    "text": " when"
+   }
+  },
+  {
+   "t": 106949,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 106950,
+   "event": "delta",
+   "data": {
+    "text": " retr"
+   }
+  },
+  {
+   "t": 106951,
+   "event": "delta",
+   "data": {
+    "text": "iever"
+   }
+  },
+  {
+   "t": 106954,
+   "event": "delta",
+   "data": {
+    "text": " returns"
+   }
+  },
+  {
+   "t": 106955,
+   "event": "delta",
+   "data": {
+    "text": " poor"
+   }
+  },
+  {
+   "t": 106957,
+   "event": "delta",
+   "data": {
+    "text": " evidence"
+   }
+  },
+  {
+   "t": 106958,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 106960,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 106961,
+   "event": "delta",
+   "data": {
+    "text": "CR"
+   }
+  },
+  {
+   "t": 106963,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 106964,
+   "event": "delta",
+   "data": {
+    "text": " therefore"
+   }
+  },
+  {
+   "t": 106968,
+   "event": "delta",
+   "data": {
+    "text": " adds"
+   }
+  },
+  {
+   "t": 106969,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 106972,
+   "event": "delta",
+   "data": {
+    "text": " *"
+   }
+  },
+  {
+   "t": 106973,
+   "event": "delta",
+   "data": {
+    "text": "quality"
+   }
+  },
+  {
+   "t": 106975,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 106976,
+   "event": "delta",
+   "data": {
+    "text": "checking"
+   }
+  },
+  {
+   "t": 106977,
+   "event": "delta",
+   "data": {
+    "text": "*"
+   }
+  },
+  {
+   "t": 106979,
+   "event": "delta",
+   "data": {
+    "text": " step"
+   }
+  },
+  {
+   "t": 106982,
+   "event": "delta",
+   "data": {
+    "text": " before"
+   }
+  },
+  {
+   "t": 106983,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 106986,
+   "event": "delta",
+   "data": {
+    "text": " generator"
+   }
+  },
+  {
+   "t": 106987,
+   "event": "delta",
+   "data": {
+    "text": " uses"
+   }
+  },
+  {
+   "t": 106989,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 106991,
+   "event": "delta",
+   "data": {
+    "text": " retrieved"
+   }
+  },
+  {
+   "t": 106994,
+   "event": "delta",
+   "data": {
+    "text": " material"
+   }
+  },
+  {
+   "t": 106995,
+   "event": "delta",
+   "data": {
+    "text": ".\n\n"
+   }
+  },
+  {
+   "t": 106996,
+   "event": "delta",
+   "data": {
+    "text": "---"
+   }
+  },
+  {
+   "t": 106997,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 106999,
+   "event": "delta",
+   "data": {
+    "text": "###"
+   }
+  },
+  {
+   "t": 107001,
+   "event": "delta",
+   "data": {
+    "text": " Core"
+   }
+  },
+  {
+   "t": 107003,
+   "event": "delta",
+   "data": {
+    "text": " components"
+   }
+  },
+  {
+   "t": 107004,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 107005,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107007,
+   "event": "delta",
+   "data": {
+    "text": " Component"
+   }
+  },
+  {
+   "t": 107010,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107011,
+   "event": "delta",
+   "data": {
+    "text": " What"
+   }
+  },
+  {
+   "t": 107012,
+   "event": "delta",
+   "data": {
+    "text": " it"
+   }
+  },
+  {
+   "t": 107012,
+   "event": "delta",
+   "data": {
+    "text": " does"
+   }
+  },
+  {
+   "t": 107015,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107016,
+   "event": "delta",
+   "data": {
+    "text": " Implementation"
+   }
+  },
+  {
+   "t": 107017,
+   "event": "delta",
+   "data": {
+    "text": " details"
+   }
+  },
+  {
+   "t": 107018,
+   "event": "delta",
+   "data": {
+    "text": " |\n"
+   }
+  },
+  {
+   "t": 107019,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107020,
+   "event": "delta",
+   "data": {
+    "text": "-----------"
+   }
+  },
+  {
+   "t": 107021,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107022,
+   "event": "delta",
+   "data": {
+    "text": "--------------"
+   }
+  },
+  {
+   "t": 107023,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107046,
+   "event": "delta",
+   "data": {
+    "text": "----------------"
+   }
+  },
+  {
+   "t": 107047,
+   "event": "delta",
+   "data": {
+    "text": "--------"
+   }
+  },
+  {
+   "t": 107048,
+   "event": "delta",
+   "data": {
+    "text": "|\n"
+   }
+  },
+  {
+   "t": 107049,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107051,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107052,
+   "event": "delta",
+   "data": {
+    "text": "Retr"
+   }
+  },
+  {
+   "t": 107053,
+   "event": "delta",
+   "data": {
+    "text": "ieval"
+   }
+  },
+  {
+   "t": 107054,
+   "event": "delta",
+   "data": {
+    "text": " Evalu"
+   }
+  },
+  {
+   "t": 107057,
+   "event": "delta",
+   "data": {
+    "text": "ator"
+   }
+  },
+  {
+   "t": 107058,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107059,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107060,
+   "event": "delta",
+   "data": {
+    "text": " Scores"
+   }
+  },
+  {
+   "t": 107061,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107062,
+   "event": "delta",
+   "data": {
+    "text": " overall"
+   }
+  },
+  {
+   "t": 107064,
+   "event": "delta",
+   "data": {
+    "text": " relevance"
+   }
+  },
+  {
+   "t": 107065,
+   "event": "delta",
+   "data": {
+    "text": "/"
+   }
+  },
+  {
+   "t": 107066,
+   "event": "delta",
+   "data": {
+    "text": "quality"
+   }
+  },
+  {
+   "t": 107067,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 107068,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107069,
+   "event": "delta",
+   "data": {
+    "text": " retrieved"
+   }
+  },
+  {
+   "t": 107071,
+   "event": "delta",
+   "data": {
+    "text": " set"
+   }
+  },
+  {
+   "t": 107072,
+   "event": "delta",
+   "data": {
+    "text": " for"
+   }
+  },
+  {
+   "t": 107073,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 107074,
+   "event": "delta",
+   "data": {
+    "text": " given"
+   }
+  },
+  {
+   "t": 107075,
+   "event": "delta",
+   "data": {
+    "text": " query"
+   }
+  },
+  {
+   "t": 107083,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 107084,
+   "event": "delta",
+   "data": {
+    "text": " outputs"
+   }
+  },
+  {
+   "t": 107086,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 107087,
+   "event": "delta",
+   "data": {
+    "text": " confidence"
+   }
+  },
+  {
+   "t": 107088,
+   "event": "delta",
+   "data": {
+    "text": " degree"
+   }
+  },
+  {
+   "t": 107089,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107090,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107091,
+   "event": "delta",
+   "data": {
+    "text": " A"
+   }
+  },
+  {
+   "t": 107092,
+   "event": "delta",
+   "data": {
+    "text": " lightweight"
+   }
+  },
+  {
+   "t": 107093,
+   "event": "delta",
+   "data": {
+    "text": " T"
+   }
+  },
+  {
+   "t": 107094,
+   "event": "delta",
+   "data": {
+    "text": "5"
+   }
+  },
+  {
+   "t": 107096,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 107099,
+   "event": "delta",
+   "data": {
+    "text": "based"
+   }
+  },
+  {
+   "t": 107100,
+   "event": "delta",
+   "data": {
+    "text": " model"
+   }
+  },
+  {
+   "t": 107102,
+   "event": "delta",
+   "data": {
+    "text": " that"
+   }
+  },
+  {
+   "t": 107103,
+   "event": "delta",
+   "data": {
+    "text": " achieves"
+   }
+  },
+  {
+   "t": 107104,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107106,
+   "event": "delta",
+   "data": {
+    "text": "84"
+   }
+  },
+  {
+   "t": 107107,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107108,
+   "event": "delta",
+   "data": {
+    "text": "3"
+   }
+  },
+  {
+   "t": 107109,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 107111,
+   "event": "delta",
+   "data": {
+    "text": "%"
+   }
+  },
+  {
+   "t": 107112,
+   "event": "delta",
+   "data": {
+    "text": " accuracy"
+   }
+  },
+  {
+   "t": 107113,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107115,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 107121,
+   "event": "delta",
+   "data": {
+    "text": "vs"
+   }
+  },
+  {
+   "t": 107122,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107144,
+   "event": "delta",
+   "data": {
+    "text": " Chat"
+   }
+  },
+  {
+   "t": 107145,
+   "event": "delta",
+   "data": {
+    "text": "GPT"
+   }
+  },
+  {
+   "t": 107146,
+   "event": "delta",
+   "data": {
+    "text": "’s"
+   }
+  },
+  {
+   "t": 107147,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 107149,
+   "event": "delta",
+   "data": {
+    "text": "58"
+   }
+  },
+  {
+   "t": 107150,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 107150,
+   "event": "delta",
+   "data": {
+    "text": "%)."
+   }
+  },
+  {
+   "t": 107151,
+   "event": "delta",
+   "data": {
+    "text": " |\n"
+   }
+  },
+  {
+   "t": 107152,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107153,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107154,
+   "event": "delta",
+   "data": {
+    "text": "Knowledge"
+   }
+  },
+  {
+   "t": 107155,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 107156,
+   "event": "delta",
+   "data": {
+    "text": "Util"
+   }
+  },
+  {
+   "t": 107157,
+   "event": "delta",
+   "data": {
+    "text": "ization"
+   }
+  },
+  {
+   "t": 107158,
+   "event": "delta",
+   "data": {
+    "text": " Actions"
+   }
+  },
+  {
+   "t": 107160,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107160,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107161,
+   "event": "delta",
+   "data": {
+    "text": " Based"
+   }
+  },
+  {
+   "t": 107168,
+   "event": "delta",
+   "data": {
+    "text": " on"
+   }
+  },
+  {
+   "t": 107168,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107170,
+   "event": "delta",
+   "data": {
+    "text": " evaluator"
+   }
+  },
+  {
+   "t": 107175,
+   "event": "delta",
+   "data": {
+    "text": "’s"
+   }
+  },
+  {
+   "t": 107175,
+   "event": "delta",
+   "data": {
+    "text": " confidence"
+   }
+  },
+  {
+   "t": 107177,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 107178,
+   "event": "delta",
+   "data": {
+    "text": " CR"
+   }
+  },
+  {
+   "t": 107204,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 107204,
+   "event": "delta",
+   "data": {
+    "text": " triggers"
+   }
+  },
+  {
+   "t": 107205,
+   "event": "delta",
+   "data": {
+    "text": " one"
+   }
+  },
+  {
+   "t": 107206,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 107207,
+   "event": "delta",
+   "data": {
+    "text": " several"
+   }
+  },
+  {
+   "t": 107208,
+   "event": "delta",
+   "data": {
+    "text": " actions"
+   }
+  },
+  {
+   "t": 107210,
+   "event": "delta",
+   "data": {
+    "text": ":"
+   }
+  },
+  {
+   "t": 107210,
+   "event": "delta",
+   "data": {
+    "text": " <"
+   }
+  },
+  {
+   "t": 107211,
+   "event": "delta",
+   "data": {
+    "text": "br"
+   }
+  },
+  {
+   "t": 107213,
+   "event": "delta",
+   "data": {
+    "text": ">"
+   }
+  },
+  {
+   "t": 107214,
+   "event": "delta",
+   "data": {
+    "text": "•"
+   }
+  },
+  {
+   "t": 107215,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107216,
+   "event": "delta",
+   "data": {
+    "text": "Correct"
+   }
+  },
+  {
+   "t": 107217,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107218,
+   "event": "delta",
+   "data": {
+    "text": " –"
+   }
+  },
+  {
+   "t": 107219,
+   "event": "delta",
+   "data": {
+    "text": " use"
+   }
+  },
+  {
+   "t": 107220,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107221,
+   "event": "delta",
+   "data": {
+    "text": " retrieved"
+   }
+  },
+  {
+   "t": 107222,
+   "event": "delta",
+   "data": {
+    "text": " docs"
+   }
+  },
+  {
+   "t": 107223,
+   "event": "delta",
+   "data": {
+    "text": " as"
+   }
+  },
+  {
+   "t": 107223,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 107227,
+   "event": "delta",
+   "data": {
+    "text": "is"
+   }
+  },
+  {
+   "t": 107228,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107229,
+   "event": "delta",
+   "data": {
+    "text": " <"
+   }
+  },
+  {
+   "t": 107230,
+   "event": "delta",
+   "data": {
+    "text": "br"
+   }
+  },
+  {
+   "t": 107231,
+   "event": "delta",
+   "data": {
+    "text": ">"
+   }
+  },
+  {
+   "t": 107242,
+   "event": "delta",
+   "data": {
+    "text": "•"
+   }
+  },
+  {
+   "t": 107243,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107245,
+   "event": "delta",
+   "data": {
+    "text": "Incorrect"
+   }
+  },
+  {
+   "t": 107246,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107247,
+   "event": "delta",
+   "data": {
+    "text": " –"
+   }
+  },
+  {
+   "t": 107263,
+   "event": "delta",
+   "data": {
+    "text": " discard"
+   }
+  },
+  {
+   "t": 107264,
+   "event": "delta",
+   "data": {
+    "text": " them"
+   }
+  },
+  {
+   "t": 107265,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 107266,
+   "event": "delta",
+   "data": {
+    "text": " request"
+   }
+  },
+  {
+   "t": 107267,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 107268,
+   "event": "delta",
+   "data": {
+    "text": " new"
+   }
+  },
+  {
+   "t": 107269,
+   "event": "delta",
+   "data": {
+    "text": " retrieval"
+   }
+  },
+  {
+   "t": 107270,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107271,
+   "event": "delta",
+   "data": {
+    "text": " <"
+   }
+  },
+  {
+   "t": 107294,
+   "event": "delta",
+   "data": {
+    "text": "br"
+   }
+  },
+  {
+   "t": 107295,
+   "event": "delta",
+   "data": {
+    "text": ">"
+   }
+  },
+  {
+   "t": 107297,
+   "event": "delta",
+   "data": {
+    "text": "•"
+   }
+  },
+  {
+   "t": 107298,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107300,
+   "event": "delta",
+   "data": {
+    "text": "Amb"
+   }
+  },
+  {
+   "t": 107301,
+   "event": "delta",
+   "data": {
+    "text": "iguous"
+   }
+  },
+  {
+   "t": 107302,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107304,
+   "event": "delta",
+   "data": {
+    "text": " –"
+   }
+  },
+  {
+   "t": 107305,
+   "event": "delta",
+   "data": {
+    "text": " request"
+   }
+  },
+  {
+   "t": 107306,
+   "event": "delta",
+   "data": {
+    "text": " additional"
+   }
+  },
+  {
+   "t": 107307,
+   "event": "delta",
+   "data": {
+    "text": " evidence"
+   }
+  },
+  {
+   "t": 107309,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 107312,
+   "event": "delta",
+   "data": {
+    "text": " perform"
+   }
+  },
+  {
+   "t": 107313,
+   "event": "delta",
+   "data": {
+    "text": " refinement"
+   }
+  },
+  {
+   "t": 107314,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107315,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107317,
+   "event": "delta",
+   "data": {
+    "text": " These"
+   }
+  },
+  {
+   "t": 107318,
+   "event": "delta",
+   "data": {
+    "text": " actions"
+   }
+  },
+  {
+   "t": 107320,
+   "event": "delta",
+   "data": {
+    "text": " let"
+   }
+  },
+  {
+   "t": 107321,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107322,
+   "event": "delta",
+   "data": {
+    "text": " system"
+   }
+  },
+  {
+   "t": 107323,
+   "event": "delta",
+   "data": {
+    "text": " *"
+   }
+  },
+  {
+   "t": 107325,
+   "event": "delta",
+   "data": {
+    "text": "correct"
+   }
+  },
+  {
+   "t": 107326,
+   "event": "delta",
+   "data": {
+    "text": "*"
+   }
+  },
+  {
+   "t": 107327,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 107328,
+   "event": "delta",
+   "data": {
+    "text": " *"
+   }
+  },
+  {
+   "t": 107329,
+   "event": "delta",
+   "data": {
+    "text": "ignore"
+   }
+  },
+  {
+   "t": 107331,
+   "event": "delta",
+   "data": {
+    "text": "*"
+   }
+  },
+  {
+   "t": 107332,
+   "event": "delta",
+   "data": {
+    "text": " faulty"
+   }
+  },
+  {
+   "t": 107334,
+   "event": "delta",
+   "data": {
+    "text": " evidence"
+   }
+  },
+  {
+   "t": 107335,
+   "event": "delta",
+   "data": {
+    "text": " rather"
+   }
+  },
+  {
+   "t": 107336,
+   "event": "delta",
+   "data": {
+    "text": " than"
+   }
+  },
+  {
+   "t": 107337,
+   "event": "delta",
+   "data": {
+    "text": " blindly"
+   }
+  },
+  {
+   "t": 107338,
+   "event": "delta",
+   "data": {
+    "text": " trusting"
+   }
+  },
+  {
+   "t": 107340,
+   "event": "delta",
+   "data": {
+    "text": " it"
+   }
+  },
+  {
+   "t": 107341,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107342,
+   "event": "delta",
+   "data": {
+    "text": " |\n"
+   }
+  },
+  {
+   "t": 107343,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107348,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107349,
+   "event": "delta",
+   "data": {
+    "text": "Integration"
+   }
+  },
+  {
+   "t": 107351,
+   "event": "delta",
+   "data": {
+    "text": " with"
+   }
+  },
+  {
+   "t": 107352,
+   "event": "delta",
+   "data": {
+    "text": " R"
+   }
+  },
+  {
+   "t": 107354,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 107355,
+   "event": "delta",
+   "data": {
+    "text": " variants"
+   }
+  },
+  {
+   "t": 107357,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107358,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107359,
+   "event": "delta",
+   "data": {
+    "text": " CR"
+   }
+  },
+  {
+   "t": 107360,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 107361,
+   "event": "delta",
+   "data": {
+    "text": " can"
+   }
+  },
+  {
+   "t": 107362,
+   "event": "delta",
+   "data": {
+    "text": " be"
+   }
+  },
+  {
+   "t": 107364,
+   "event": "delta",
+   "data": {
+    "text": " coupled"
+   }
+  },
+  {
+   "t": 107366,
+   "event": "delta",
+   "data": {
+    "text": " with"
+   }
+  },
+  {
+   "t": 107368,
+   "event": "delta",
+   "data": {
+    "text": " ordinary"
+   }
+  },
+  {
+   "t": 107370,
+   "event": "delta",
+   "data": {
+    "text": " R"
+   }
+  },
+  {
+   "t": 107371,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 107391,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 107392,
+   "event": "delta",
+   "data": {
+    "text": "named"
+   }
+  },
+  {
+   "t": 107395,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107397,
+   "event": "delta",
+   "data": {
+    "text": "CR"
+   }
+  },
+  {
+   "t": 107400,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 107401,
+   "event": "delta",
+   "data": {
+    "text": "**)"
+   }
+  },
+  {
+   "t": 107403,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 107404,
+   "event": "delta",
+   "data": {
+    "text": " with"
+   }
+  },
+  {
+   "t": 107406,
+   "event": "delta",
+   "data": {
+    "text": " Self"
+   }
+  },
+  {
+   "t": 107407,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 107410,
+   "event": "delta",
+   "data": {
+    "text": "R"
+   }
+  },
+  {
+   "t": 107411,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 107413,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 107414,
+   "event": "delta",
+   "data": {
+    "text": "named"
+   }
+  },
+  {
+   "t": 107417,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107419,
+   "event": "delta",
+   "data": {
+    "text": "Self"
+   }
+  },
+  {
+   "t": 107420,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 107422,
+   "event": "delta",
+   "data": {
+    "text": "CR"
+   }
+  },
+  {
+   "t": 107423,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 107424,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107426,
+   "event": "delta",
+   "data": {
+    "text": ")."
+   }
+  },
+  {
+   "t": 107427,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107428,
+   "event": "delta",
+   "data": {
+    "text": " Self"
+   }
+  },
+  {
+   "t": 107429,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 107430,
+   "event": "delta",
+   "data": {
+    "text": "CR"
+   }
+  },
+  {
+   "t": 107432,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 107434,
+   "event": "delta",
+   "data": {
+    "text": " adds"
+   }
+  },
+  {
+   "t": 107434,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107436,
+   "event": "delta",
+   "data": {
+    "text": " corrective"
+   }
+  },
+  {
+   "t": 107437,
+   "event": "delta",
+   "data": {
+    "text": " layer"
+   }
+  },
+  {
+   "t": 107438,
+   "event": "delta",
+   "data": {
+    "text": " on"
+   }
+  },
+  {
+   "t": 107439,
+   "event": "delta",
+   "data": {
+    "text": " top"
+   }
+  },
+  {
+   "t": 107441,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 107443,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107443,
+   "event": "delta",
+   "data": {
+    "text": " self"
+   }
+  },
+  {
+   "t": 107445,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 107446,
+   "event": "delta",
+   "data": {
+    "text": "retr"
+   }
+  },
+  {
+   "t": 107452,
+   "event": "delta",
+   "data": {
+    "text": "ieval"
+   }
+  },
+  {
+   "t": 107453,
+   "event": "delta",
+   "data": {
+    "text": " pipeline"
+   }
+  },
+  {
+   "t": 107454,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107455,
+   "event": "delta",
+   "data": {
+    "text": " |\n\n"
+   }
+  },
+  {
+   "t": 107456,
+   "event": "delta",
+   "data": {
+    "text": "---"
+   }
+  },
+  {
+   "t": 107461,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 107480,
+   "event": "delta",
+   "data": {
+    "text": "###"
+   }
+  },
+  {
+   "t": 107481,
+   "event": "delta",
+   "data": {
+    "text": " How"
+   }
+  },
+  {
+   "t": 107482,
+   "event": "delta",
+   "data": {
+    "text": " CR"
+   }
+  },
+  {
+   "t": 107483,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 107484,
+   "event": "delta",
+   "data": {
+    "text": " works"
+   }
+  },
+  {
+   "t": 107485,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 107487,
+   "event": "delta",
+   "data": {
+    "text": "high"
+   }
+  },
+  {
+   "t": 107487,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 107489,
+   "event": "delta",
+   "data": {
+    "text": "level"
+   }
+  },
+  {
+   "t": 107489,
+   "event": "delta",
+   "data": {
+    "text": " flow"
+   }
+  },
+  {
+   "t": 107491,
+   "event": "delta",
+   "data": {
+    "text": ")"
+   }
+  },
+  {
+   "t": 107492,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 107493,
+   "event": "delta",
+   "data": {
+    "text": "1"
+   }
+  },
+  {
+   "t": 107495,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107496,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107497,
+   "event": "delta",
+   "data": {
+    "text": "Query"
+   }
+  },
+  {
+   "t": 107498,
+   "event": "delta",
+   "data": {
+    "text": " →"
+   }
+  },
+  {
+   "t": 107499,
+   "event": "delta",
+   "data": {
+    "text": " Retriever"
+   }
+  },
+  {
+   "t": 107500,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107502,
+   "event": "delta",
+   "data": {
+    "text": " –"
+   }
+  },
+  {
+   "t": 107503,
+   "event": "delta",
+   "data": {
+    "text": " The"
+   }
+  },
+  {
+   "t": 107512,
+   "event": "delta",
+   "data": {
+    "text": " usual"
+   }
+  },
+  {
+   "t": 107513,
+   "event": "delta",
+   "data": {
+    "text": " retrieval"
+   }
+  },
+  {
+   "t": 107514,
+   "event": "delta",
+   "data": {
+    "text": " step"
+   }
+  },
+  {
+   "t": 107515,
+   "event": "delta",
+   "data": {
+    "text": " returns"
+   }
+  },
+  {
+   "t": 107517,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 107518,
+   "event": "delta",
+   "data": {
+    "text": " set"
+   }
+  },
+  {
+   "t": 107519,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 107520,
+   "event": "delta",
+   "data": {
+    "text": " documents"
+   }
+  },
+  {
+   "t": 107522,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107525,
+   "event": "delta",
+   "data": {
+    "text": "  \n"
+   }
+  },
+  {
+   "t": 107526,
+   "event": "delta",
+   "data": {
+    "text": "2"
+   }
+  },
+  {
+   "t": 107528,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107529,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107531,
+   "event": "delta",
+   "data": {
+    "text": "Retriever"
+   }
+  },
+  {
+   "t": 107534,
+   "event": "delta",
+   "data": {
+    "text": " →"
+   }
+  },
+  {
+   "t": 107535,
+   "event": "delta",
+   "data": {
+    "text": " Evalu"
+   }
+  },
+  {
+   "t": 107543,
+   "event": "delta",
+   "data": {
+    "text": "ator"
+   }
+  },
+  {
+   "t": 107544,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107546,
+   "event": "delta",
+   "data": {
+    "text": " –"
+   }
+  },
+  {
+   "t": 107547,
+   "event": "delta",
+   "data": {
+    "text": " The"
+   }
+  },
+  {
+   "t": 107549,
+   "event": "delta",
+   "data": {
+    "text": " retrieval"
+   }
+  },
+  {
+   "t": 107550,
+   "event": "delta",
+   "data": {
+    "text": " evaluator"
+   }
+  },
+  {
+   "t": 107559,
+   "event": "delta",
+   "data": {
+    "text": " examines"
+   }
+  },
+  {
+   "t": 107560,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107561,
+   "event": "delta",
+   "data": {
+    "text": " set"
+   }
+  },
+  {
+   "t": 107562,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 107564,
+   "event": "delta",
+   "data": {
+    "text": " produces"
+   }
+  },
+  {
+   "t": 107565,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 107566,
+   "event": "delta",
+   "data": {
+    "text": " confidence"
+   }
+  },
+  {
+   "t": 107568,
+   "event": "delta",
+   "data": {
+    "text": " score"
+   }
+  },
+  {
+   "t": 107569,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107570,
+   "event": "delta",
+   "data": {
+    "text": "  \n"
+   }
+  },
+  {
+   "t": 107574,
+   "event": "delta",
+   "data": {
+    "text": "3"
+   }
+  },
+  {
+   "t": 107574,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107578,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107579,
+   "event": "delta",
+   "data": {
+    "text": "Score"
+   }
+  },
+  {
+   "t": 107581,
+   "event": "delta",
+   "data": {
+    "text": " →"
+   }
+  },
+  {
+   "t": 107583,
+   "event": "delta",
+   "data": {
+    "text": " Action"
+   }
+  },
+  {
+   "t": 107585,
+   "event": "delta",
+   "data": {
+    "text": " Selector"
+   }
+  },
+  {
+   "t": 107586,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107589,
+   "event": "delta",
+   "data": {
+    "text": " –"
+   }
+  },
+  {
+   "t": 107590,
+   "event": "delta",
+   "data": {
+    "text": " Depending"
+   }
+  },
+  {
+   "t": 107592,
+   "event": "delta",
+   "data": {
+    "text": " on"
+   }
+  },
+  {
+   "t": 107602,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107602,
+   "event": "delta",
+   "data": {
+    "text": " score"
+   }
+  },
+  {
+   "t": 107604,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 107605,
+   "event": "delta",
+   "data": {
+    "text": " one"
+   }
+  },
+  {
+   "t": 107607,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 107608,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107610,
+   "event": "delta",
+   "data": {
+    "text": " knowledge"
+   }
+  },
+  {
+   "t": 107611,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 107612,
+   "event": "delta",
+   "data": {
+    "text": "util"
+   }
+  },
+  {
+   "t": 107615,
+   "event": "delta",
+   "data": {
+    "text": "ization"
+   }
+  },
+  {
+   "t": 107616,
+   "event": "delta",
+   "data": {
+    "text": " actions"
+   }
+  },
+  {
+   "t": 107617,
+   "event": "delta",
+   "data": {
+    "text": " is"
+   }
+  },
+  {
+   "t": 107619,
+   "event": "delta",
+   "data": {
+    "text": " chosen"
+   }
+  },
+  {
+   "t": 107622,
+   "event": "delta",
+   "data": {
+    "text": ":"
+   }
+  },
+  {
+   "t": 107630,
+   "event": "delta",
+   "data": {
+    "text": "  \n"
+   }
+  },
+  {
+   "t": 107631,
+   "event": "delta",
+   "data": {
+    "text": "  "
+   }
+  },
+  {
+   "t": 107632,
+   "event": "delta",
+   "data": {
+    "text": " *"
+   }
+  },
+  {
+   "t": 107633,
+   "event": "delta",
+   "data": {
+    "text": " If"
+   }
+  },
+  {
+   "t": 107634,
+   "event": "delta",
+   "data": {
+    "text": " confidence"
+   }
+  },
+  {
+   "t": 107635,
+   "event": "delta",
+   "data": {
+    "text": " is"
+   }
+  },
+  {
+   "t": 107637,
+   "event": "delta",
+   "data": {
+    "text": " high"
+   }
+  },
+  {
+   "t": 107638,
+   "event": "delta",
+   "data": {
+    "text": " →"
+   }
+  },
+  {
+   "t": 107641,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107645,
+   "event": "delta",
+   "data": {
+    "text": "Correct"
+   }
+  },
+  {
+   "t": 107646,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107647,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 107659,
+   "event": "delta",
+   "data": {
+    "text": "use"
+   }
+  },
+  {
+   "t": 107660,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107661,
+   "event": "delta",
+   "data": {
+    "text": " docs"
+   }
+  },
+  {
+   "t": 107662,
+   "event": "delta",
+   "data": {
+    "text": ")."
+   }
+  },
+  {
+   "t": 107663,
+   "event": "delta",
+   "data": {
+    "text": "  \n"
+   }
+  },
+  {
+   "t": 107665,
+   "event": "delta",
+   "data": {
+    "text": "  "
+   }
+  },
+  {
+   "t": 107665,
+   "event": "delta",
+   "data": {
+    "text": " *"
+   }
+  },
+  {
+   "t": 107667,
+   "event": "delta",
+   "data": {
+    "text": " If"
+   }
+  },
+  {
+   "t": 107667,
+   "event": "delta",
+   "data": {
+    "text": " confidence"
+   }
+  },
+  {
+   "t": 107669,
+   "event": "delta",
+   "data": {
+    "text": " is"
+   }
+  },
+  {
+   "t": 107671,
+   "event": "delta",
+   "data": {
+    "text": " low"
+   }
+  },
+  {
+   "t": 107672,
+   "event": "delta",
+   "data": {
+    "text": " →"
+   }
+  },
+  {
+   "t": 107674,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107675,
+   "event": "delta",
+   "data": {
+    "text": "Incorrect"
+   }
+  },
+  {
+   "t": 107676,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107680,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 107682,
+   "event": "delta",
+   "data": {
+    "text": "ignore"
+   }
+  },
+  {
+   "t": 107685,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 107685,
+   "event": "delta",
+   "data": {
+    "text": " re"
+   }
+  },
+  {
+   "t": 107709,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 107710,
+   "event": "delta",
+   "data": {
+    "text": "search"
+   }
+  },
+  {
+   "t": 107711,
+   "event": "delta",
+   "data": {
+    "text": ")."
+   }
+  },
+  {
+   "t": 107711,
+   "event": "delta",
+   "data": {
+    "text": "  \n"
+   }
+  },
+  {
+   "t": 107712,
+   "event": "delta",
+   "data": {
+    "text": "  "
+   }
+  },
+  {
+   "t": 107713,
+   "event": "delta",
+   "data": {
+    "text": " *"
+   }
+  },
+  {
+   "t": 107714,
+   "event": "delta",
+   "data": {
+    "text": " If"
+   }
+  },
+  {
+   "t": 107715,
+   "event": "delta",
+   "data": {
+    "text": " confidence"
+   }
+  },
+  {
+   "t": 107716,
+   "event": "delta",
+   "data": {
+    "text": " is"
+   }
+  },
+  {
+   "t": 107716,
+   "event": "delta",
+   "data": {
+    "text": " intermediate"
+   }
+  },
+  {
+   "t": 107718,
+   "event": "delta",
+   "data": {
+    "text": " →"
+   }
+  },
+  {
+   "t": 107719,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107719,
+   "event": "delta",
+   "data": {
+    "text": "Amb"
+   }
+  },
+  {
+   "t": 107721,
+   "event": "delta",
+   "data": {
+    "text": "iguous"
+   }
+  },
+  {
+   "t": 107722,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107723,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 107723,
+   "event": "delta",
+   "data": {
+    "text": "ref"
+   }
+  },
+  {
+   "t": 107724,
+   "event": "delta",
+   "data": {
+    "text": "ine"
+   }
+  },
+  {
+   "t": 107751,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 107752,
+   "event": "delta",
+   "data": {
+    "text": " rewrite"
+   }
+  },
+  {
+   "t": 107753,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107753,
+   "event": "delta",
+   "data": {
+    "text": " query"
+   }
+  },
+  {
+   "t": 107754,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 107755,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 107756,
+   "event": "delta",
+   "data": {
+    "text": " request"
+   }
+  },
+  {
+   "t": 107757,
+   "event": "delta",
+   "data": {
+    "text": " more"
+   }
+  },
+  {
+   "t": 107759,
+   "event": "delta",
+   "data": {
+    "text": " evidence"
+   }
+  },
+  {
+   "t": 107760,
+   "event": "delta",
+   "data": {
+    "text": ")."
+   }
+  },
+  {
+   "t": 107761,
+   "event": "delta",
+   "data": {
+    "text": "  \n"
+   }
+  },
+  {
+   "t": 107762,
+   "event": "delta",
+   "data": {
+    "text": "4"
+   }
+  },
+  {
+   "t": 107763,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107764,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107765,
+   "event": "delta",
+   "data": {
+    "text": "Action"
+   }
+  },
+  {
+   "t": 107766,
+   "event": "delta",
+   "data": {
+    "text": " →"
+   }
+  },
+  {
+   "t": 107767,
+   "event": "delta",
+   "data": {
+    "text": " Generator"
+   }
+  },
+  {
+   "t": 107768,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107769,
+   "event": "delta",
+   "data": {
+    "text": " –"
+   }
+  },
+  {
+   "t": 107771,
+   "event": "delta",
+   "data": {
+    "text": " The"
+   }
+  },
+  {
+   "t": 107771,
+   "event": "delta",
+   "data": {
+    "text": " generator"
+   }
+  },
+  {
+   "t": 107773,
+   "event": "delta",
+   "data": {
+    "text": " receives"
+   }
+  },
+  {
+   "t": 107774,
+   "event": "delta",
+   "data": {
+    "text": " either"
+   }
+  },
+  {
+   "t": 107775,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107777,
+   "event": "delta",
+   "data": {
+    "text": " original"
+   }
+  },
+  {
+   "t": 107778,
+   "event": "delta",
+   "data": {
+    "text": " docs"
+   }
+  },
+  {
+   "t": 107780,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 107781,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 107784,
+   "event": "delta",
+   "data": {
+    "text": " refined"
+   }
+  },
+  {
+   "t": 107815,
+   "event": "delta",
+   "data": {
+    "text": " set"
+   }
+  },
+  {
+   "t": 107816,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 107821,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 107822,
+   "event": "delta",
+   "data": {
+    "text": " none"
+   }
+  },
+  {
+   "t": 107824,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 107825,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 107827,
+   "event": "delta",
+   "data": {
+    "text": " produces"
+   }
+  },
+  {
+   "t": 107828,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 107829,
+   "event": "delta",
+   "data": {
+    "text": " final"
+   }
+  },
+  {
+   "t": 107831,
+   "event": "delta",
+   "data": {
+    "text": " answer"
+   }
+  },
+  {
+   "t": 107832,
+   "event": "delta",
+   "data": {
+    "text": ".\n\n"
+   }
+  },
+  {
+   "t": 107833,
+   "event": "delta",
+   "data": {
+    "text": "---"
+   }
+  },
+  {
+   "t": 107835,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 107836,
+   "event": "delta",
+   "data": {
+    "text": "###"
+   }
+  },
+  {
+   "t": 107839,
+   "event": "delta",
+   "data": {
+    "text": " Emp"
+   }
+  },
+  {
+   "t": 107840,
+   "event": "delta",
+   "data": {
+    "text": "irical"
+   }
+  },
+  {
+   "t": 107843,
+   "event": "delta",
+   "data": {
+    "text": " performance"
+   }
+  },
+  {
+   "t": 107844,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 107845,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107846,
+   "event": "delta",
+   "data": {
+    "text": " Dataset"
+   }
+  },
+  {
+   "t": 107848,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107849,
+   "event": "delta",
+   "data": {
+    "text": " Metric"
+   }
+  },
+  {
+   "t": 107850,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107851,
+   "event": "delta",
+   "data": {
+    "text": " Improvement"
+   }
+  },
+  {
+   "t": 107852,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 107854,
+   "event": "delta",
+   "data": {
+    "text": " CR"
+   }
+  },
+  {
+   "t": 107856,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 107857,
+   "event": "delta",
+   "data": {
+    "text": " over"
+   }
+  },
+  {
+   "t": 107859,
+   "event": "delta",
+   "data": {
+    "text": " vanilla"
+   }
+  },
+  {
+   "t": 107862,
+   "event": "delta",
+   "data": {
+    "text": " R"
+   }
+  },
+  {
+   "t": 107863,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 107864,
+   "event": "delta",
+   "data": {
+    "text": " |\n"
+   }
+  },
+  {
+   "t": 107866,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107866,
+   "event": "delta",
+   "data": {
+    "text": "---------"
+   }
+  },
+  {
+   "t": 107868,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107869,
+   "event": "delta",
+   "data": {
+    "text": "--------"
+   }
+  },
+  {
+   "t": 107871,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107872,
+   "event": "delta",
+   "data": {
+    "text": "--------------------------------"
+   }
+  },
+  {
+   "t": 107873,
+   "event": "delta",
+   "data": {
+    "text": "------"
+   }
+  },
+  {
+   "t": 107876,
+   "event": "delta",
+   "data": {
+    "text": "|\n"
+   }
+  },
+  {
+   "t": 107877,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107879,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107882,
+   "event": "delta",
+   "data": {
+    "text": "Pop"
+   }
+  },
+  {
+   "t": 107883,
+   "event": "delta",
+   "data": {
+    "text": "QA"
+   }
+  },
+  {
+   "t": 107885,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107886,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107887,
+   "event": "delta",
+   "data": {
+    "text": " Accuracy"
+   }
+  },
+  {
+   "t": 107888,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107890,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107893,
+   "event": "delta",
+   "data": {
+    "text": "+"
+   }
+  },
+  {
+   "t": 107895,
+   "event": "delta",
+   "data": {
+    "text": "7"
+   }
+  },
+  {
+   "t": 107896,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107897,
+   "event": "delta",
+   "data": {
+    "text": "0"
+   }
+  },
+  {
+   "t": 107898,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 107927,
+   "event": "delta",
+   "data": {
+    "text": "%"
+   }
+  },
+  {
+   "t": 107927,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107928,
+   "event": "delta",
+   "data": {
+    "text": " |\n"
+   }
+  },
+  {
+   "t": 107929,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107931,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107932,
+   "event": "delta",
+   "data": {
+    "text": "Biography"
+   }
+  },
+  {
+   "t": 107933,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107934,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107935,
+   "event": "delta",
+   "data": {
+    "text": " Fact"
+   }
+  },
+  {
+   "t": 107935,
+   "event": "delta",
+   "data": {
+    "text": "Score"
+   }
+  },
+  {
+   "t": 107937,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107937,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107938,
+   "event": "delta",
+   "data": {
+    "text": "+"
+   }
+  },
+  {
+   "t": 107939,
+   "event": "delta",
+   "data": {
+    "text": "14"
+   }
+  },
+  {
+   "t": 107941,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107942,
+   "event": "delta",
+   "data": {
+    "text": "9"
+   }
+  },
+  {
+   "t": 107943,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 107944,
+   "event": "delta",
+   "data": {
+    "text": "%"
+   }
+  },
+  {
+   "t": 107945,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107945,
+   "event": "delta",
+   "data": {
+    "text": " |\n"
+   }
+  },
+  {
+   "t": 107947,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107951,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107951,
+   "event": "delta",
+   "data": {
+    "text": "Pub"
+   }
+  },
+  {
+   "t": 107953,
+   "event": "delta",
+   "data": {
+    "text": "Health"
+   }
+  },
+  {
+   "t": 107954,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107956,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107973,
+   "event": "delta",
+   "data": {
+    "text": " Accuracy"
+   }
+  },
+  {
+   "t": 107974,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 107975,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107976,
+   "event": "delta",
+   "data": {
+    "text": "+"
+   }
+  },
+  {
+   "t": 107977,
+   "event": "delta",
+   "data": {
+    "text": "36"
+   }
+  },
+  {
+   "t": 107978,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 107979,
+   "event": "delta",
+   "data": {
+    "text": "6"
+   }
+  },
+  {
+   "t": 107981,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 107982,
+   "event": "delta",
+   "data": {
+    "text": "%"
+   }
+  },
+  {
+   "t": 107983,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107984,
+   "event": "delta",
+   "data": {
+    "text": " |\n"
+   }
+  },
+  {
+   "t": 107984,
+   "event": "delta",
+   "data": {
+    "text": "|"
+   }
+  },
+  {
+   "t": 107985,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 107987,
+   "event": "delta",
+   "data": {
+    "text": "Arc"
+   }
+  },
+  {
+   "t": 107987,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 107988,
+   "event": "delta",
+   "data": {
+    "text": "Challenge"
+   }
+  },
+  {
+   "t": 107989,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 107990,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 107991,
+   "event": "delta",
+   "data": {
+    "text": "Self"
+   }
+  },
+  {
+   "t": 107995,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 107996,
+   "event": "delta",
+   "data": {
+    "text": "R"
+   }
+  },
+  {
+   "t": 108000,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 108001,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 108002,
+   "event": "delta",
+   "data": {
+    "text": "L"
+   }
+  },
+  {
+   "t": 108005,
+   "event": "delta",
+   "data": {
+    "text": "La"
+   }
+  },
+  {
+   "t": 108007,
+   "event": "delta",
+   "data": {
+    "text": "MA"
+   }
+  },
+  {
+   "t": 108009,
+   "event": "delta",
+   "data": {
+    "text": "2"
+   }
+  },
+  {
+   "t": 108010,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 108012,
+   "event": "delta",
+   "data": {
+    "text": "7"
+   }
+  },
+  {
+   "t": 108016,
+   "event": "delta",
+   "data": {
+    "text": "b"
+   }
+  },
+  {
+   "t": 108017,
+   "event": "delta",
+   "data": {
+    "text": ")"
+   }
+  },
+  {
+   "t": 108020,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 108023,
+   "event": "delta",
+   "data": {
+    "text": " Accuracy"
+   }
+  },
+  {
+   "t": 108024,
+   "event": "delta",
+   "data": {
+    "text": " |"
+   }
+  },
+  {
+   "t": 108025,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108027,
+   "event": "delta",
+   "data": {
+    "text": "+"
+   }
+  },
+  {
+   "t": 108031,
+   "event": "delta",
+   "data": {
+    "text": "15"
+   }
+  },
+  {
+   "t": 108032,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108035,
+   "event": "delta",
+   "data": {
+    "text": "4"
+   }
+  },
+  {
+   "t": 108036,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 108038,
+   "event": "delta",
+   "data": {
+    "text": "%"
+   }
+  },
+  {
+   "t": 108040,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108041,
+   "event": "delta",
+   "data": {
+    "text": " |\n\n"
+   }
+  },
+  {
+   "t": 108046,
+   "event": "delta",
+   "data": {
+    "text": "For"
+   }
+  },
+  {
+   "t": 108047,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 108049,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108050,
+   "event": "delta",
+   "data": {
+    "text": "Self"
+   }
+  },
+  {
+   "t": 108054,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 108055,
+   "event": "delta",
+   "data": {
+    "text": "CR"
+   }
+  },
+  {
+   "t": 108057,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 108060,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108061,
+   "event": "delta",
+   "data": {
+    "text": " variant"
+   }
+  },
+  {
+   "t": 108063,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 108065,
+   "event": "delta",
+   "data": {
+    "text": "CR"
+   }
+  },
+  {
+   "t": 108066,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 108071,
+   "event": "delta",
+   "data": {
+    "text": " built"
+   }
+  },
+  {
+   "t": 108072,
+   "event": "delta",
+   "data": {
+    "text": " on"
+   }
+  },
+  {
+   "t": 108074,
+   "event": "delta",
+   "data": {
+    "text": " top"
+   }
+  },
+  {
+   "t": 108082,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 108083,
+   "event": "delta",
+   "data": {
+    "text": " Self"
+   }
+  },
+  {
+   "t": 108085,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 108086,
+   "event": "delta",
+   "data": {
+    "text": "R"
+   }
+  },
+  {
+   "t": 108087,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 108088,
+   "event": "delta",
+   "data": {
+    "text": "):"
+   }
+  },
+  {
+   "t": 108090,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 108091,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 108092,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108094,
+   "event": "delta",
+   "data": {
+    "text": "Pop"
+   }
+  },
+  {
+   "t": 108097,
+   "event": "delta",
+   "data": {
+    "text": "QA"
+   }
+  },
+  {
+   "t": 108100,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108101,
+   "event": "delta",
+   "data": {
+    "text": ":"
+   }
+  },
+  {
+   "t": 108103,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108107,
+   "event": "delta",
+   "data": {
+    "text": "+"
+   }
+  },
+  {
+   "t": 108107,
+   "event": "delta",
+   "data": {
+    "text": "20"
+   }
+  },
+  {
+   "t": 108110,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108112,
+   "event": "delta",
+   "data": {
+    "text": "0"
+   }
+  },
+  {
+   "t": 108113,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 108115,
+   "event": "delta",
+   "data": {
+    "text": "%"
+   }
+  },
+  {
+   "t": 108146,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108147,
+   "event": "delta",
+   "data": {
+    "text": " accuracy"
+   }
+  },
+  {
+   "t": 108149,
+   "event": "delta",
+   "data": {
+    "text": "  \n"
+   }
+  },
+  {
+   "t": 108150,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 108151,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108152,
+   "event": "delta",
+   "data": {
+    "text": "Biography"
+   }
+  },
+  {
+   "t": 108154,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108155,
+   "event": "delta",
+   "data": {
+    "text": ":"
+   }
+  },
+  {
+   "t": 108156,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108157,
+   "event": "delta",
+   "data": {
+    "text": "+"
+   }
+  },
+  {
+   "t": 108158,
+   "event": "delta",
+   "data": {
+    "text": "36"
+   }
+  },
+  {
+   "t": 108159,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108160,
+   "event": "delta",
+   "data": {
+    "text": "9"
+   }
+  },
+  {
+   "t": 108161,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 108163,
+   "event": "delta",
+   "data": {
+    "text": "%"
+   }
+  },
+  {
+   "t": 108164,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108165,
+   "event": "delta",
+   "data": {
+    "text": " Fact"
+   }
+  },
+  {
+   "t": 108166,
+   "event": "delta",
+   "data": {
+    "text": "Score"
+   }
+  },
+  {
+   "t": 108167,
+   "event": "delta",
+   "data": {
+    "text": "  \n"
+   }
+  },
+  {
+   "t": 108169,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 108169,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108170,
+   "event": "delta",
+   "data": {
+    "text": "Arc"
+   }
+  },
+  {
+   "t": 108172,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 108173,
+   "event": "delta",
+   "data": {
+    "text": "Challenge"
+   }
+  },
+  {
+   "t": 108174,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108175,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 108176,
+   "event": "delta",
+   "data": {
+    "text": "L"
+   }
+  },
+  {
+   "t": 108178,
+   "event": "delta",
+   "data": {
+    "text": "La"
+   }
+  },
+  {
+   "t": 108178,
+   "event": "delta",
+   "data": {
+    "text": "MA"
+   }
+  },
+  {
+   "t": 108180,
+   "event": "delta",
+   "data": {
+    "text": "2"
+   }
+  },
+  {
+   "t": 108181,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 108186,
+   "event": "delta",
+   "data": {
+    "text": "hf"
+   }
+  },
+  {
+   "t": 108187,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 108188,
+   "event": "delta",
+   "data": {
+    "text": "7"
+   }
+  },
+  {
+   "t": 108189,
+   "event": "delta",
+   "data": {
+    "text": "b"
+   }
+  },
+  {
+   "t": 108190,
+   "event": "delta",
+   "data": {
+    "text": "):"
+   }
+  },
+  {
+   "t": 108192,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108206,
+   "event": "delta",
+   "data": {
+    "text": "+"
+   }
+  },
+  {
+   "t": 108206,
+   "event": "delta",
+   "data": {
+    "text": "4"
+   }
+  },
+  {
+   "t": 108207,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108208,
+   "event": "delta",
+   "data": {
+    "text": "0"
+   }
+  },
+  {
+   "t": 108209,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 108210,
+   "event": "delta",
+   "data": {
+    "text": "%"
+   }
+  },
+  {
+   "t": 108211,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108212,
+   "event": "delta",
+   "data": {
+    "text": " accuracy"
+   }
+  },
+  {
+   "t": 108214,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 108215,
+   "event": "delta",
+   "data": {
+    "text": "These"
+   }
+  },
+  {
+   "t": 108216,
+   "event": "delta",
+   "data": {
+    "text": " results"
+   }
+  },
+  {
+   "t": 108218,
+   "event": "delta",
+   "data": {
+    "text": " show"
+   }
+  },
+  {
+   "t": 108221,
+   "event": "delta",
+   "data": {
+    "text": " that"
+   }
+  },
+  {
+   "t": 108222,
+   "event": "delta",
+   "data": {
+    "text": " adding"
+   }
+  },
+  {
+   "t": 108224,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 108229,
+   "event": "delta",
+   "data": {
+    "text": " corrective"
+   }
+  },
+  {
+   "t": 108241,
+   "event": "delta",
+   "data": {
+    "text": " step"
+   }
+  },
+  {
+   "t": 108242,
+   "event": "delta",
+   "data": {
+    "text": " yields"
+   }
+  },
+  {
+   "t": 108243,
+   "event": "delta",
+   "data": {
+    "text": " sizable"
+   }
+  },
+  {
+   "t": 108244,
+   "event": "delta",
+   "data": {
+    "text": " gains"
+   }
+  },
+  {
+   "t": 108254,
+   "event": "delta",
+   "data": {
+    "text": " across"
+   }
+  },
+  {
+   "t": 108255,
+   "event": "delta",
+   "data": {
+    "text": " diverse"
+   }
+  },
+  {
+   "t": 108256,
+   "event": "delta",
+   "data": {
+    "text": " knowledge"
+   }
+  },
+  {
+   "t": 108257,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 108258,
+   "event": "delta",
+   "data": {
+    "text": "int"
+   }
+  },
+  {
+   "t": 108259,
+   "event": "delta",
+   "data": {
+    "text": "ensive"
+   }
+  },
+  {
+   "t": 108261,
+   "event": "delta",
+   "data": {
+    "text": " benchmarks"
+   }
+  },
+  {
+   "t": 108261,
+   "event": "delta",
+   "data": {
+    "text": ".\n\n"
+   }
+  },
+  {
+   "t": 108263,
+   "event": "delta",
+   "data": {
+    "text": "---"
+   }
+  },
+  {
+   "t": 108264,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 108265,
+   "event": "delta",
+   "data": {
+    "text": "###"
+   }
+  },
+  {
+   "t": 108266,
+   "event": "delta",
+   "data": {
+    "text": " Abl"
+   }
+  },
+  {
+   "t": 108267,
+   "event": "delta",
+   "data": {
+    "text": "ation"
+   }
+  },
+  {
+   "t": 108268,
+   "event": "delta",
+   "data": {
+    "text": " insights"
+   }
+  },
+  {
+   "t": 108270,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 108271,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 108272,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108274,
+   "event": "delta",
+   "data": {
+    "text": "Removing"
+   }
+  },
+  {
+   "t": 108274,
+   "event": "delta",
+   "data": {
+    "text": " document"
+   }
+  },
+  {
+   "t": 108282,
+   "event": "delta",
+   "data": {
+    "text": " refinement"
+   }
+  },
+  {
+   "t": 108283,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108284,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 108285,
+   "event": "delta",
+   "data": {
+    "text": "i"
+   }
+  },
+  {
+   "t": 108286,
+   "event": "delta",
+   "data": {
+    "text": ".e"
+   }
+  },
+  {
+   "t": 108287,
+   "event": "delta",
+   "data": {
+    "text": ".,"
+   }
+  },
+  {
+   "t": 108297,
+   "event": "delta",
+   "data": {
+    "text": " feeding"
+   }
+  },
+  {
+   "t": 108298,
+   "event": "delta",
+   "data": {
+    "text": " raw"
+   }
+  },
+  {
+   "t": 108299,
+   "event": "delta",
+   "data": {
+    "text": " retrieved"
+   }
+  },
+  {
+   "t": 108300,
+   "event": "delta",
+   "data": {
+    "text": " docs"
+   }
+  },
+  {
+   "t": 108308,
+   "event": "delta",
+   "data": {
+    "text": " directly"
+   }
+  },
+  {
+   "t": 108309,
+   "event": "delta",
+   "data": {
+    "text": ")"
+   }
+  },
+  {
+   "t": 108310,
+   "event": "delta",
+   "data": {
+    "text": " hurts"
+   }
+  },
+  {
+   "t": 108311,
+   "event": "delta",
+   "data": {
+    "text": " performance"
+   }
+  },
+  {
+   "t": 108313,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 108315,
+   "event": "delta",
+   "data": {
+    "text": " confirming"
+   }
+  },
+  {
+   "t": 108316,
+   "event": "delta",
+   "data": {
+    "text": " that"
+   }
+  },
+  {
+   "t": 108317,
+   "event": "delta",
+   "data": {
+    "text": " selective"
+   }
+  },
+  {
+   "t": 108319,
+   "event": "delta",
+   "data": {
+    "text": " use"
+   }
+  },
+  {
+   "t": 108320,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 108323,
+   "event": "delta",
+   "data": {
+    "text": " relevant"
+   }
+  },
+  {
+   "t": 108324,
+   "event": "delta",
+   "data": {
+    "text": " fragments"
+   }
+  },
+  {
+   "t": 108326,
+   "event": "delta",
+   "data": {
+    "text": " matters"
+   }
+  },
+  {
+   "t": 108327,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108328,
+   "event": "delta",
+   "data": {
+    "text": "  \n"
+   }
+  },
+  {
+   "t": 108330,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 108332,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108333,
+   "event": "delta",
+   "data": {
+    "text": "Removing"
+   }
+  },
+  {
+   "t": 108341,
+   "event": "delta",
+   "data": {
+    "text": " query"
+   }
+  },
+  {
+   "t": 108343,
+   "event": "delta",
+   "data": {
+    "text": " rewriting"
+   }
+  },
+  {
+   "t": 108347,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108348,
+   "event": "delta",
+   "data": {
+    "text": " also"
+   }
+  },
+  {
+   "t": 108351,
+   "event": "delta",
+   "data": {
+    "text": " de"
+   }
+  },
+  {
+   "t": 108353,
+   "event": "delta",
+   "data": {
+    "text": "grades"
+   }
+  },
+  {
+   "t": 108355,
+   "event": "delta",
+   "data": {
+    "text": " results"
+   }
+  },
+  {
+   "t": 108356,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 108359,
+   "event": "delta",
+   "data": {
+    "text": " indicating"
+   }
+  },
+  {
+   "t": 108362,
+   "event": "delta",
+   "data": {
+    "text": " that"
+   }
+  },
+  {
+   "t": 108364,
+   "event": "delta",
+   "data": {
+    "text": " adapting"
+   }
+  },
+  {
+   "t": 108366,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 108369,
+   "event": "delta",
+   "data": {
+    "text": " query"
+   }
+  },
+  {
+   "t": 108373,
+   "event": "delta",
+   "data": {
+    "text": " based"
+   }
+  },
+  {
+   "t": 108376,
+   "event": "delta",
+   "data": {
+    "text": " on"
+   }
+  },
+  {
+   "t": 108378,
+   "event": "delta",
+   "data": {
+    "text": " evaluator"
+   }
+  },
+  {
+   "t": 108381,
+   "event": "delta",
+   "data": {
+    "text": " feedback"
+   }
+  },
+  {
+   "t": 108382,
+   "event": "delta",
+   "data": {
+    "text": " improves"
+   }
+  },
+  {
+   "t": 108386,
+   "event": "delta",
+   "data": {
+    "text": " retrieval"
+   }
+  },
+  {
+   "t": 108388,
+   "event": "delta",
+   "data": {
+    "text": " quality"
+   }
+  },
+  {
+   "t": 108391,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108394,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 108398,
+   "event": "delta",
+   "data": {
+    "text": "---"
+   }
+  },
+  {
+   "t": 108402,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 108405,
+   "event": "delta",
+   "data": {
+    "text": "###"
+   }
+  },
+  {
+   "t": 108407,
+   "event": "delta",
+   "data": {
+    "text": " Computational"
+   }
+  },
+  {
+   "t": 108410,
+   "event": "delta",
+   "data": {
+    "text": " overhead"
+   }
+  },
+  {
+   "t": 108412,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 108414,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 108416,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108418,
+   "event": "delta",
+   "data": {
+    "text": "R"
+   }
+  },
+  {
+   "t": 108420,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 108422,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108424,
+   "event": "delta",
+   "data": {
+    "text": ":"
+   }
+  },
+  {
+   "t": 108427,
+   "event": "delta",
+   "data": {
+    "text": " ~"
+   }
+  },
+  {
+   "t": 108429,
+   "event": "delta",
+   "data": {
+    "text": "26"
+   }
+  },
+  {
+   "t": 108432,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108433,
+   "event": "delta",
+   "data": {
+    "text": "5"
+   }
+  },
+  {
+   "t": 108435,
+   "event": "delta",
+   "data": {
+    "text": " TF"
+   }
+  },
+  {
+   "t": 108437,
+   "event": "delta",
+   "data": {
+    "text": "LO"
+   }
+  },
+  {
+   "t": 108437,
+   "event": "delta",
+   "data": {
+    "text": "Ps"
+   }
+  },
+  {
+   "t": 108439,
+   "event": "delta",
+   "data": {
+    "text": " per"
+   }
+  },
+  {
+   "t": 108441,
+   "event": "delta",
+   "data": {
+    "text": " token"
+   }
+  },
+  {
+   "t": 108443,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 108444,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 108447,
+   "event": "delta",
+   "data": {
+    "text": "0"
+   }
+  },
+  {
+   "t": 108449,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108450,
+   "event": "delta",
+   "data": {
+    "text": "363"
+   }
+  },
+  {
+   "t": 108452,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 108454,
+   "event": "delta",
+   "data": {
+    "text": "s"
+   }
+  },
+  {
+   "t": 108455,
+   "event": "delta",
+   "data": {
+    "text": " generation"
+   }
+  },
+  {
+   "t": 108456,
+   "event": "delta",
+   "data": {
+    "text": " time"
+   }
+  },
+  {
+   "t": 108457,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108458,
+   "event": "delta",
+   "data": {
+    "text": "  \n"
+   }
+  },
+  {
+   "t": 108460,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 108460,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108461,
+   "event": "delta",
+   "data": {
+    "text": "CR"
+   }
+  },
+  {
+   "t": 108462,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 108463,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108464,
+   "event": "delta",
+   "data": {
+    "text": ":"
+   }
+  },
+  {
+   "t": 108465,
+   "event": "delta",
+   "data": {
+    "text": " ~"
+   }
+  },
+  {
+   "t": 108466,
+   "event": "delta",
+   "data": {
+    "text": "27"
+   }
+  },
+  {
+   "t": 108467,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108469,
+   "event": "delta",
+   "data": {
+    "text": "2"
+   }
+  },
+  {
+   "t": 108471,
+   "event": "delta",
+   "data": {
+    "text": " TF"
+   }
+  },
+  {
+   "t": 108471,
+   "event": "delta",
+   "data": {
+    "text": "LO"
+   }
+  },
+  {
+   "t": 108493,
+   "event": "delta",
+   "data": {
+    "text": "Ps"
+   }
+  },
+  {
+   "t": 108494,
+   "event": "delta",
+   "data": {
+    "text": " per"
+   }
+  },
+  {
+   "t": 108495,
+   "event": "delta",
+   "data": {
+    "text": " token"
+   }
+  },
+  {
+   "t": 108496,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 108500,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 108501,
+   "event": "delta",
+   "data": {
+    "text": "0"
+   }
+  },
+  {
+   "t": 108504,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108505,
+   "event": "delta",
+   "data": {
+    "text": "512"
+   }
+  },
+  {
+   "t": 108508,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 108509,
+   "event": "delta",
+   "data": {
+    "text": "s"
+   }
+  },
+  {
+   "t": 108511,
+   "event": "delta",
+   "data": {
+    "text": " generation"
+   }
+  },
+  {
+   "t": 108512,
+   "event": "delta",
+   "data": {
+    "text": " time"
+   }
+  },
+  {
+   "t": 108515,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108516,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 108521,
+   "event": "delta",
+   "data": {
+    "text": "The"
+   }
+  },
+  {
+   "t": 108522,
+   "event": "delta",
+   "data": {
+    "text": " extra"
+   }
+  },
+  {
+   "t": 108523,
+   "event": "delta",
+   "data": {
+    "text": " cost"
+   }
+  },
+  {
+   "t": 108524,
+   "event": "delta",
+   "data": {
+    "text": " is"
+   }
+  },
+  {
+   "t": 108526,
+   "event": "delta",
+   "data": {
+    "text": " modest"
+   }
+  },
+  {
+   "t": 108527,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 108530,
+   "event": "delta",
+   "data": {
+    "text": "≈"
+   }
+  },
+  {
+   "t": 108531,
+   "event": "delta",
+   "data": {
+    "text": "0"
+   }
+  },
+  {
+   "t": 108533,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108535,
+   "event": "delta",
+   "data": {
+    "text": "15"
+   }
+  },
+  {
+   "t": 108538,
+   "event": "delta",
+   "data": {
+    "text": " "
+   }
+  },
+  {
+   "t": 108539,
+   "event": "delta",
+   "data": {
+    "text": "s"
+   }
+  },
+  {
+   "t": 108543,
+   "event": "delta",
+   "data": {
+    "text": " per"
+   }
+  },
+  {
+   "t": 108544,
+   "event": "delta",
+   "data": {
+    "text": " token"
+   }
+  },
+  {
+   "t": 108546,
+   "event": "delta",
+   "data": {
+    "text": ")"
+   }
+  },
+  {
+   "t": 108548,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 108550,
+   "event": "delta",
+   "data": {
+    "text": " stems"
+   }
+  },
+  {
+   "t": 108552,
+   "event": "delta",
+   "data": {
+    "text": " mainly"
+   }
+  },
+  {
+   "t": 108554,
+   "event": "delta",
+   "data": {
+    "text": " from"
+   }
+  },
+  {
+   "t": 108555,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 108557,
+   "event": "delta",
+   "data": {
+    "text": " evaluation"
+   }
+  },
+  {
+   "t": 108558,
+   "event": "delta",
+   "data": {
+    "text": " step"
+   }
+  },
+  {
+   "t": 108559,
+   "event": "delta",
+   "data": {
+    "text": ";"
+   }
+  },
+  {
+   "t": 108560,
+   "event": "delta",
+   "data": {
+    "text": " retrieval"
+   }
+  },
+  {
+   "t": 108562,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 108562,
+   "event": "delta",
+   "data": {
+    "text": " preprocessing"
+   }
+  },
+  {
+   "t": 108564,
+   "event": "delta",
+   "data": {
+    "text": " times"
+   }
+  },
+  {
+   "t": 108564,
+   "event": "delta",
+   "data": {
+    "text": " are"
+   }
+  },
+  {
+   "t": 108566,
+   "event": "delta",
+   "data": {
+    "text": " not"
+   }
+  },
+  {
+   "t": 108567,
+   "event": "delta",
+   "data": {
+    "text": " included"
+   }
+  },
+  {
+   "t": 108570,
+   "event": "delta",
+   "data": {
+    "text": ".\n\n"
+   }
+  },
+  {
+   "t": 108571,
+   "event": "delta",
+   "data": {
+    "text": "---"
+   }
+  },
+  {
+   "t": 108576,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 108577,
+   "event": "delta",
+   "data": {
+    "text": "###"
+   }
+  },
+  {
+   "t": 108579,
+   "event": "delta",
+   "data": {
+    "text": " Design"
+   }
+  },
+  {
+   "t": 108580,
+   "event": "delta",
+   "data": {
+    "text": " discussion"
+   }
+  },
+  {
+   "t": 108581,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 108582,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 108585,
+   "event": "delta",
+   "data": {
+    "text": " Exper"
+   }
+  },
+  {
+   "t": 108586,
+   "event": "delta",
+   "data": {
+    "text": "iments"
+   }
+  },
+  {
+   "t": 108588,
+   "event": "delta",
+   "data": {
+    "text": " with"
+   }
+  },
+  {
+   "t": 108589,
+   "event": "delta",
+   "data": {
+    "text": " only"
+   }
+  },
+  {
+   "t": 108596,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 108596,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108597,
+   "event": "delta",
+   "data": {
+    "text": "Correct"
+   }
+  },
+  {
+   "t": 108599,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108600,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 108602,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108603,
+   "event": "delta",
+   "data": {
+    "text": "Incorrect"
+   }
+  },
+  {
+   "t": 108604,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108606,
+   "event": "delta",
+   "data": {
+    "text": " actions"
+   }
+  },
+  {
+   "t": 108609,
+   "event": "delta",
+   "data": {
+    "text": " revealed"
+   }
+  },
+  {
+   "t": 108610,
+   "event": "delta",
+   "data": {
+    "text": " that"
+   }
+  },
+  {
+   "t": 108612,
+   "event": "delta",
+   "data": {
+    "text": " CR"
+   }
+  },
+  {
+   "t": 108614,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 108615,
+   "event": "delta",
+   "data": {
+    "text": "’s"
+   }
+  },
+  {
+   "t": 108617,
+   "event": "delta",
+   "data": {
+    "text": " effectiveness"
+   }
+  },
+  {
+   "t": 108621,
+   "event": "delta",
+   "data": {
+    "text": " strongly"
+   }
+  },
+  {
+   "t": 108624,
+   "event": "delta",
+   "data": {
+    "text": " depends"
+   }
+  },
+  {
+   "t": 108626,
+   "event": "delta",
+   "data": {
+    "text": " on"
+   }
+  },
+  {
+   "t": 108627,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 108631,
+   "event": "delta",
+   "data": {
+    "text": " evaluator"
+   }
+  },
+  {
+   "t": 108637,
+   "event": "delta",
+   "data": {
+    "text": "’s"
+   }
+  },
+  {
+   "t": 108638,
+   "event": "delta",
+   "data": {
+    "text": " accuracy"
+   }
+  },
+  {
+   "t": 108642,
+   "event": "delta",
+   "data": {
+    "text": ";"
+   }
+  },
+  {
+   "t": 108643,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 108646,
+   "event": "delta",
+   "data": {
+    "text": " noisy"
+   }
+  },
+  {
+   "t": 108648,
+   "event": "delta",
+   "data": {
+    "text": " evaluator"
+   }
+  },
+  {
+   "t": 108649,
+   "event": "delta",
+   "data": {
+    "text": " can"
+   }
+  },
+  {
+   "t": 108651,
+   "event": "delta",
+   "data": {
+    "text": " mis"
+   }
+  },
+  {
+   "t": 108653,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 108654,
+   "event": "delta",
+   "data": {
+    "text": "guide"
+   }
+  },
+  {
+   "t": 108656,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 108658,
+   "event": "delta",
+   "data": {
+    "text": " system"
+   }
+  },
+  {
+   "t": 108660,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108661,
+   "event": "delta",
+   "data": {
+    "text": "  \n"
+   }
+  },
+  {
+   "t": 108673,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 108674,
+   "event": "delta",
+   "data": {
+    "text": " The"
+   }
+  },
+  {
+   "t": 108676,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108677,
+   "event": "delta",
+   "data": {
+    "text": "Amb"
+   }
+  },
+  {
+   "t": 108678,
+   "event": "delta",
+   "data": {
+    "text": "iguous"
+   }
+  },
+  {
+   "t": 108679,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108680,
+   "event": "delta",
+   "data": {
+    "text": " action"
+   }
+  },
+  {
+   "t": 108682,
+   "event": "delta",
+   "data": {
+    "text": " was"
+   }
+  },
+  {
+   "t": 108683,
+   "event": "delta",
+   "data": {
+    "text": " introduced"
+   }
+  },
+  {
+   "t": 108684,
+   "event": "delta",
+   "data": {
+    "text": " to"
+   }
+  },
+  {
+   "t": 108684,
+   "event": "delta",
+   "data": {
+    "text": " handle"
+   }
+  },
+  {
+   "t": 108686,
+   "event": "delta",
+   "data": {
+    "text": " borderline"
+   }
+  },
+  {
+   "t": 108691,
+   "event": "delta",
+   "data": {
+    "text": " cases"
+   }
+  },
+  {
+   "t": 108723,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 108724,
+   "event": "delta",
+   "data": {
+    "text": " allowing"
+   }
+  },
+  {
+   "t": 108727,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 108728,
+   "event": "delta",
+   "data": {
+    "text": " model"
+   }
+  },
+  {
+   "t": 108730,
+   "event": "delta",
+   "data": {
+    "text": " to"
+   }
+  },
+  {
+   "t": 108731,
+   "event": "delta",
+   "data": {
+    "text": " request"
+   }
+  },
+  {
+   "t": 108733,
+   "event": "delta",
+   "data": {
+    "text": " further"
+   }
+  },
+  {
+   "t": 108735,
+   "event": "delta",
+   "data": {
+    "text": " evidence"
+   }
+  },
+  {
+   "t": 108737,
+   "event": "delta",
+   "data": {
+    "text": " rather"
+   }
+  },
+  {
+   "t": 108738,
+   "event": "delta",
+   "data": {
+    "text": " than"
+   }
+  },
+  {
+   "t": 108739,
+   "event": "delta",
+   "data": {
+    "text": " making"
+   }
+  },
+  {
+   "t": 108740,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 108741,
+   "event": "delta",
+   "data": {
+    "text": " binary"
+   }
+  },
+  {
+   "t": 108742,
+   "event": "delta",
+   "data": {
+    "text": " decision"
+   }
+  },
+  {
+   "t": 108744,
+   "event": "delta",
+   "data": {
+    "text": ".\n\n"
+   }
+  },
+  {
+   "t": 108745,
+   "event": "delta",
+   "data": {
+    "text": "---"
+   }
+  },
+  {
+   "t": 108746,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 108747,
+   "event": "delta",
+   "data": {
+    "text": "##"
+   }
+  },
+  {
+   "t": 108749,
+   "event": "delta",
+   "data": {
+    "text": " TL"
+   }
+  },
+  {
+   "t": 108750,
+   "event": "delta",
+   "data": {
+    "text": ";"
+   }
+  },
+  {
+   "t": 108752,
+   "event": "delta",
+   "data": {
+    "text": "DR"
+   }
+  },
+  {
+   "t": 108753,
+   "event": "delta",
+   "data": {
+    "text": "  \n\n"
+   }
+  },
+  {
+   "t": 108755,
+   "event": "delta",
+   "data": {
+    "text": "CR"
+   }
+  },
+  {
+   "t": 108756,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 108758,
+   "event": "delta",
+   "data": {
+    "text": " aug"
+   }
+  },
+  {
+   "t": 108759,
+   "event": "delta",
+   "data": {
+    "text": "ments"
+   }
+  },
+  {
+   "t": 108761,
+   "event": "delta",
+   "data": {
+    "text": " standard"
+   }
+  },
+  {
+   "t": 108762,
+   "event": "delta",
+   "data": {
+    "text": " R"
+   }
+  },
+  {
+   "t": 108764,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 108766,
+   "event": "delta",
+   "data": {
+    "text": " with"
+   }
+  },
+  {
+   "t": 108767,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 108769,
+   "event": "delta",
+   "data": {
+    "text": " lightweight"
+   }
+  },
+  {
+   "t": 108771,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108771,
+   "event": "delta",
+   "data": {
+    "text": "retr"
+   }
+  },
+  {
+   "t": 108773,
+   "event": "delta",
+   "data": {
+    "text": "ieval"
+   }
+  },
+  {
+   "t": 108775,
+   "event": "delta",
+   "data": {
+    "text": " evaluator"
+   }
+  },
+  {
+   "t": 108776,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108777,
+   "event": "delta",
+   "data": {
+    "text": " that"
+   }
+  },
+  {
+   "t": 108779,
+   "event": "delta",
+   "data": {
+    "text": " scores"
+   }
+  },
+  {
+   "t": 108780,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 108782,
+   "event": "delta",
+   "data": {
+    "text": " relevance"
+   }
+  },
+  {
+   "t": 108783,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 108784,
+   "event": "delta",
+   "data": {
+    "text": " retrieved"
+   }
+  },
+  {
+   "t": 108785,
+   "event": "delta",
+   "data": {
+    "text": " documents"
+   }
+  },
+  {
+   "t": 108786,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108787,
+   "event": "delta",
+   "data": {
+    "text": " Depending"
+   }
+  },
+  {
+   "t": 108789,
+   "event": "delta",
+   "data": {
+    "text": " on"
+   }
+  },
+  {
+   "t": 108791,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 108792,
+   "event": "delta",
+   "data": {
+    "text": " confidence"
+   }
+  },
+  {
+   "t": 108793,
+   "event": "delta",
+   "data": {
+    "text": " score"
+   }
+  },
+  {
+   "t": 108794,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 108795,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 108796,
+   "event": "delta",
+   "data": {
+    "text": " system"
+   }
+  },
+  {
+   "t": 108809,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108810,
+   "event": "delta",
+   "data": {
+    "text": "correct"
+   }
+  },
+  {
+   "t": 108811,
+   "event": "delta",
+   "data": {
+    "text": "s"
+   }
+  },
+  {
+   "t": 108812,
+   "event": "delta",
+   "data": {
+    "text": "**,"
+   }
+  },
+  {
+   "t": 108813,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108814,
+   "event": "delta",
+   "data": {
+    "text": "dis"
+   }
+  },
+  {
+   "t": 108815,
+   "event": "delta",
+   "data": {
+    "text": "cards"
+   }
+  },
+  {
+   "t": 108821,
+   "event": "delta",
+   "data": {
+    "text": "**,"
+   }
+  },
+  {
+   "t": 108822,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 108823,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 108824,
+   "event": "delta",
+   "data": {
+    "text": "ref"
+   }
+  },
+  {
+   "t": 108825,
+   "event": "delta",
+   "data": {
+    "text": "ines"
+   }
+  },
+  {
+   "t": 108837,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 108838,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 108839,
+   "event": "delta",
+   "data": {
+    "text": " evidence"
+   }
+  },
+  {
+   "t": 108852,
+   "event": "delta",
+   "data": {
+    "text": " before"
+   }
+  },
+  {
+   "t": 108853,
+   "event": "delta",
+   "data": {
+    "text": " generation"
+   }
+  },
+  {
+   "t": 108854,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 108855,
+   "event": "delta",
+   "data": {
+    "text": " This"
+   }
+  },
+  {
+   "t": 108856,
+   "event": "delta",
+   "data": {
+    "text": " corrective"
+   }
+  },
+  {
+   "t": 108857,
+   "event": "delta",
+   "data": {
+    "text": " loop"
+   }
+  },
+  {
+   "t": 108858,
+   "event": "delta",
+   "data": {
+    "text": " reduces"
+   }
+  },
+  {
+   "t": 108859,
+   "event": "delta",
+   "data": {
+    "text": " halluc"
+   }
+  },
+  {
+   "t": 108861,
+   "event": "delta",
+   "data": {
+    "text": "inations"
+   }
+  },
+  {
+   "t": 108862,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 108863,
+   "event": "delta",
+   "data": {
+    "text": " yields"
+   }
+  },
+  {
+   "t": 108864,
+   "event": "delta",
+   "data": {
+    "text": " significant"
+   }
+  },
+  {
+   "t": 108865,
+   "event": "delta",
+   "data": {
+    "text": " accuracy"
+   }
+  },
+  {
+   "t": 108866,
+   "event": "delta",
+   "data": {
+    "text": "/F"
+   }
+  },
+  {
+   "t": 108867,
+   "event": "delta",
+   "data": {
+    "text": "acts"
+   }
+  },
+  {
+   "t": 108868,
+   "event": "delta",
+   "data": {
+    "text": "Score"
+   }
+  },
+  {
+   "t": 108869,
+   "event": "delta",
+   "data": {
+    "text": " improvements"
+   }
+  },
+  {
+   "t": 108870,
+   "event": "delta",
+   "data": {
+    "text": " on"
+   }
+  },
+  {
+   "t": 108871,
+   "event": "delta",
+   "data": {
+    "text": " several"
+   }
+  },
+  {
+   "t": 108872,
+   "event": "delta",
+   "data": {
+    "text": " QA"
+   }
+  },
+  {
+   "t": 108873,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 108875,
+   "event": "delta",
+   "data": {
+    "text": " knowledge"
+   }
+  },
+  {
+   "t": 108876,
+   "event": "delta",
+   "data": {
+    "text": "‑"
+   }
+  },
+  {
+   "t": 108878,
+   "event": "delta",
+   "data": {
+    "text": "int"
+   }
+  },
+  {
+   "t": 108882,
+   "event": "delta",
+   "data": {
+    "text": "ensive"
+   }
+  },
+  {
+   "t": 108883,
+   "event": "delta",
+   "data": {
+    "text": " tasks"
+   }
+  },
+  {
+   "t": 108884,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 108891,
+   "event": "delta",
+   "data": {
+    "text": " with"
+   }
+  },
+  {
+   "t": 108892,
+   "event": "delta",
+   "data": {
+    "text": " only"
+   }
+  },
+  {
+   "t": 108902,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 108903,
+   "event": "delta",
+   "data": {
+    "text": " small"
+   }
+  },
+  {
+   "t": 108904,
+   "event": "delta",
+   "data": {
+    "text": " increase"
+   }
+  },
+  {
+   "t": 108904,
+   "event": "delta",
+   "data": {
+    "text": " in"
+   }
+  },
+  {
+   "t": 108905,
+   "event": "delta",
+   "data": {
+    "text": " computational"
+   }
+  },
+  {
+   "t": 108906,
+   "event": "delta",
+   "data": {
+    "text": " cost"
+   }
+  },
+  {
+   "t": 108910,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 110563,
+   "event": "answer",
+   "data": {
+    "answer": "**Corrective Retrieval‑Augmented Generation (CRAG)**  \n\n*Corrective RAG (CRAG)* is a recent extension to the standard Retrieval‑Augmented Generation (RAG) framework that aims to make generation more robust when the retrieved documents are of low relevance or quality.  \n\n---  \n\n### Why CRAG was introduced  \n- **Hallucinations in LLMs** – Large language models can generate false statements because they rely solely on parametric knowledge.  \n- **Vulnerability of standard RAG** – Conventional RAG simply feeds all retrieved documents into the generator, even if many of those documents are irrelevant or contain non‑essential text. This can amplify hallucinations when the retriever returns poor evidence.  \n\nCRAG therefore adds a *quality‑checking* step before the generator uses the retrieved material.\n\n---  \n\n### Core components  \n\n| Component | What it does | Implementation details |\n|-----------|--------------|------------------------|\n| **Retrieval Evaluator** | Scores the overall relevance/quality of the retrieved set for a given query and outputs a confidence degree. | A lightweight T5‑based model that achieves **84.3 % accuracy** (vs. ChatGPT’s 58 %). |\n| **Knowledge‑Utilization Actions** | Based on the evaluator’s confidence, CRAG triggers one of several actions: <br>• **Correct** – use the retrieved docs as‑is. <br>• **Incorrect** – discard them or request a new retrieval. <br>• **Ambiguous** – request additional evidence or perform refinement. | These actions let the system *correct* or *ignore* faulty evidence rather than blindly trusting it. |\n| **Integration with RAG variants** | CRAG can be coupled with ordinary RAG (named **CRAG**) or with Self‑RAG (named **Self‑CRAG**). | Self‑CRAG adds the corrective layer on top of the self‑retrieval pipeline. |\n\n---  \n\n### How CRAG works (high‑level flow)  \n\n1. **Query → Retriever** – The usual retrieval step returns a set of documents.  \n2. **Retriever → Evaluator** – The retrieval evaluator examines the set and produces a confidence score.  \n3. **Score → Action Selector** – Depending on the score, one of the knowledge‑utilization actions is chosen:  \n   * If confidence is high → **Correct** (use the docs).  \n   * If confidence is low → **Incorrect** (ignore or re‑search).  \n   * If confidence is intermediate → **Ambiguous** (refine, rewrite the query, or request more evidence).  \n4. **Action → Generator** – The generator receives either the original docs, a refined set, or none, and produces the final answer.\n\n---  \n\n### Empirical performance  \n\n| Dataset | Metric | Improvement of CRAG over vanilla RAG |\n|---------|--------|--------------------------------------|\n| **PopQA** | Accuracy | **+7.0 %** |\n| **Biography** | FactScore | **+14.9 %** |\n| **PubHealth** | Accuracy | **+36.6 %** |\n| **Arc‑Challenge** (Self‑RAG‑LLaMA2‑7b) | Accuracy | **+15.4 %** |\n\nFor the **Self‑CRAG** variant (CRAG built on top of Self‑RAG):  \n\n- **PopQA**: **+20.0 %** accuracy  \n- **Biography**: **+36.9 %** FactScore  \n- **Arc‑Challenge** (LLaMA2‑hf‑7b): **+4.0 %** accuracy  \n\nThese results show that adding a corrective step yields sizable gains across diverse knowledge‑intensive benchmarks.\n\n---  \n\n### Ablation insights  \n\n- **Removing document refinement** (i.e., feeding raw retrieved docs directly) hurts performance, confirming that selective use of relevant fragments matters.  \n- **Removing query rewriting** also degrades results, indicating that adapting the query based on evaluator feedback improves retrieval quality.  \n\n---  \n\n### Computational overhead  \n\n- **RAG**: ~26.5 TFLOPs per token, 0.363 s generation time.  \n- **CRAG**: ~27.2 TFLOPs per token, 0.512 s generation time.  \n\nThe extra cost is modest (≈0.15 s per token) and stems mainly from the evaluation step; retrieval and preprocessing times are not included.\n\n---  \n\n### Design discussion  \n\n- Experiments with only the **Correct** and **Incorrect** actions revealed that CRAG’s effectiveness strongly depends on the evaluator’s accuracy; a noisy evaluator can mis‑guide the system.  \n- The **Ambiguous** action was introduced to handle borderline cases, allowing the model to request further evidence rather than making a binary decision.\n\n---  \n\n## TL;DR  \n\nCRAG augments standard RAG with a lightweight **retrieval evaluator** that scores the relevance of retrieved documents. Depending on the confidence score, the system **corrects**, **discards**, or **refines** the evidence before generation. This corrective loop reduces hallucinations and yields significant accuracy/FactsScore improvements on several QA and knowledge‑intensive tasks, with only a small increase in computational cost.",
+    "claims": []
+   }
+  },
+  {
+   "t": 110564,
+   "event": "done",
+   "data": {
+    "errored": false
+   }
+  }
+ ]
+}

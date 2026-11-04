@@ -1,0 +1,3607 @@
+{
+ "question": "Tell me about Corrective RAG (CRAG)",
+ "provider": "groq",
+ "model": "qwen/qwen3.8-27b",
+ "recorded_at": "2026-11-04T15:28:12Z",
+ "events": [
+  {
+   "t": 1054,
+   "event": "delta",
+   "data": {
+    "text": "CR"
+   }
+  },
+  {
+   "t": 1055,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 1057,
+   "event": "delta",
+   "data": {
+    "text": " (\""
+   }
+  },
+  {
+   "t": 1058,
+   "event": "delta",
+   "data": {
+    "text": "Correct"
+   }
+  },
+  {
+   "t": 1059,
+   "event": "delta",
+   "data": {
+    "text": "ive"
+   }
+  },
+  {
+   "t": 1060,
+   "event": "delta",
+   "data": {
+    "text": " R"
+   }
+  },
+  {
+   "t": 1061,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 1061,
+   "event": "delta",
+   "data": {
+    "text": "\")"
+   }
+  },
+  {
+   "t": 1063,
+   "event": "delta",
+   "data": {
+    "text": " is"
+   }
+  },
+  {
+   "t": 1118,
+   "event": "delta",
+   "data": {
+    "text": " an"
+   }
+  },
+  {
+   "t": 1119,
+   "event": "delta",
+   "data": {
+    "text": " extension"
+   }
+  },
+  {
+   "t": 1120,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 1120,
+   "event": "delta",
+   "data": {
+    "text": " standard"
+   }
+  },
+  {
+   "t": 1121,
+   "event": "delta",
+   "data": {
+    "text": " Retrie"
+   }
+  },
+  {
+   "t": 1122,
+   "event": "delta",
+   "data": {
+    "text": "val"
+   }
+  },
+  {
+   "t": 1124,
+   "event": "delta",
+   "data": {
+    "text": "-Aug"
+   }
+  },
+  {
+   "t": 1124,
+   "event": "delta",
+   "data": {
+    "text": "mented"
+   }
+  },
+  {
+   "t": 1125,
+   "event": "delta",
+   "data": {
+    "text": " Generation"
+   }
+  },
+  {
+   "t": 1126,
+   "event": "delta",
+   "data": {
+    "text": " that"
+   }
+  },
+  {
+   "t": 1127,
+   "event": "delta",
+   "data": {
+    "text": " adds"
+   }
+  },
+  {
+   "t": 1128,
+   "event": "delta",
+   "data": {
+    "text": " an"
+   }
+  },
+  {
+   "t": 1129,
+   "event": "delta",
+   "data": {
+    "text": " active"
+   }
+  },
+  {
+   "t": 1130,
+   "event": "delta",
+   "data": {
+    "text": " *"
+   }
+  },
+  {
+   "t": 1131,
+   "event": "delta",
+   "data": {
+    "text": "verification"
+   }
+  },
+  {
+   "t": 1132,
+   "event": "delta",
+   "data": {
+    "text": "*"
+   }
+  },
+  {
+   "t": 1132,
+   "event": "delta",
+   "data": {
+    "text": " step"
+   }
+  },
+  {
+   "t": 1133,
+   "event": "delta",
+   "data": {
+    "text": " before"
+   }
+  },
+  {
+   "t": 1134,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1135,
+   "event": "delta",
+   "data": {
+    "text": " retrieved"
+   }
+  },
+  {
+   "t": 1136,
+   "event": "delta",
+   "data": {
+    "text": " content"
+   }
+  },
+  {
+   "t": 1137,
+   "event": "delta",
+   "data": {
+    "text": " is"
+   }
+  },
+  {
+   "t": 1137,
+   "event": "delta",
+   "data": {
+    "text": " fed"
+   }
+  },
+  {
+   "t": 1138,
+   "event": "delta",
+   "data": {
+    "text": " to"
+   }
+  },
+  {
+   "t": 1140,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1141,
+   "event": "delta",
+   "data": {
+    "text": " answer"
+   }
+  },
+  {
+   "t": 1142,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1143,
+   "event": "delta",
+   "data": {
+    "text": " The"
+   }
+  },
+  {
+   "t": 1144,
+   "event": "delta",
+   "data": {
+    "text": " core"
+   }
+  },
+  {
+   "t": 1145,
+   "event": "delta",
+   "data": {
+    "text": " idea"
+   }
+  },
+  {
+   "t": 1146,
+   "event": "delta",
+   "data": {
+    "text": ":"
+   }
+  },
+  {
+   "t": 1147,
+   "event": "delta",
+   "data": {
+    "text": " don"
+   }
+  },
+  {
+   "t": 1147,
+   "event": "delta",
+   "data": {
+    "text": "'t"
+   }
+  },
+  {
+   "t": 1148,
+   "event": "delta",
+   "data": {
+    "text": " blindly"
+   }
+  },
+  {
+   "t": 1149,
+   "event": "delta",
+   "data": {
+    "text": " trust"
+   }
+  },
+  {
+   "t": 1151,
+   "event": "delta",
+   "data": {
+    "text": " what"
+   }
+  },
+  {
+   "t": 1152,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1153,
+   "event": "delta",
+   "data": {
+    "text": " retrie"
+   }
+  },
+  {
+   "t": 1154,
+   "event": "delta",
+   "data": {
+    "text": "ver"
+   }
+  },
+  {
+   "t": 1155,
+   "event": "delta",
+   "data": {
+    "text": " returns"
+   }
+  },
+  {
+   "t": 1156,
+   "event": "delta",
+   "data": {
+    "text": "—"
+   }
+  },
+  {
+   "t": 1158,
+   "event": "delta",
+   "data": {
+    "text": "ass"
+   }
+  },
+  {
+   "t": 1159,
+   "event": "delta",
+   "data": {
+    "text": "ess"
+   }
+  },
+  {
+   "t": 1160,
+   "event": "delta",
+   "data": {
+    "text": " it"
+   }
+  },
+  {
+   "t": 1161,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 1162,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 1163,
+   "event": "delta",
+   "data": {
+    "text": " fix"
+   }
+  },
+  {
+   "t": 1164,
+   "event": "delta",
+   "data": {
+    "text": " it"
+   }
+  },
+  {
+   "t": 1165,
+   "event": "delta",
+   "data": {
+    "text": " if"
+   }
+  },
+  {
+   "t": 1168,
+   "event": "delta",
+   "data": {
+    "text": " it"
+   }
+  },
+  {
+   "t": 1169,
+   "event": "delta",
+   "data": {
+    "text": "'s"
+   }
+  },
+  {
+   "t": 1171,
+   "event": "delta",
+   "data": {
+    "text": " wrong"
+   }
+  },
+  {
+   "t": 1190,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1190,
+   "event": "delta",
+   "data": {
+    "text": "\n\n"
+   }
+  },
+  {
+   "t": 1192,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 1192,
+   "event": "delta",
+   "data": {
+    "text": "How"
+   }
+  },
+  {
+   "t": 1227,
+   "event": "delta",
+   "data": {
+    "text": " it"
+   }
+  },
+  {
+   "t": 1227,
+   "event": "delta",
+   "data": {
+    "text": " typically"
+   }
+  },
+  {
+   "t": 1228,
+   "event": "delta",
+   "data": {
+    "text": " works"
+   }
+  },
+  {
+   "t": 1229,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 1230,
+   "event": "delta",
+   "data": {
+    "text": "\n"
+   }
+  },
+  {
+   "t": 1231,
+   "event": "delta",
+   "data": {
+    "text": "1"
+   }
+  },
+  {
+   "t": 1232,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1233,
+   "event": "delta",
+   "data": {
+    "text": " The"
+   }
+  },
+  {
+   "t": 1234,
+   "event": "delta",
+   "data": {
+    "text": " user"
+   }
+  },
+  {
+   "t": 1235,
+   "event": "delta",
+   "data": {
+    "text": "'s"
+   }
+  },
+  {
+   "t": 1236,
+   "event": "delta",
+   "data": {
+    "text": " query"
+   }
+  },
+  {
+   "t": 1236,
+   "event": "delta",
+   "data": {
+    "text": " goes"
+   }
+  },
+  {
+   "t": 1238,
+   "event": "delta",
+   "data": {
+    "text": " to"
+   }
+  },
+  {
+   "t": 1239,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 1241,
+   "event": "delta",
+   "data": {
+    "text": " dense"
+   }
+  },
+  {
+   "t": 1241,
+   "event": "delta",
+   "data": {
+    "text": "/s"
+   }
+  },
+  {
+   "t": 1242,
+   "event": "delta",
+   "data": {
+    "text": "parse"
+   }
+  },
+  {
+   "t": 1243,
+   "event": "delta",
+   "data": {
+    "text": " retrie"
+   }
+  },
+  {
+   "t": 1244,
+   "event": "delta",
+   "data": {
+    "text": "ver"
+   }
+  },
+  {
+   "t": 1245,
+   "event": "delta",
+   "data": {
+    "text": " as"
+   }
+  },
+  {
+   "t": 1246,
+   "event": "delta",
+   "data": {
+    "text": " in"
+   }
+  },
+  {
+   "t": 1247,
+   "event": "delta",
+   "data": {
+    "text": " vanilla"
+   }
+  },
+  {
+   "t": 1247,
+   "event": "delta",
+   "data": {
+    "text": " R"
+   }
+  },
+  {
+   "t": 1248,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 1249,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1250,
+   "event": "delta",
+   "data": {
+    "text": "\n"
+   }
+  },
+  {
+   "t": 1251,
+   "event": "delta",
+   "data": {
+    "text": "2"
+   }
+  },
+  {
+   "t": 1252,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1253,
+   "event": "delta",
+   "data": {
+    "text": " A"
+   }
+  },
+  {
+   "t": 1254,
+   "event": "delta",
+   "data": {
+    "text": " lightweight"
+   }
+  },
+  {
+   "t": 1254,
+   "event": "delta",
+   "data": {
+    "text": " \""
+   }
+  },
+  {
+   "t": 1255,
+   "event": "delta",
+   "data": {
+    "text": "re"
+   }
+  },
+  {
+   "t": 1257,
+   "event": "delta",
+   "data": {
+    "text": "trie"
+   }
+  },
+  {
+   "t": 1258,
+   "event": "delta",
+   "data": {
+    "text": "val"
+   }
+  },
+  {
+   "t": 1259,
+   "event": "delta",
+   "data": {
+    "text": " evaluator"
+   }
+  },
+  {
+   "t": 1260,
+   "event": "delta",
+   "data": {
+    "text": "\""
+   }
+  },
+  {
+   "t": 1261,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 1262,
+   "event": "delta",
+   "data": {
+    "text": "often"
+   }
+  },
+  {
+   "t": 1262,
+   "event": "delta",
+   "data": {
+    "text": " an"
+   }
+  },
+  {
+   "t": 1263,
+   "event": "delta",
+   "data": {
+    "text": " L"
+   }
+  },
+  {
+   "t": 1264,
+   "event": "delta",
+   "data": {
+    "text": "LM"
+   }
+  },
+  {
+   "t": 1265,
+   "event": "delta",
+   "data": {
+    "text": " prompt"
+   }
+  },
+  {
+   "t": 1266,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 1267,
+   "event": "delta",
+   "data": {
+    "text": " sometimes"
+   }
+  },
+  {
+   "t": 1268,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 1269,
+   "event": "delta",
+   "data": {
+    "text": " small"
+   }
+  },
+  {
+   "t": 1270,
+   "event": "delta",
+   "data": {
+    "text": " classifier"
+   }
+  },
+  {
+   "t": 1271,
+   "event": "delta",
+   "data": {
+    "text": ")"
+   }
+  },
+  {
+   "t": 1271,
+   "event": "delta",
+   "data": {
+    "text": " scores"
+   }
+  },
+  {
+   "t": 1272,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1273,
+   "event": "delta",
+   "data": {
+    "text": " relevance"
+   }
+  },
+  {
+   "t": 1274,
+   "event": "delta",
+   "data": {
+    "text": "/"
+   }
+  },
+  {
+   "t": 1275,
+   "event": "delta",
+   "data": {
+    "text": "quality"
+   }
+  },
+  {
+   "t": 1276,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 1277,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1277,
+   "event": "delta",
+   "data": {
+    "text": " top"
+   }
+  },
+  {
+   "t": 1278,
+   "event": "delta",
+   "data": {
+    "text": " retrieved"
+   }
+  },
+  {
+   "t": 1279,
+   "event": "delta",
+   "data": {
+    "text": " chunks"
+   }
+  },
+  {
+   "t": 1280,
+   "event": "delta",
+   "data": {
+    "text": "—"
+   }
+  },
+  {
+   "t": 1281,
+   "event": "delta",
+   "data": {
+    "text": "e"
+   }
+  },
+  {
+   "t": 1282,
+   "event": "delta",
+   "data": {
+    "text": ".g"
+   }
+  },
+  {
+   "t": 1282,
+   "event": "delta",
+   "data": {
+    "text": ".,"
+   }
+  },
+  {
+   "t": 1283,
+   "event": "delta",
+   "data": {
+    "text": " class"
+   }
+  },
+  {
+   "t": 1284,
+   "event": "delta",
+   "data": {
+    "text": "ifying"
+   }
+  },
+  {
+   "t": 1284,
+   "event": "delta",
+   "data": {
+    "text": " them"
+   }
+  },
+  {
+   "t": 1286,
+   "event": "delta",
+   "data": {
+    "text": " as"
+   }
+  },
+  {
+   "t": 1287,
+   "event": "delta",
+   "data": {
+    "text": " \""
+   }
+  },
+  {
+   "t": 1287,
+   "event": "delta",
+   "data": {
+    "text": "Correct"
+   }
+  },
+  {
+   "t": 1288,
+   "event": "delta",
+   "data": {
+    "text": ",\""
+   }
+  },
+  {
+   "t": 1289,
+   "event": "delta",
+   "data": {
+    "text": " \""
+   }
+  },
+  {
+   "t": 1289,
+   "event": "delta",
+   "data": {
+    "text": "Incorrect"
+   }
+  },
+  {
+   "t": 1290,
+   "event": "delta",
+   "data": {
+    "text": ",\""
+   }
+  },
+  {
+   "t": 1291,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 1292,
+   "event": "delta",
+   "data": {
+    "text": " \""
+   }
+  },
+  {
+   "t": 1293,
+   "event": "delta",
+   "data": {
+    "text": "Amb"
+   }
+  },
+  {
+   "t": 1296,
+   "event": "delta",
+   "data": {
+    "text": "iguous"
+   }
+  },
+  {
+   "t": 1296,
+   "event": "delta",
+   "data": {
+    "text": ".\""
+   }
+  },
+  {
+   "t": 1299,
+   "event": "delta",
+   "data": {
+    "text": "\n"
+   }
+  },
+  {
+   "t": 1300,
+   "event": "delta",
+   "data": {
+    "text": "3"
+   }
+  },
+  {
+   "t": 1304,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1305,
+   "event": "delta",
+   "data": {
+    "text": " The"
+   }
+  },
+  {
+   "t": 1306,
+   "event": "delta",
+   "data": {
+    "text": " CR"
+   }
+  },
+  {
+   "t": 1309,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 1311,
+   "event": "delta",
+   "data": {
+    "text": " module"
+   }
+  },
+  {
+   "t": 1312,
+   "event": "delta",
+   "data": {
+    "text": " then"
+   }
+  },
+  {
+   "t": 1314,
+   "event": "delta",
+   "data": {
+    "text": " takes"
+   }
+  },
+  {
+   "t": 1315,
+   "event": "delta",
+   "data": {
+    "text": " corrective"
+   }
+  },
+  {
+   "t": 1317,
+   "event": "delta",
+   "data": {
+    "text": " actions"
+   }
+  },
+  {
+   "t": 1328,
+   "event": "delta",
+   "data": {
+    "text": " based"
+   }
+  },
+  {
+   "t": 1329,
+   "event": "delta",
+   "data": {
+    "text": " on"
+   }
+  },
+  {
+   "t": 1330,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1331,
+   "event": "delta",
+   "data": {
+    "text": " score"
+   }
+  },
+  {
+   "t": 1334,
+   "event": "delta",
+   "data": {
+    "text": ":"
+   }
+  },
+  {
+   "t": 1335,
+   "event": "delta",
+   "data": {
+    "text": "\n"
+   }
+  },
+  {
+   "t": 1336,
+   "event": "delta",
+   "data": {
+    "text": "  "
+   }
+  },
+  {
+   "t": 1337,
+   "event": "delta",
+   "data": {
+    "text": " -"
+   }
+  },
+  {
+   "t": 1338,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 1340,
+   "event": "delta",
+   "data": {
+    "text": "Correct"
+   }
+  },
+  {
+   "t": 1341,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 1353,
+   "event": "delta",
+   "data": {
+    "text": " →"
+   }
+  },
+  {
+   "t": 1354,
+   "event": "delta",
+   "data": {
+    "text": " refine"
+   }
+  },
+  {
+   "t": 1355,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1355,
+   "event": "delta",
+   "data": {
+    "text": " documents"
+   }
+  },
+  {
+   "t": 1357,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 1358,
+   "event": "delta",
+   "data": {
+    "text": "drop"
+   }
+  },
+  {
+   "t": 1360,
+   "event": "delta",
+   "data": {
+    "text": " irrelevant"
+   }
+  },
+  {
+   "t": 1361,
+   "event": "delta",
+   "data": {
+    "text": " sentences"
+   }
+  },
+  {
+   "t": 1362,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 1364,
+   "event": "delta",
+   "data": {
+    "text": " keep"
+   }
+  },
+  {
+   "t": 1364,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1366,
+   "event": "delta",
+   "data": {
+    "text": " good"
+   }
+  },
+  {
+   "t": 1367,
+   "event": "delta",
+   "data": {
+    "text": " span"
+   }
+  },
+  {
+   "t": 1368,
+   "event": "delta",
+   "data": {
+    "text": ")"
+   }
+  },
+  {
+   "t": 1369,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 1372,
+   "event": "delta",
+   "data": {
+    "text": " hand"
+   }
+  },
+  {
+   "t": 1374,
+   "event": "delta",
+   "data": {
+    "text": " them"
+   }
+  },
+  {
+   "t": 1374,
+   "event": "delta",
+   "data": {
+    "text": " to"
+   }
+  },
+  {
+   "t": 1376,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1378,
+   "event": "delta",
+   "data": {
+    "text": " answer"
+   }
+  },
+  {
+   "t": 1382,
+   "event": "delta",
+   "data": {
+    "text": "er"
+   }
+  },
+  {
+   "t": 1383,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1385,
+   "event": "delta",
+   "data": {
+    "text": "\n"
+   }
+  },
+  {
+   "t": 1386,
+   "event": "delta",
+   "data": {
+    "text": "  "
+   }
+  },
+  {
+   "t": 1393,
+   "event": "delta",
+   "data": {
+    "text": " -"
+   }
+  },
+  {
+   "t": 1394,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 1395,
+   "event": "delta",
+   "data": {
+    "text": "Incorrect"
+   }
+  },
+  {
+   "t": 1396,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 1397,
+   "event": "delta",
+   "data": {
+    "text": " →"
+   }
+  },
+  {
+   "t": 1398,
+   "event": "delta",
+   "data": {
+    "text": " dem"
+   }
+  },
+  {
+   "t": 1402,
+   "event": "delta",
+   "data": {
+    "text": "ote"
+   }
+  },
+  {
+   "t": 1403,
+   "event": "delta",
+   "data": {
+    "text": "/disable"
+   }
+  },
+  {
+   "t": 1404,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1405,
+   "event": "delta",
+   "data": {
+    "text": " R"
+   }
+  },
+  {
+   "t": 1414,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 1414,
+   "event": "delta",
+   "data": {
+    "text": " output"
+   }
+  },
+  {
+   "t": 1416,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 1417,
+   "event": "delta",
+   "data": {
+    "text": " fall"
+   }
+  },
+  {
+   "t": 1418,
+   "event": "delta",
+   "data": {
+    "text": " back"
+   }
+  },
+  {
+   "t": 1419,
+   "event": "delta",
+   "data": {
+    "text": " to"
+   }
+  },
+  {
+   "t": 1420,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 1422,
+   "event": "delta",
+   "data": {
+    "text": " web"
+   }
+  },
+  {
+   "t": 1424,
+   "event": "delta",
+   "data": {
+    "text": " search"
+   }
+  },
+  {
+   "t": 1425,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 1426,
+   "event": "delta",
+   "data": {
+    "text": "/or"
+   }
+  },
+  {
+   "t": 1427,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1445,
+   "event": "delta",
+   "data": {
+    "text": " L"
+   }
+  },
+  {
+   "t": 1446,
+   "event": "delta",
+   "data": {
+    "text": "LM"
+   }
+  },
+  {
+   "t": 1447,
+   "event": "delta",
+   "data": {
+    "text": "'s"
+   }
+  },
+  {
+   "t": 1448,
+   "event": "delta",
+   "data": {
+    "text": " param"
+   }
+  },
+  {
+   "t": 1449,
+   "event": "delta",
+   "data": {
+    "text": "etric"
+   }
+  },
+  {
+   "t": 1450,
+   "event": "delta",
+   "data": {
+    "text": " knowledge"
+   }
+  },
+  {
+   "t": 1451,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 1451,
+   "event": "delta",
+   "data": {
+    "text": "with"
+   }
+  },
+  {
+   "t": 1452,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 1453,
+   "event": "delta",
+   "data": {
+    "text": " \""
+   }
+  },
+  {
+   "t": 1454,
+   "event": "delta",
+   "data": {
+    "text": "knowledge"
+   }
+  },
+  {
+   "t": 1455,
+   "event": "delta",
+   "data": {
+    "text": " refinement"
+   }
+  },
+  {
+   "t": 1456,
+   "event": "delta",
+   "data": {
+    "text": "\""
+   }
+  },
+  {
+   "t": 1457,
+   "event": "delta",
+   "data": {
+    "text": " step"
+   }
+  },
+  {
+   "t": 1459,
+   "event": "delta",
+   "data": {
+    "text": " that"
+   }
+  },
+  {
+   "t": 1460,
+   "event": "delta",
+   "data": {
+    "text": " extracts"
+   }
+  },
+  {
+   "t": 1462,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1469,
+   "event": "delta",
+   "data": {
+    "text": " most"
+   }
+  },
+  {
+   "t": 1469,
+   "event": "delta",
+   "data": {
+    "text": " relevant"
+   }
+  },
+  {
+   "t": 1470,
+   "event": "delta",
+   "data": {
+    "text": " facts"
+   }
+  },
+  {
+   "t": 1471,
+   "event": "delta",
+   "data": {
+    "text": ")."
+   }
+  },
+  {
+   "t": 1472,
+   "event": "delta",
+   "data": {
+    "text": "\n"
+   }
+  },
+  {
+   "t": 1473,
+   "event": "delta",
+   "data": {
+    "text": "  "
+   }
+  },
+  {
+   "t": 1478,
+   "event": "delta",
+   "data": {
+    "text": " -"
+   }
+  },
+  {
+   "t": 1478,
+   "event": "delta",
+   "data": {
+    "text": " **"
+   }
+  },
+  {
+   "t": 1482,
+   "event": "delta",
+   "data": {
+    "text": "Amb"
+   }
+  },
+  {
+   "t": 1483,
+   "event": "delta",
+   "data": {
+    "text": "iguous"
+   }
+  },
+  {
+   "t": 1486,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 1487,
+   "event": "delta",
+   "data": {
+    "text": " →"
+   }
+  },
+  {
+   "t": 1489,
+   "event": "delta",
+   "data": {
+    "text": " blend"
+   }
+  },
+  {
+   "t": 1490,
+   "event": "delta",
+   "data": {
+    "text": ":"
+   }
+  },
+  {
+   "t": 1492,
+   "event": "delta",
+   "data": {
+    "text": " keep"
+   }
+  },
+  {
+   "t": 1493,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1495,
+   "event": "delta",
+   "data": {
+    "text": " retrieved"
+   }
+  },
+  {
+   "t": 1496,
+   "event": "delta",
+   "data": {
+    "text": " content"
+   }
+  },
+  {
+   "t": 1498,
+   "event": "delta",
+   "data": {
+    "text": " but"
+   }
+  },
+  {
+   "t": 1499,
+   "event": "delta",
+   "data": {
+    "text": " also"
+   }
+  },
+  {
+   "t": 1500,
+   "event": "delta",
+   "data": {
+    "text": " pull"
+   }
+  },
+  {
+   "t": 1502,
+   "event": "delta",
+   "data": {
+    "text": " in"
+   }
+  },
+  {
+   "t": 1505,
+   "event": "delta",
+   "data": {
+    "text": " complementary"
+   }
+  },
+  {
+   "t": 1507,
+   "event": "delta",
+   "data": {
+    "text": " web"
+   }
+  },
+  {
+   "t": 1508,
+   "event": "delta",
+   "data": {
+    "text": " search"
+   }
+  },
+  {
+   "t": 1511,
+   "event": "delta",
+   "data": {
+    "text": " results"
+   }
+  },
+  {
+   "t": 1512,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 1514,
+   "event": "delta",
+   "data": {
+    "text": " then"
+   }
+  },
+  {
+   "t": 1519,
+   "event": "delta",
+   "data": {
+    "text": " merge"
+   }
+  },
+  {
+   "t": 1519,
+   "event": "delta",
+   "data": {
+    "text": "/ref"
+   }
+  },
+  {
+   "t": 1522,
+   "event": "delta",
+   "data": {
+    "text": "ine"
+   }
+  },
+  {
+   "t": 1524,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1526,
+   "event": "delta",
+   "data": {
+    "text": "\n"
+   }
+  },
+  {
+   "t": 1528,
+   "event": "delta",
+   "data": {
+    "text": "4"
+   }
+  },
+  {
+   "t": 1530,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1532,
+   "event": "delta",
+   "data": {
+    "text": " An"
+   }
+  },
+  {
+   "t": 1534,
+   "event": "delta",
+   "data": {
+    "text": " L"
+   }
+  },
+  {
+   "t": 1537,
+   "event": "delta",
+   "data": {
+    "text": "LM"
+   }
+  },
+  {
+   "t": 1538,
+   "event": "delta",
+   "data": {
+    "text": " generator"
+   }
+  },
+  {
+   "t": 1541,
+   "event": "delta",
+   "data": {
+    "text": " produces"
+   }
+  },
+  {
+   "t": 1546,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1547,
+   "event": "delta",
+   "data": {
+    "text": " final"
+   }
+  },
+  {
+   "t": 1548,
+   "event": "delta",
+   "data": {
+    "text": " answer"
+   }
+  },
+  {
+   "t": 1551,
+   "event": "delta",
+   "data": {
+    "text": " from"
+   }
+  },
+  {
+   "t": 1552,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1553,
+   "event": "delta",
+   "data": {
+    "text": " corrected"
+   }
+  },
+  {
+   "t": 1556,
+   "event": "delta",
+   "data": {
+    "text": " evidence"
+   }
+  },
+  {
+   "t": 1557,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1560,
+   "event": "delta",
+   "data": {
+    "text": "\n\n"
+   }
+  },
+  {
+   "t": 1561,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 1564,
+   "event": "delta",
+   "data": {
+    "text": "Mot"
+   }
+  },
+  {
+   "t": 1566,
+   "event": "delta",
+   "data": {
+    "text": "ivation"
+   }
+  },
+  {
+   "t": 1569,
+   "event": "delta",
+   "data": {
+    "text": " /"
+   }
+  },
+  {
+   "t": 1570,
+   "event": "delta",
+   "data": {
+    "text": " why"
+   }
+  },
+  {
+   "t": 1572,
+   "event": "delta",
+   "data": {
+    "text": " it"
+   }
+  },
+  {
+   "t": 1574,
+   "event": "delta",
+   "data": {
+    "text": " matters"
+   }
+  },
+  {
+   "t": 1575,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 1576,
+   "event": "delta",
+   "data": {
+    "text": "\n"
+   }
+  },
+  {
+   "t": 1579,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 1580,
+   "event": "delta",
+   "data": {
+    "text": " Standard"
+   }
+  },
+  {
+   "t": 1582,
+   "event": "delta",
+   "data": {
+    "text": " R"
+   }
+  },
+  {
+   "t": 1583,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 1585,
+   "event": "delta",
+   "data": {
+    "text": " assumes"
+   }
+  },
+  {
+   "t": 1587,
+   "event": "delta",
+   "data": {
+    "text": " retrieval"
+   }
+  },
+  {
+   "t": 1593,
+   "event": "delta",
+   "data": {
+    "text": " is"
+   }
+  },
+  {
+   "t": 1593,
+   "event": "delta",
+   "data": {
+    "text": " \""
+   }
+  },
+  {
+   "t": 1594,
+   "event": "delta",
+   "data": {
+    "text": "good"
+   }
+  },
+  {
+   "t": 1596,
+   "event": "delta",
+   "data": {
+    "text": " enough"
+   }
+  },
+  {
+   "t": 1597,
+   "event": "delta",
+   "data": {
+    "text": ".\""
+   }
+  },
+  {
+   "t": 1599,
+   "event": "delta",
+   "data": {
+    "text": " In"
+   }
+  },
+  {
+   "t": 1601,
+   "event": "delta",
+   "data": {
+    "text": " practice"
+   }
+  },
+  {
+   "t": 1603,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 1605,
+   "event": "delta",
+   "data": {
+    "text": " dense"
+   }
+  },
+  {
+   "t": 1607,
+   "event": "delta",
+   "data": {
+    "text": " retrie"
+   }
+  },
+  {
+   "t": 1609,
+   "event": "delta",
+   "data": {
+    "text": "vers"
+   }
+  },
+  {
+   "t": 1611,
+   "event": "delta",
+   "data": {
+    "text": " return"
+   }
+  },
+  {
+   "t": 1612,
+   "event": "delta",
+   "data": {
+    "text": " noisy"
+   }
+  },
+  {
+   "t": 1616,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 1617,
+   "event": "delta",
+   "data": {
+    "text": " off"
+   }
+  },
+  {
+   "t": 1619,
+   "event": "delta",
+   "data": {
+    "text": "-topic"
+   }
+  },
+  {
+   "t": 1620,
+   "event": "delta",
+   "data": {
+    "text": " chunks"
+   }
+  },
+  {
+   "t": 1622,
+   "event": "delta",
+   "data": {
+    "text": " that"
+   }
+  },
+  {
+   "t": 1623,
+   "event": "delta",
+   "data": {
+    "text": " can"
+   }
+  },
+  {
+   "t": 1626,
+   "event": "delta",
+   "data": {
+    "text": " *"
+   }
+  },
+  {
+   "t": 1627,
+   "event": "delta",
+   "data": {
+    "text": "hurt"
+   }
+  },
+  {
+   "t": 1631,
+   "event": "delta",
+   "data": {
+    "text": "*"
+   }
+  },
+  {
+   "t": 1632,
+   "event": "delta",
+   "data": {
+    "text": " answer"
+   }
+  },
+  {
+   "t": 1634,
+   "event": "delta",
+   "data": {
+    "text": " quality"
+   }
+  },
+  {
+   "t": 1635,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 1639,
+   "event": "delta",
+   "data": {
+    "text": " increase"
+   }
+  },
+  {
+   "t": 1640,
+   "event": "delta",
+   "data": {
+    "text": " halluc"
+   }
+  },
+  {
+   "t": 1643,
+   "event": "delta",
+   "data": {
+    "text": "inations"
+   }
+  },
+  {
+   "t": 1644,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1646,
+   "event": "delta",
+   "data": {
+    "text": "\n"
+   }
+  },
+  {
+   "t": 1647,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 1649,
+   "event": "delta",
+   "data": {
+    "text": " CR"
+   }
+  },
+  {
+   "t": 1651,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 1653,
+   "event": "delta",
+   "data": {
+    "text": " inserts"
+   }
+  },
+  {
+   "t": 1655,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 1657,
+   "event": "delta",
+   "data": {
+    "text": " cheap"
+   }
+  },
+  {
+   "t": 1658,
+   "event": "delta",
+   "data": {
+    "text": " gating"
+   }
+  },
+  {
+   "t": 1661,
+   "event": "delta",
+   "data": {
+    "text": " mechanism"
+   }
+  },
+  {
+   "t": 1664,
+   "event": "delta",
+   "data": {
+    "text": " that"
+   }
+  },
+  {
+   "t": 1666,
+   "event": "delta",
+   "data": {
+    "text": " catches"
+   }
+  },
+  {
+   "t": 1667,
+   "event": "delta",
+   "data": {
+    "text": " bad"
+   }
+  },
+  {
+   "t": 1669,
+   "event": "delta",
+   "data": {
+    "text": " retrie"
+   }
+  },
+  {
+   "t": 1672,
+   "event": "delta",
+   "data": {
+    "text": "vals"
+   }
+  },
+  {
+   "t": 1673,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 1676,
+   "event": "delta",
+   "data": {
+    "text": " self"
+   }
+  },
+  {
+   "t": 1677,
+   "event": "delta",
+   "data": {
+    "text": "-c"
+   }
+  },
+  {
+   "t": 1679,
+   "event": "delta",
+   "data": {
+    "text": "orrect"
+   }
+  },
+  {
+   "t": 1681,
+   "event": "delta",
+   "data": {
+    "text": "s"
+   }
+  },
+  {
+   "t": 1682,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 1686,
+   "event": "delta",
+   "data": {
+    "text": " improving"
+   }
+  },
+  {
+   "t": 1687,
+   "event": "delta",
+   "data": {
+    "text": " both"
+   }
+  },
+  {
+   "t": 1689,
+   "event": "delta",
+   "data": {
+    "text": " robust"
+   }
+  },
+  {
+   "t": 1690,
+   "event": "delta",
+   "data": {
+    "text": "ness"
+   }
+  },
+  {
+   "t": 1692,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 1695,
+   "event": "delta",
+   "data": {
+    "text": " factual"
+   }
+  },
+  {
+   "t": 1696,
+   "event": "delta",
+   "data": {
+    "text": " grounding"
+   }
+  },
+  {
+   "t": 1697,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 1701,
+   "event": "delta",
+   "data": {
+    "text": "re"
+   }
+  },
+  {
+   "t": 1703,
+   "event": "delta",
+   "data": {
+    "text": "duced"
+   }
+  },
+  {
+   "t": 1705,
+   "event": "delta",
+   "data": {
+    "text": " halluc"
+   }
+  },
+  {
+   "t": 1706,
+   "event": "delta",
+   "data": {
+    "text": "ination"
+   }
+  },
+  {
+   "t": 1708,
+   "event": "delta",
+   "data": {
+    "text": "),"
+   }
+  },
+  {
+   "t": 1711,
+   "event": "delta",
+   "data": {
+    "text": " at"
+   }
+  },
+  {
+   "t": 1712,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1713,
+   "event": "delta",
+   "data": {
+    "text": " cost"
+   }
+  },
+  {
+   "t": 1715,
+   "event": "delta",
+   "data": {
+    "text": " of"
+   }
+  },
+  {
+   "t": 1717,
+   "event": "delta",
+   "data": {
+    "text": " added"
+   }
+  },
+  {
+   "t": 1719,
+   "event": "delta",
+   "data": {
+    "text": " latency"
+   }
+  },
+  {
+   "t": 1721,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 1723,
+   "event": "delta",
+   "data": {
+    "text": " complexity"
+   }
+  },
+  {
+   "t": 1725,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 1726,
+   "event": "delta",
+   "data": {
+    "text": "possibly"
+   }
+  },
+  {
+   "t": 1729,
+   "event": "delta",
+   "data": {
+    "text": " an"
+   }
+  },
+  {
+   "t": 1732,
+   "event": "delta",
+   "data": {
+    "text": " extra"
+   }
+  },
+  {
+   "t": 1733,
+   "event": "delta",
+   "data": {
+    "text": " search"
+   }
+  },
+  {
+   "t": 1736,
+   "event": "delta",
+   "data": {
+    "text": "/tool"
+   }
+  },
+  {
+   "t": 1738,
+   "event": "delta",
+   "data": {
+    "text": " call"
+   }
+  },
+  {
+   "t": 1755,
+   "event": "delta",
+   "data": {
+    "text": ")."
+   }
+  },
+  {
+   "t": 1756,
+   "event": "delta",
+   "data": {
+    "text": "\n\n"
+   }
+  },
+  {
+   "t": 1758,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 1759,
+   "event": "delta",
+   "data": {
+    "text": "Trade"
+   }
+  },
+  {
+   "t": 1760,
+   "event": "delta",
+   "data": {
+    "text": "-offs"
+   }
+  },
+  {
+   "t": 1761,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 1762,
+   "event": "delta",
+   "data": {
+    "text": " considerations"
+   }
+  },
+  {
+   "t": 1764,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 1765,
+   "event": "delta",
+   "data": {
+    "text": "\n"
+   }
+  },
+  {
+   "t": 1766,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 1767,
+   "event": "delta",
+   "data": {
+    "text": " Extra"
+   }
+  },
+  {
+   "t": 1769,
+   "event": "delta",
+   "data": {
+    "text": " inference"
+   }
+  },
+  {
+   "t": 1770,
+   "event": "delta",
+   "data": {
+    "text": "/"
+   }
+  },
+  {
+   "t": 1771,
+   "event": "delta",
+   "data": {
+    "text": "lookup"
+   }
+  },
+  {
+   "t": 1773,
+   "event": "delta",
+   "data": {
+    "text": " cost"
+   }
+  },
+  {
+   "t": 1774,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 1775,
+   "event": "delta",
+   "data": {
+    "text": "web"
+   }
+  },
+  {
+   "t": 1777,
+   "event": "delta",
+   "data": {
+    "text": " search"
+   }
+  },
+  {
+   "t": 1778,
+   "event": "delta",
+   "data": {
+    "text": " +"
+   }
+  },
+  {
+   "t": 1782,
+   "event": "delta",
+   "data": {
+    "text": " extra"
+   }
+  },
+  {
+   "t": 1783,
+   "event": "delta",
+   "data": {
+    "text": " L"
+   }
+  },
+  {
+   "t": 1785,
+   "event": "delta",
+   "data": {
+    "text": "RM"
+   }
+  },
+  {
+   "t": 1786,
+   "event": "delta",
+   "data": {
+    "text": "/"
+   }
+  },
+  {
+   "t": 1787,
+   "event": "delta",
+   "data": {
+    "text": "LL"
+   }
+  },
+  {
+   "t": 1788,
+   "event": "delta",
+   "data": {
+    "text": "M"
+   }
+  },
+  {
+   "t": 1792,
+   "event": "delta",
+   "data": {
+    "text": " calls"
+   }
+  },
+  {
+   "t": 1793,
+   "event": "delta",
+   "data": {
+    "text": ")."
+   }
+  },
+  {
+   "t": 1794,
+   "event": "delta",
+   "data": {
+    "text": "\n"
+   }
+  },
+  {
+   "t": 1796,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 1804,
+   "event": "delta",
+   "data": {
+    "text": " The"
+   }
+  },
+  {
+   "t": 1805,
+   "event": "delta",
+   "data": {
+    "text": " evaluator"
+   }
+  },
+  {
+   "t": 1807,
+   "event": "delta",
+   "data": {
+    "text": " must"
+   }
+  },
+  {
+   "t": 1808,
+   "event": "delta",
+   "data": {
+    "text": " be"
+   }
+  },
+  {
+   "t": 1811,
+   "event": "delta",
+   "data": {
+    "text": " calibrated"
+   }
+  },
+  {
+   "t": 1812,
+   "event": "delta",
+   "data": {
+    "text": ";"
+   }
+  },
+  {
+   "t": 1814,
+   "event": "delta",
+   "data": {
+    "text": " if"
+   }
+  },
+  {
+   "t": 1817,
+   "event": "delta",
+   "data": {
+    "text": " it"
+   }
+  },
+  {
+   "t": 1818,
+   "event": "delta",
+   "data": {
+    "text": "'s"
+   }
+  },
+  {
+   "t": 1821,
+   "event": "delta",
+   "data": {
+    "text": " m"
+   }
+  },
+  {
+   "t": 1824,
+   "event": "delta",
+   "data": {
+    "text": "isme"
+   }
+  },
+  {
+   "t": 1828,
+   "event": "delta",
+   "data": {
+    "text": "asuring"
+   }
+  },
+  {
+   "t": 1831,
+   "event": "delta",
+   "data": {
+    "text": " quality"
+   }
+  },
+  {
+   "t": 1833,
+   "event": "delta",
+   "data": {
+    "text": " it"
+   }
+  },
+  {
+   "t": 1836,
+   "event": "delta",
+   "data": {
+    "text": " can"
+   }
+  },
+  {
+   "t": 1837,
+   "event": "delta",
+   "data": {
+    "text": " wrongly"
+   }
+  },
+  {
+   "t": 1840,
+   "event": "delta",
+   "data": {
+    "text": " discard"
+   }
+  },
+  {
+   "t": 1841,
+   "event": "delta",
+   "data": {
+    "text": " good"
+   }
+  },
+  {
+   "t": 1843,
+   "event": "delta",
+   "data": {
+    "text": " context"
+   }
+  },
+  {
+   "t": 1844,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 1845,
+   "event": "delta",
+   "data": {
+    "text": " keep"
+   }
+  },
+  {
+   "t": 1847,
+   "event": "delta",
+   "data": {
+    "text": " bad"
+   }
+  },
+  {
+   "t": 1848,
+   "event": "delta",
+   "data": {
+    "text": " context"
+   }
+  },
+  {
+   "t": 1849,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1850,
+   "event": "delta",
+   "data": {
+    "text": "\n"
+   }
+  },
+  {
+   "t": 1851,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 1853,
+   "event": "delta",
+   "data": {
+    "text": " Works"
+   }
+  },
+  {
+   "t": 1854,
+   "event": "delta",
+   "data": {
+    "text": " best"
+   }
+  },
+  {
+   "t": 1856,
+   "event": "delta",
+   "data": {
+    "text": " when"
+   }
+  },
+  {
+   "t": 1857,
+   "event": "delta",
+   "data": {
+    "text": " a"
+   }
+  },
+  {
+   "t": 1859,
+   "event": "delta",
+   "data": {
+    "text": " high"
+   }
+  },
+  {
+   "t": 1861,
+   "event": "delta",
+   "data": {
+    "text": "-quality"
+   }
+  },
+  {
+   "t": 1862,
+   "event": "delta",
+   "data": {
+    "text": " backing"
+   }
+  },
+  {
+   "t": 1866,
+   "event": "delta",
+   "data": {
+    "text": " source"
+   }
+  },
+  {
+   "t": 1867,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 1868,
+   "event": "delta",
+   "data": {
+    "text": "a"
+   }
+  },
+  {
+   "t": 1870,
+   "event": "delta",
+   "data": {
+    "text": " search"
+   }
+  },
+  {
+   "t": 1873,
+   "event": "delta",
+   "data": {
+    "text": " index"
+   }
+  },
+  {
+   "t": 1873,
+   "event": "delta",
+   "data": {
+    "text": " or"
+   }
+  },
+  {
+   "t": 1874,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1876,
+   "event": "delta",
+   "data": {
+    "text": " model"
+   }
+  },
+  {
+   "t": 1877,
+   "event": "delta",
+   "data": {
+    "text": "'s"
+   }
+  },
+  {
+   "t": 1879,
+   "event": "delta",
+   "data": {
+    "text": " own"
+   }
+  },
+  {
+   "t": 1882,
+   "event": "delta",
+   "data": {
+    "text": " strong"
+   }
+  },
+  {
+   "t": 1883,
+   "event": "delta",
+   "data": {
+    "text": " param"
+   }
+  },
+  {
+   "t": 1886,
+   "event": "delta",
+   "data": {
+    "text": "etric"
+   }
+  },
+  {
+   "t": 1887,
+   "event": "delta",
+   "data": {
+    "text": " knowledge"
+   }
+  },
+  {
+   "t": 1888,
+   "event": "delta",
+   "data": {
+    "text": ")"
+   }
+  },
+  {
+   "t": 1892,
+   "event": "delta",
+   "data": {
+    "text": " is"
+   }
+  },
+  {
+   "t": 1893,
+   "event": "delta",
+   "data": {
+    "text": " available"
+   }
+  },
+  {
+   "t": 1894,
+   "event": "delta",
+   "data": {
+    "text": " to"
+   }
+  },
+  {
+   "t": 1905,
+   "event": "delta",
+   "data": {
+    "text": " \""
+   }
+  },
+  {
+   "t": 1906,
+   "event": "delta",
+   "data": {
+    "text": "correct"
+   }
+  },
+  {
+   "t": 1907,
+   "event": "delta",
+   "data": {
+    "text": "\""
+   }
+  },
+  {
+   "t": 1907,
+   "event": "delta",
+   "data": {
+    "text": " failures"
+   }
+  },
+  {
+   "t": 1909,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1909,
+   "event": "delta",
+   "data": {
+    "text": "\n"
+   }
+  },
+  {
+   "t": 1910,
+   "event": "delta",
+   "data": {
+    "text": "-"
+   }
+  },
+  {
+   "t": 1912,
+   "event": "delta",
+   "data": {
+    "text": " Concept"
+   }
+  },
+  {
+   "t": 1912,
+   "event": "delta",
+   "data": {
+    "text": "ually"
+   }
+  },
+  {
+   "t": 1914,
+   "event": "delta",
+   "data": {
+    "text": " related"
+   }
+  },
+  {
+   "t": 1914,
+   "event": "delta",
+   "data": {
+    "text": " to"
+   }
+  },
+  {
+   "t": 1916,
+   "event": "delta",
+   "data": {
+    "text": " other"
+   }
+  },
+  {
+   "t": 1922,
+   "event": "delta",
+   "data": {
+    "text": " \""
+   }
+  },
+  {
+   "t": 1924,
+   "event": "delta",
+   "data": {
+    "text": "self"
+   }
+  },
+  {
+   "t": 1925,
+   "event": "delta",
+   "data": {
+    "text": "-check"
+   }
+  },
+  {
+   "t": 1931,
+   "event": "delta",
+   "data": {
+    "text": "\""
+   }
+  },
+  {
+   "t": 1932,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 1933,
+   "event": "delta",
+   "data": {
+    "text": " \""
+   }
+  },
+  {
+   "t": 1934,
+   "event": "delta",
+   "data": {
+    "text": "knowledge"
+   }
+  },
+  {
+   "t": 1935,
+   "event": "delta",
+   "data": {
+    "text": "-aware"
+   }
+  },
+  {
+   "t": 1936,
+   "event": "delta",
+   "data": {
+    "text": "\""
+   }
+  },
+  {
+   "t": 1937,
+   "event": "delta",
+   "data": {
+    "text": " R"
+   }
+  },
+  {
+   "t": 1939,
+   "event": "delta",
+   "data": {
+    "text": "AG"
+   }
+  },
+  {
+   "t": 1942,
+   "event": "delta",
+   "data": {
+    "text": " approaches"
+   }
+  },
+  {
+   "t": 1944,
+   "event": "delta",
+   "data": {
+    "text": ";"
+   }
+  },
+  {
+   "t": 1945,
+   "event": "delta",
+   "data": {
+    "text": " this"
+   }
+  },
+  {
+   "t": 1945,
+   "event": "delta",
+   "data": {
+    "text": " specific"
+   }
+  },
+  {
+   "t": 1947,
+   "event": "delta",
+   "data": {
+    "text": " paper"
+   }
+  },
+  {
+   "t": 1953,
+   "event": "delta",
+   "data": {
+    "text": " introduced"
+   }
+  },
+  {
+   "t": 1953,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1955,
+   "event": "delta",
+   "data": {
+    "text": " term"
+   }
+  },
+  {
+   "t": 1956,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 1958,
+   "event": "delta",
+   "data": {
+    "text": " detailed"
+   }
+  },
+  {
+   "t": 1962,
+   "event": "delta",
+   "data": {
+    "text": " architecture"
+   }
+  },
+  {
+   "t": 1963,
+   "event": "delta",
+   "data": {
+    "text": "."
+   }
+  },
+  {
+   "t": 1964,
+   "event": "delta",
+   "data": {
+    "text": "\n\n"
+   }
+  },
+  {
+   "t": 1966,
+   "event": "delta",
+   "data": {
+    "text": "If"
+   }
+  },
+  {
+   "t": 1968,
+   "event": "delta",
+   "data": {
+    "text": " you"
+   }
+  },
+  {
+   "t": 1972,
+   "event": "delta",
+   "data": {
+    "text": "'d"
+   }
+  },
+  {
+   "t": 1973,
+   "event": "delta",
+   "data": {
+    "text": " like"
+   }
+  },
+  {
+   "t": 1974,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 1975,
+   "event": "delta",
+   "data": {
+    "text": " I"
+   }
+  },
+  {
+   "t": 1978,
+   "event": "delta",
+   "data": {
+    "text": " can"
+   }
+  },
+  {
+   "t": 1982,
+   "event": "delta",
+   "data": {
+    "text": " dig"
+   }
+  },
+  {
+   "t": 1982,
+   "event": "delta",
+   "data": {
+    "text": " up"
+   }
+  },
+  {
+   "t": 1983,
+   "event": "delta",
+   "data": {
+    "text": " the"
+   }
+  },
+  {
+   "t": 1986,
+   "event": "delta",
+   "data": {
+    "text": " original"
+   }
+  },
+  {
+   "t": 1986,
+   "event": "delta",
+   "data": {
+    "text": " paper"
+   }
+  },
+  {
+   "t": 1992,
+   "event": "delta",
+   "data": {
+    "text": "'s"
+   }
+  },
+  {
+   "t": 1993,
+   "event": "delta",
+   "data": {
+    "text": " details"
+   }
+  },
+  {
+   "t": 1994,
+   "event": "delta",
+   "data": {
+    "text": " ("
+   }
+  },
+  {
+   "t": 1995,
+   "event": "delta",
+   "data": {
+    "text": "architecture"
+   }
+  },
+  {
+   "t": 1996,
+   "event": "delta",
+   "data": {
+    "text": " diagram"
+   }
+  },
+  {
+   "t": 1997,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 2002,
+   "event": "delta",
+   "data": {
+    "text": " evaluation"
+   }
+  },
+  {
+   "t": 2002,
+   "event": "delta",
+   "data": {
+    "text": " datasets"
+   }
+  },
+  {
+   "t": 2006,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 2007,
+   "event": "delta",
+   "data": {
+    "text": " reported"
+   }
+  },
+  {
+   "t": 2009,
+   "event": "delta",
+   "data": {
+    "text": " gains"
+   }
+  },
+  {
+   "t": 2011,
+   "event": "delta",
+   "data": {
+    "text": ","
+   }
+  },
+  {
+   "t": 2014,
+   "event": "delta",
+   "data": {
+    "text": " and"
+   }
+  },
+  {
+   "t": 2015,
+   "event": "delta",
+   "data": {
+    "text": " ab"
+   }
+  },
+  {
+   "t": 2017,
+   "event": "delta",
+   "data": {
+    "text": "lations"
+   }
+  },
+  {
+   "t": 2028,
+   "event": "delta",
+   "data": {
+    "text": ")."
+   }
+  },
+  {
+   "t": 3516,
+   "event": "answer",
+   "data": {
+    "answer": "CRAG (\"Corrective RAG\") is an extension of standard Retrieval-Augmented Generation that adds an active *verification* step before the retrieved content is fed to the answer. The core idea: don't blindly trust what the retriever returns—assess it, and fix it if it's wrong.\n\n**How it typically works**\n1. The user's query goes to a dense/sparse retriever as in vanilla RAG.\n2. A lightweight \"retrieval evaluator\" (often an LLM prompt, sometimes a small classifier) scores the relevance/quality of the top retrieved chunks—e.g., classifying them as \"Correct,\" \"Incorrect,\" or \"Ambiguous.\"\n3. The CRAG module then takes corrective actions based on the score:\n   - **Correct** → refine the documents (drop irrelevant sentences, keep the good span) and hand them to the answerer.\n   - **Incorrect** → demote/disable the RAG output, fall back to a web search and/or the LLM's parametric knowledge (with a \"knowledge refinement\" step that extracts the most relevant facts).\n   - **Ambiguous** → blend: keep the retrieved content but also pull in complementary web search results, then merge/refine.\n4. An LLM generator produces the final answer from the corrected evidence.\n\n**Motivation / why it matters**\n- Standard RAG assumes retrieval is \"good enough.\" In practice, dense retrievers return noisy or off-topic chunks that can *hurt* answer quality and increase hallucinations.\n- CRAG inserts a cheap gating mechanism that catches bad retrievals and self-corrects, improving both robustness and factual grounding (reduced hallucination), at the cost of added latency and complexity (possibly an extra search/tool call).\n\n**Trade-offs and considerations**\n- Extra inference/lookup cost (web search + extra LRM/LLM calls).\n- The evaluator must be calibrated; if it's mismeasuring quality it can wrongly discard good context or keep bad context.\n- Works best when a high-quality backing source (a search index or the model's own strong parametric knowledge) is available to \"correct\" failures.\n- Conceptually related to other \"self-check\" and \"knowledge-aware\" RAG approaches; this specific paper introduced the term and detailed architecture.\n\nIf you'd like, I can dig up the original paper's details (architecture diagram, evaluation datasets, reported gains, and ablations).",
+    "claims": []
+   }
+  },
+  {
+   "t": 3516,
+   "event": "done",
+   "data": {
+    "errored": false
+   }
+  }
+ ]
+}

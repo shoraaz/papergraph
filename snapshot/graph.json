@@ -1,0 +1,2270 @@
+{
+ "version": 1,
+ "papers": [
+  {
+   "paper_id": "2309.01431v2",
+   "title": "Benchmarking Large Language Models in Retrieval-Augmented Generation",
+   "workspace_id": "shared",
+   "authors": [
+    "Jiawei Chen",
+    "Hongyu Lin",
+    "Xianpei Han",
+    "Le Sun"
+   ],
+   "abstract": "Retrieval-Augmented Generation (RAG) is a promising approach for mitigating the hallucination of large language models (LLMs). However, existing research lacks rigorous evaluation of the impact of retrieval-augmented generation on different large language models, which make it challenging to identify the potential bottlenecks in the capabilities of RAG for different LLMs. In this paper, we systematically investigate the impact of Retrieval-Augmented Generation on large language models. We analyze the performance of different large language models in 4 fundamental abilities required for RAG, including noise robustness, negative rejection, information integration, and counterfactual robustness. To this end, we establish Retrieval-Augmented Generation Benchmark (RGB), a new corpus for RAG evaluation in both English and Chinese. RGB divides the instances within the benchmark into 4 separate testbeds based on the aforementioned fundamental abilities required to resolve the case. Then we evaluate 6 representative LLMs on RGB to diagnose the challenges of current LLMs when applying RAG. Evaluation reveals that while LLMs exhibit a certain degree of noise robustness, they still struggle significantly in terms of negative rejection, information integration, and dealing with false information. The aforementioned assessment outcomes indicate that there is still a considerable journey ahead to effectively apply RAG to LLMs.",
+   "published_date": "2023-09-04",
+   "arxiv_url": "http://arxiv.org/abs/2309.01431v2"
+  },
+  {
+   "paper_id": "2310.11511v1",
+   "title": "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection",
+   "workspace_id": "shared",
+   "authors": [
+    "Akari Asai",
+    "Zeqiu Wu",
+    "Yizhong Wang",
+    "Avirup Sil",
+    "Hannaneh Hajishirzi"
+   ],
+   "abstract": "Despite their remarkable capabilities, large language models (LLMs) often produce responses containing factual inaccuracies due to their sole reliance on the parametric knowledge they encapsulate. Retrieval-Augmented Generation (RAG), an ad hoc approach that augments LMs with retrieval of relevant knowledge, decreases such issues. However, indiscriminately retrieving and incorporating a fixed number of retrieved passages, regardless of whether retrieval is necessary, or passages are relevant, diminishes LM versatility or can lead to unhelpful response generation. We introduce a new framework called Self-Reflective Retrieval-Augmented Generation (Self-RAG) that enhances an LM's quality and factuality through retrieval and self-reflection. Our framework trains a single arbitrary LM that adaptively retrieves passages on-demand, and generates and reflects on retrieved passages and its own generations using special tokens, called reflection tokens. Generating reflection tokens makes the LM controllable during the inference phase, enabling it to tailor its behavior to diverse task requirements. Experiments show that Self-RAG (7B and 13B parameters) significantly outperforms state-of-the-art LLMs and retrieval-augmented models on a diverse set of tasks. Specifically, Self-RAG outperforms ChatGPT and retrieval-augmented Llama2-chat on Open-domain QA, reasoning and fact verification tasks, and it shows significant gains in improving factuality and citation accuracy for long-form generations relative to these models.",
+   "published_date": "2023-10-17",
+   "arxiv_url": "http://arxiv.org/abs/2310.11511v1"
+  },
+  {
+   "paper_id": "2401.15884v3",
+   "title": "Corrective Retrieval Augmented Generation",
+   "workspace_id": "shared",
+   "authors": [
+    "Shi-Qi Yan",
+    "Jia-Chen Gu",
+    "Yun Zhu",
+    "Zhen-Hua Ling"
+   ],
+   "abstract": "Large language models (LLMs) inevitably exhibit hallucinations since the accuracy of generated texts cannot be secured solely by the parametric knowledge they encapsulate. Although retrieval-augmented generation (RAG) is a practicable complement to LLMs, it relies heavily on the relevance of retrieved documents, raising concerns about how the model behaves if retrieval goes wrong. To this end, we propose the Corrective Retrieval Augmented Generation (CRAG) to improve the robustness of generation. Specifically, a lightweight retrieval evaluator is designed to assess the overall quality of retrieved documents for a query, returning a confidence degree based on which different knowledge retrieval actions can be triggered. Since retrieval from static and limited corpora can only return sub-optimal documents, large-scale web searches are utilized as an extension for augmenting the retrieval results. Besides, a decompose-then-recompose algorithm is designed for retrieved documents to selectively focus on key information and filter out irrelevant information in them. CRAG is plug-and-play and can be seamlessly coupled with various RAG-based approaches. Experiments on four datasets covering short- and long-form generation tasks show that CRAG can significantly improve the performance of RAG-based approaches.",
+   "published_date": "2024-01-29",
+   "arxiv_url": "http://arxiv.org/abs/2401.15884v3"
+  },
+  {
+   "paper_id": "2402.11626v1",
+   "title": "Metacognitive Retrieval-Augmented Large Language Models",
+   "workspace_id": "shared",
+   "authors": [
+    "Yujia Zhou",
+    "Zheng Liu",
+    "Jiajie Jin",
+    "Jian-Yun Nie",
+    "Zhicheng Dou"
+   ],
+   "abstract": "Retrieval-augmented generation have become central in natural language processing due to their efficacy in generating factual content. While traditional methods employ single-time retrieval, more recent approaches have shifted towards multi-time retrieval for multi-hop reasoning tasks. However, these strategies are bound by predefined reasoning steps, potentially leading to inaccuracies in response generation. This paper introduces MetaRAG, an approach that combines the retrieval-augmented generation process with metacognition. Drawing from cognitive psychology, metacognition allows an entity to self-reflect and critically evaluate its cognitive processes. By integrating this, MetaRAG enables the model to monitor, evaluate, and plan its response strategies, enhancing its introspective reasoning abilities. Through a three-step metacognitive regulation pipeline, the model can identify inadequacies in initial cognitive responses and fixes them. Empirical evaluations show that MetaRAG significantly outperforms existing methods.",
+   "published_date": "2024-02-18",
+   "arxiv_url": "http://arxiv.org/abs/2402.11626v1"
+  },
+  {
+   "paper_id": "2403.14197v1",
+   "title": "Context Quality Matters in Training Fusion-in-Decoder for Extractive Open-Domain Question Answering",
+   "workspace_id": "shared",
+   "authors": [
+    "Kosuke Akimoto",
+    "Kunihiro Takeoka",
+    "Masafumi Oyamada"
+   ],
+   "abstract": "Retrieval-augmented generation models augment knowledge encoded in a language model by providing additional relevant external knowledge (context) during generation. Although it has been shown that the quantity and quality of context impact the performance of retrieval-augmented generation models during inference, limited research explores how these characteristics affect model training. This paper explores how context quantity and quality during model training affect the performance of Fusion-in-Decoder (FiD), the state-of-the-art retrieval-augmented generation model, in extractive open-domain question answering tasks. Experimental results suggest that FiD models overfit to context quality during training and show suboptimal performance when evaluated on different context quality. Through the experimental results, we also reveal FiD models trained with different context quality have different cross-attention distribution patterns. Specifically, as context quality during training increases, FiD models tend to attend more uniformly to each passage in context. Finally, based on these observations, we propose a method to mitigate overfitting to specific context quality by introducing bias to the cross-attention distribution, which we demonstrate to be effective in improving the performance of FiD models on different context quality.",
+   "published_date": "2024-03-21",
+   "arxiv_url": "http://arxiv.org/abs/2403.14197v1"
+  },
+  {
+   "paper_id": "2405.13002v1",
+   "title": "DuetRAG: Collaborative Retrieval-Augmented Generation",
+   "workspace_id": "shared",
+   "authors": [
+    "Dian Jiao",
+    "Li Cai",
+    "Jingsheng Huang",
+    "Wenqiao Zhang",
+    "Siliang Tang",
+    "Yueting Zhuang"
+   ],
+   "abstract": "Retrieval-Augmented Generation (RAG) methods augment the input of Large Language Models (LLMs) with relevant retrieved passages, reducing factual errors in knowledge-intensive tasks. However, contemporary RAG approaches suffer from irrelevant knowledge retrieval issues in complex domain questions (e.g., HotPot QA) due to the lack of corresponding domain knowledge, leading to low-quality generations. To address this issue, we propose a novel Collaborative Retrieval-Augmented Generation framework, DuetRAG. Our bootstrapping philosophy is to simultaneously integrate the domain fintuning and RAG models to improve the knowledge retrieval quality, thereby enhancing generation quality. Finally, we demonstrate DuetRAG' s matches with expert human researchers on HotPot QA.",
+   "published_date": "2024-05-12",
+   "arxiv_url": "http://arxiv.org/abs/2405.13002v1"
+  },
+  {
+   "paper_id": "2405.19893v1",
+   "title": "Similarity is Not All You Need: Endowing Retrieval Augmented Generation with Multi Layered Thoughts",
+   "workspace_id": "shared",
+   "authors": [
+    "Chunjing Gan",
+    "Dan Yang",
+    "Binbin Hu",
+    "Hanxiao Zhang",
+    "Siyuan Li",
+    "Ziqi Liu",
+    "Yue Shen",
+    "Lin Ju",
+    "Zhiqiang Zhang",
+    "Jinjie Gu",
+    "Lei Liang",
+    "Jun Zhou"
+   ],
+   "abstract": "In recent years, large language models (LLMs) have made remarkable achievements in various domains. However, the untimeliness and cost of knowledge updates coupled with hallucination issues of LLMs have curtailed their applications in knowledge intensive tasks, where retrieval augmented generation (RAG) can be of help. Nevertheless, existing retrieval augmented models typically use similarity as a bridge between queries and documents and follow a retrieve then read procedure. In this work, we argue that similarity is not always the panacea and totally relying on similarity would sometimes degrade the performance of retrieval augmented generation. To this end, we propose MetRag, a Multi layEred Thoughts enhanced Retrieval Augmented Generation framework. To begin with, beyond existing similarity oriented thought, we embrace a small scale utility model that draws supervision from an LLM for utility oriented thought and further come up with a smarter model by comprehensively combining the similarity and utility oriented thoughts. Furthermore, given the fact that the retrieved document set tends to be huge and using them in isolation makes it difficult to capture the commonalities and characteristics among them, we propose to make an LLM as a task adaptive summarizer to endow retrieval augmented generation with compactness-oriented thought. Finally, with multi layered thoughts from the precedent stages, an LLM is called for knowledge augmented generation. Extensive experiments on knowledge-intensive tasks have demonstrated the superiority of MetRag.",
+   "published_date": "2024-05-30",
+   "arxiv_url": "http://arxiv.org/abs/2405.19893v1"
+  },
+  {
+   "paper_id": "2406.03790v2",
+   "title": "End-to-End Trainable Retrieval-Augmented Generation for Relation Extraction",
+   "workspace_id": "shared",
+   "authors": [
+    "Kohei Makino",
+    "Makoto Miwa",
+    "Yutaka Sasaki"
+   ],
+   "abstract": "This paper addresses a crucial challenge in retrieval-augmented generation-based relation extractors; the end-to-end training is not applicable to conventional retrieval-augmented generation due to the non-differentiable nature of instance retrieval. This problem prevents the instance retrievers from being optimized for the relation extraction task, and conventionally it must be trained with an objective different from that for relation extraction. To address this issue, we propose a novel End-to-end Trainable Retrieval-Augmented Generation (ETRAG), which allows end-to-end optimization of the entire model, including the retriever, for the relation extraction objective by utilizing a differentiable selection of the $k$ nearest instances. We evaluate the relation extraction performance of ETRAG on the TACRED dataset, which is a standard benchmark for relation extraction. ETRAG demonstrates consistent improvements against the baseline model as retrieved instances are added. Furthermore, the analysis of instances retrieved by the end-to-end trained retriever confirms that the retrieved instances contain common relation labels or entities with the query and are specialized for the target task. Our findings provide a promising foundation for future research on retrieval-augmented generation and the broader applications of text generation in Natural Language Processing.",
+   "published_date": "2024-06-06",
+   "arxiv_url": "http://arxiv.org/abs/2406.03790v2"
+  },
+  {
+   "paper_id": "2408.08535v1",
+   "title": "CommunityKG-RAG: Leveraging Community Structures in Knowledge Graphs for Advanced Retrieval-Augmented Generation in Fact-Checking",
+   "workspace_id": "shared",
+   "authors": [
+    "Rong-Ching Chang",
+    "Jiawei Zhang"
+   ],
+   "abstract": "Despite advancements in Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) systems, their effectiveness is often hindered by a lack of integration with entity relationships and community structures, limiting their ability to provide contextually rich and accurate information retrieval for fact-checking. We introduce CommunityKG-RAG (Community Knowledge Graph-Retrieval Augmented Generation), a novel zero-shot framework that integrates community structures within Knowledge Graphs (KGs) with RAG systems to enhance the fact-checking process. Capable of adapting to new domains and queries without additional training, CommunityKG-RAG utilizes the multi-hop nature of community structures within KGs to significantly improve the accuracy and relevance of information retrieval. Our experimental results demonstrate that CommunityKG-RAG outperforms traditional methods, representing a significant advancement in fact-checking by offering a robust, scalable, and efficient solution.",
+   "published_date": "2024-08-16",
+   "arxiv_url": "http://arxiv.org/abs/2408.08535v1"
+  },
+  {
+   "paper_id": "2409.01864v1",
+   "title": "The Role of Large Language Models in Musicology: Are We Ready to Trust the Machines?",
+   "workspace_id": "shared",
+   "authors": [
+    "Pedro Ramoneda",
+    "Emilia Parada-Cabaleiro",
+    "Benno Weck",
+    "Xavier Serra"
+   ],
+   "abstract": "In this work, we explore the use and reliability of Large Language Models (LLMs) in musicology. From a discussion with experts and students, we assess the current acceptance and concerns regarding this, nowadays ubiquitous, technology. We aim to go one step further, proposing a semi-automatic method to create an initial benchmark using retrieval-augmented generation models and multiple-choice question generation, validated by human experts. Our evaluation on 400 human-validated questions shows that current vanilla LLMs are less reliable than retrieval augmented generation from music dictionaries. This paper suggests that the potential of LLMs in musicology requires musicology driven research that can specialized LLMs by including accurate and reliable domain knowledge.",
+   "published_date": "2024-09-03",
+   "arxiv_url": "http://arxiv.org/abs/2409.01864v1"
+  },
+  {
+   "paper_id": "2411.00437v2",
+   "title": "E2E-AFG: An End-to-End Model with Adaptive Filtering for Retrieval-Augmented Generation",
+   "workspace_id": "shared",
+   "authors": [
+    "Yun Jiang",
+    "Zilong Xie",
+    "Wei Zhang",
+    "Yun Fang",
+    "Shuai Pan"
+   ],
+   "abstract": "Retrieval-augmented generation methods often neglect the quality of content retrieved from external knowledge bases, resulting in irrelevant information or potential misinformation that negatively affects the generation results of large language models. In this paper, we propose an end-to-end model with adaptive filtering for retrieval-augmented generation (E2E-AFG), which integrates answer existence judgment and text generation into a single end-to-end framework. This enables the model to focus more effectively on relevant content while reducing the influence of irrelevant information and generating accurate answers. We evaluate E2E-AFG on six representative knowledge-intensive language datasets, and the results show that it consistently outperforms baseline models across all tasks, demonstrating the effectiveness and robustness of the proposed approach.",
+   "published_date": "2024-11-01",
+   "arxiv_url": "http://arxiv.org/abs/2411.00437v2"
+  },
+  {
+   "paper_id": "2412.15404v1",
+   "title": "A Retrieval-Augmented Generation Framework for Academic Literature Navigation in Data Science",
+   "workspace_id": "shared",
+   "authors": [
+    "Ahmet Yasin Aytar",
+    "Kemal Kilic",
+    "Kamer Kaya"
+   ],
+   "abstract": "In the rapidly evolving field of data science, efficiently navigating the expansive body of academic literature is crucial for informed decision-making and innovation. This paper presents an enhanced Retrieval-Augmented Generation (RAG) application, an artificial intelligence (AI)-based system designed to assist data scientists in accessing precise and contextually relevant academic resources. The AI-powered application integrates advanced techniques, including the GeneRation Of BIbliographic Data (GROBID) technique for extracting bibliographic information, fine-tuned embedding models, semantic chunking, and an abstract-first retrieval method, to significantly improve the relevance and accuracy of the retrieved information. This implementation of AI specifically addresses the challenge of academic literature navigation. A comprehensive evaluation using the Retrieval-Augmented Generation Assessment System (RAGAS) framework demonstrates substantial improvements in key metrics, particularly Context Relevance, underscoring the system's effectiveness in reducing information overload and enhancing decision-making processes. Our findings highlight the potential of this enhanced Retrieval-Augmented Generation system to transform academic exploration within data science, ultimately advancing the workflow of research and innovation in the field.",
+   "published_date": "2024-12-19",
+   "arxiv_url": "http://arxiv.org/abs/2412.15404v1"
+  },
+  {
+   "paper_id": "2501.11929v1",
+   "title": "ALoFTRAG: Automatic Local Fine Tuning for Retrieval Augmented Generation",
+   "workspace_id": "shared",
+   "authors": [
+    "Peter Devine"
+   ],
+   "abstract": "Retrieval Augmented Generation (RAG) systems have been shown to improve the accuracy of Large Language Model (LLM) outputs. However, these models can often achieve low accuracy when applied to new data domains.\n  We introduce the Automatic Local Fine Tuning of Retrieval Augmented Generation models (ALoFTRAG) framework, designed to improve the accuracy of RAG systems on a given domain by training LLMs without manually labeled data or using larger teacher models.\n  By generating and filtering synthetic training data and performing LoRA fine-tuning, ALoFTRAG improves citation and answer accuracy across 20 datasets in 26 languages by, on average, 8.3% and 3.0% respectively.\n  Our results demonstrate that ALoFTRAG offers a practical, cost-effective, and data-secure solution for improving RAG accuracy, making it particularly applicable to sensitive domains such as healthcare and finance.",
+   "published_date": "2025-01-21",
+   "arxiv_url": "http://arxiv.org/abs/2501.11929v1"
+  },
+  {
+   "paper_id": "2502.01113v3",
+   "title": "GFM-RAG: Graph Foundation Model for Retrieval Augmented Generation",
+   "workspace_id": "shared",
+   "authors": [
+    "Linhao Luo",
+    "Zicheng Zhao",
+    "Gholamreza Haffari",
+    "Dinh Phung",
+    "Chen Gong",
+    "Shirui Pan"
+   ],
+   "abstract": "Retrieval-augmented generation (RAG) has proven effective in integrating knowledge into large language models (LLMs). However, conventional RAGs struggle to capture complex relationships between pieces of knowledge, limiting their performance in intricate reasoning that requires integrating knowledge from multiple sources. Recently, graph-enhanced retrieval augmented generation (GraphRAG) builds graph structure to explicitly model these relationships, enabling more effective and efficient retrievers. Nevertheless, its performance is still hindered by the noise and incompleteness within the graph structure. To address this, we introduce GFM-RAG, a novel graph foundation model (GFM) for retrieval augmented generation. GFM-RAG is powered by an innovative graph neural network that reasons over graph structure to capture complex query-knowledge relationships. The GFM with 8M parameters undergoes a two-stage training process on large-scale datasets, comprising 60 knowledge graphs with over 14M triples and 700k documents. This results in impressive performance and generalizability for GFM-RAG, making it the first graph foundation model applicable to unseen datasets for retrieval without any fine-tuning required. Extensive experiments on three multi-hop QA datasets and seven domain-specific RAG datasets demonstrate that GFM-RAG achieves state-of-the-art performance while maintaining efficiency and alignment with neural scaling laws, highlighting its potential for further improvement.",
+   "published_date": "2025-02-03",
+   "arxiv_url": "http://arxiv.org/abs/2502.01113v3"
+  },
+  {
+   "paper_id": "2509.10467v1",
+   "title": "DSRAG: A Domain-Specific Retrieval Framework Based on Document-derived Multimodal Knowledge Graph",
+   "workspace_id": "shared",
+   "authors": [
+    "Mengzheng Yang",
+    "Yanfei Ren",
+    "David Osei Opoku",
+    "Ruochang Li",
+    "Peng Ren",
+    "Chunxiao Xing"
+   ],
+   "abstract": "Current general-purpose large language models (LLMs) commonly exhibit knowledge hallucination and insufficient domain-specific adaptability in domain-specific tasks, limiting their effectiveness in specialized question answering scenarios. Retrieval-augmented generation (RAG) effectively tackles these challenges by integrating external knowledge to enhance accuracy and relevance. However, traditional RAG still faces limitations in domain knowledge accuracy and context modeling.To enhance domain-specific question answering performance, this work focuses on a graph-based RAG framework, emphasizing the critical role of knowledge graph quality during the generation process. We propose DSRAG (Domain-Specific RAG), a multimodal knowledge graph-driven retrieval-augmented generation framework designed for domain-specific applications. Our approach leverages domain-specific documents as the primary knowledge source, integrating heterogeneous information such as text, images, and tables to construct a multimodal knowledge graph covering both conceptual and instance layers. Building on this foundation, we introduce semantic pruning and structured subgraph retrieval mechanisms, combining knowledge graph context and vector retrieval results to guide the language model towards producing more reliable responses. Evaluations using the Langfuse multidimensional scoring mechanism show that our method excels in domain-specific question answering, validating the efficacy of integrating multimodal knowledge graphs with retrieval-augmented generation.",
+   "published_date": "2025-08-22",
+   "arxiv_url": "http://arxiv.org/abs/2509.10467v1"
+  },
+  {
+   "paper_id": "2512.17194v1",
+   "title": "MMRAG-RFT: Two-stage Reinforcement Fine-tuning for Explainable Multi-modal Retrieval-augmented Generation",
+   "workspace_id": "shared",
+   "authors": [
+    "Shengwei Zhao",
+    "Jingwen Yao",
+    "Sitong Wei",
+    "Linhai Xu",
+    "Yuying Liu",
+    "Dong Zhang",
+    "Zhiqiang Tian",
+    "Shaoyi Du"
+   ],
+   "abstract": "Multi-modal Retrieval-Augmented Generation (MMRAG) enables highly credible generation by integrating external multi-modal knowledge, thus demonstrating impressive performance in complex multi-modal scenarios. However, existing MMRAG methods fail to clarify the reasoning logic behind retrieval and response generation, which limits the explainability of the results. To address this gap, we propose to introduce reinforcement learning into multi-modal retrieval-augmented generation, enhancing the reasoning capabilities of multi-modal large language models through a two-stage reinforcement fine-tuning framework to achieve explainable multi-modal retrieval-augmented generation. Specifically, in the first stage, rule-based reinforcement fine-tuning is employed to perform coarse-grained point-wise ranking of multi-modal documents, effectively filtering out those that are significantly irrelevant. In the second stage, reasoning-based reinforcement fine-tuning is utilized to jointly optimize fine-grained list-wise ranking and answer generation, guiding multi-modal large language models to output explainable reasoning logic in the MMRAG process. Our method achieves state-of-the-art results on WebQA and MultimodalQA, two benchmark datasets for multi-modal retrieval-augmented generation, and its effectiveness is validated through comprehensive ablation experiments.",
+   "published_date": "2025-12-19",
+   "arxiv_url": "http://arxiv.org/abs/2512.17194v1"
+  },
+  {
+   "paper_id": "2603.04647v1",
+   "title": "Coordinated Semantic Alignment and Evidence Constraints for Retrieval-Augmented Generation with Large Language Models",
+   "workspace_id": "shared",
+   "authors": [
+    "Xin Chen",
+    "Saili Uday Gadgil",
+    "Jiarong Qiu"
+   ],
+   "abstract": "Retrieval augmented generation mitigates limitations of large language models in factual consistency and knowledge updating by introducing external knowledge. However, practical applications still suffer from semantic misalignment between retrieved results and generation objectives, as well as insufficient evidence utilization. To address these challenges, this paper proposes a retrieval augmented generation method that integrates semantic alignment with evidence constraints through coordinated modeling of retrieval and generation stages. The method first represents the relevance between queries and candidate evidence within a unified semantic space. This ensures that retrieved results remain semantically consistent with generation goals and reduces interference from noisy evidence and semantic drift. On this basis, an explicit evidence constraint mechanism is introduced. Retrieved evidence is transformed from an implicit context into a core control factor in generation. This restricts the expression scope of generated content and strengthens dependence on evidence. By jointly modeling semantic consistency and evidence constraints within a unified framework, the proposed approach improves factual reliability and verifiability while preserving natural language fluency. Comparative results show stable improvements across multiple generation quality metrics. This confirms the effectiveness and necessity of coordinated semantic alignment and evidence constraint modeling in retrieval augmented generation tasks.",
+   "published_date": "2026-03-04",
+   "arxiv_url": "http://arxiv.org/abs/2603.04647v1"
+  },
+  {
+   "paper_id": "2604.18509v2",
+   "title": "MASS-RAG: Multi-Agent Synthesis Retrieval-Augmented Generation",
+   "workspace_id": "shared",
+   "authors": [
+    "Xingchen Xiao",
+    "Heyan Huang",
+    "Runheng Liu",
+    "Jincheng Xie"
+   ],
+   "abstract": "Large language models (LLMs) are widely used in retrieval-augmented generation (RAG) to incorporate external knowledge at inference time. However, when retrieved contexts are noisy, incomplete, or heterogeneous, a single generation process often struggles to reconcile evidence effectively. We propose \\textbf{MASS-RAG}, a multi-agent synthesis approach to retrieval-augmented generation that structures evidence processing into multiple role-specialized agents. MASS-RAG applies distinct agents for evidence summarization, evidence extraction, and reasoning over retrieved documents, and combines their outputs through a dedicated synthesis stage to produce the final answer. This design exposes multiple intermediate evidence views, allowing the model to compare and integrate complementary information before answer generation. Experiments on four benchmarks show that MASS-RAG consistently improves performance over strong RAG baselines, particularly in settings where relevant evidence is distributed across retrieved contexts.",
+   "published_date": "2026-04-20",
+   "arxiv_url": "http://arxiv.org/abs/2604.18509v2"
+  },
+  {
+   "paper_id": "2607.01852v1",
+   "title": "Evaluating Chunking Strategies for Retrieval-Augmented Generation on Academic Texts",
+   "workspace_id": "shared",
+   "authors": [
+    "Valentin J. J. Kreileder",
+    "Johannes Reisinger",
+    "Andreas Fischer"
+   ],
+   "abstract": "Retrieval-Augmented Generation (RAG) systems use the question-answering capabilities of Large Language Models (LLMs) to access information outside their parameters. We evaluate if cluster-based semantic chunking improves retrieval and answer quality compared to fixed-size and recursive chunking evaluating on long, structured academic theses using the Retrieval Augmented Generation Assessment (RAGAs) framework. RAGAs based faithfulness shows limited reliability in this setup. Performance on fixed versus document specific questions varied substantially, likely related to the formatting of documents and preprocessing. Under the tested configuration, cluster-based chunking did not outperform simpler strategies.",
+   "published_date": "2026-07-02",
+   "arxiv_url": "http://arxiv.org/abs/2607.01852v1"
+  }
+ ],
+ "concepts": [
+  {
+   "name": "adaptive context filtering",
+   "display_name": "adaptive context filtering"
+  },
+  {
+   "name": "advanced retrieval-augmented generation in fact-checking",
+   "display_name": "advanced retrieval-augmented generation in fact-checking"
+  },
+  {
+   "name": "agent-based systems",
+   "display_name": "agent-based systems"
+  },
+  {
+   "name": "aloftrag framework",
+   "display_name": "aloftrag framework"
+  },
+  {
+   "name": "answer existence judgment",
+   "display_name": "answer existence judgment"
+  },
+  {
+   "name": "answer quality score (aqs)",
+   "display_name": "answer quality score (aqs)"
+  },
+  {
+   "name": "automatic local fine-tuning for rag",
+   "display_name": "automatic local fine-tuning for rag"
+  },
+  {
+   "name": "catastrophic forgetting",
+   "display_name": "catastrophic forgetting"
+  },
+  {
+   "name": "chunking strategies",
+   "display_name": "chunking strategies"
+  },
+  {
+   "name": "collaborative retrieval-augmented generation",
+   "display_name": "collaborative retrieval-augmented generation"
+  },
+  {
+   "name": "communitykg-rag",
+   "display_name": "communitykg-rag"
+  },
+  {
+   "name": "coordinated semantic alignment",
+   "display_name": "coordinated semantic alignment"
+  },
+  {
+   "name": "corrective retrieval-augmented generation (crag)",
+   "display_name": "corrective retrieval-augmented generation (crag)"
+  },
+  {
+   "name": "counterfactual robustness in retrieval-augmented generation",
+   "display_name": "counterfactual robustness in retrieval-augmented generation"
+  },
+  {
+   "name": "data science",
+   "display_name": "data science"
+  },
+  {
+   "name": "deep learning",
+   "display_name": "deep learning"
+  },
+  {
+   "name": "definition of context quantity and quality for retrieval-augmented models",
+   "display_name": "definition of context quantity and quality for retrieval-augmented models"
+  },
+  {
+   "name": "differentiable instance selection",
+   "display_name": "differentiable instance selection"
+  },
+  {
+   "name": "domain-specific tasks",
+   "display_name": "domain-specific tasks"
+  },
+  {
+   "name": "dsrag framework",
+   "display_name": "dsrag framework"
+  },
+  {
+   "name": "duetrag framework",
+   "display_name": "duetrag framework"
+  },
+  {
+   "name": "embedding models",
+   "display_name": "embedding models"
+  },
+  {
+   "name": "end-to-end retrieval-augmented generation",
+   "display_name": "end-to-end retrieval-augmented generation"
+  },
+  {
+   "name": "enhancing rag robustness",
+   "display_name": "enhancing rag robustness"
+  },
+  {
+   "name": "etrag",
+   "display_name": "etrag"
+  },
+  {
+   "name": "evidence constraints",
+   "display_name": "evidence constraints"
+  },
+  {
+   "name": "explainable multi-modal retrieval-augmented generation",
+   "display_name": "explainable multi-modal retrieval-augmented generation"
+  },
+  {
+   "name": "extractive open-domain question answering",
+   "display_name": "extractive open-domain question answering"
+  },
+  {
+   "name": "fact-checking",
+   "display_name": "fact-checking"
+  },
+  {
+   "name": "factual consistency",
+   "display_name": "factual consistency"
+  },
+  {
+   "name": "factual errors in llms",
+   "display_name": "factual errors in LLMs"
+  },
+  {
+   "name": "fine-tuning",
+   "display_name": "fine-tuning"
+  },
+  {
+   "name": "fine-tuning (llms)",
+   "display_name": "fine-tuning (llms)"
+  },
+  {
+   "name": "generative artificial intelligence",
+   "display_name": "generative artificial intelligence"
+  },
+  {
+   "name": "gfm-rag",
+   "display_name": "gfm-rag"
+  },
+  {
+   "name": "graph foundation model (gfm)",
+   "display_name": "graph foundation model (gfm)"
+  },
+  {
+   "name": "graph neural networks (gnns)",
+   "display_name": "graph neural networks (gnns)"
+  },
+  {
+   "name": "graph-enhanced retrieval",
+   "display_name": "graph-enhanced retrieval"
+  },
+  {
+   "name": "impact of context quality on fusion-in-decoder training",
+   "display_name": "impact of context quality on fusion-in-decoder training"
+  },
+  {
+   "name": "improving data science literature access with rag",
+   "display_name": "improving data science literature access with rag"
+  },
+  {
+   "name": "information integration in retrieval-augmented generation",
+   "display_name": "information integration in retrieval-augmented generation"
+  },
+  {
+   "name": "information retrieval",
+   "display_name": "information retrieval"
+  },
+  {
+   "name": "information retrieval systems",
+   "display_name": "information retrieval systems"
+  },
+  {
+   "name": "knowledge graphs",
+   "display_name": "knowledge graphs"
+  },
+  {
+   "name": "large language model hallucinations",
+   "display_name": "large language model hallucinations"
+  },
+  {
+   "name": "large language models",
+   "display_name": "large language models"
+  },
+  {
+   "name": "large language models (llms)",
+   "display_name": "large language models (llms)"
+  },
+  {
+   "name": "leveraging knowledge graph community structures",
+   "display_name": "leveraging knowledge graph community structures"
+  },
+  {
+   "name": "limitations of multi-time rag",
+   "display_name": "limitations of multi-time RAG"
+  },
+  {
+   "name": "limitations of similarity-based rag",
+   "display_name": "limitations of similarity-based rag"
+  },
+  {
+   "name": "llm applications in musicology",
+   "display_name": "llm applications in musicology"
+  },
+  {
+   "name": "llm challenges in musicology",
+   "display_name": "llm challenges in musicology"
+  },
+  {
+   "name": "llm hallucination",
+   "display_name": "llm hallucination"
+  },
+  {
+   "name": "llm hallucination mitigation using rag",
+   "display_name": "llm hallucination mitigation using rag"
+  },
+  {
+   "name": "llm hallucinations",
+   "display_name": "llm hallucinations"
+  },
+  {
+   "name": "llm hallucinations in humanities research",
+   "display_name": "llm hallucinations in humanities research"
+  },
+  {
+   "name": "mass-rag framework",
+   "display_name": "mass-rag framework"
+  },
+  {
+   "name": "metacognition (for llms)",
+   "display_name": "metacognition (for LLMs)"
+  },
+  {
+   "name": "metacognitive retrieval-augmented generation",
+   "display_name": "metacognitive retrieval-augmented generation"
+  },
+  {
+   "name": "multi-agent evidence synthesis",
+   "display_name": "multi-agent evidence synthesis"
+  },
+  {
+   "name": "multi-hop reasoning",
+   "display_name": "multi-hop reasoning"
+  },
+  {
+   "name": "multi-layered thoughts for rag",
+   "display_name": "multi-layered thoughts for rag"
+  },
+  {
+   "name": "multi-modal large language models",
+   "display_name": "multi-modal large language models"
+  },
+  {
+   "name": "multimodal knowledge graph construction from documents",
+   "display_name": "multimodal knowledge graph construction from documents"
+  },
+  {
+   "name": "musicology",
+   "display_name": "musicology"
+  },
+  {
+   "name": "natural language generation",
+   "display_name": "natural language generation"
+  },
+  {
+   "name": "natural language processing",
+   "display_name": "natural language processing"
+  },
+  {
+   "name": "negative rejection in retrieval-augmented generation",
+   "display_name": "negative rejection in retrieval-augmented generation"
+  },
+  {
+   "name": "noise robustness in retrieval-augmented generation",
+   "display_name": "noise robustness in retrieval-augmented generation"
+  },
+  {
+   "name": "on-demand retrieval in llms",
+   "display_name": "on-demand retrieval in LLMs"
+  },
+  {
+   "name": "open-domain question answering",
+   "display_name": "open-domain question answering"
+  },
+  {
+   "name": "pretrained language models",
+   "display_name": "pretrained language models"
+  },
+  {
+   "name": "rag framework for academic literature navigation",
+   "display_name": "rag framework for academic literature navigation"
+  },
+  {
+   "name": "ragas framework",
+   "display_name": "ragas framework"
+  },
+  {
+   "name": "referee model selection",
+   "display_name": "referee model selection"
+  },
+  {
+   "name": "reflection tokens",
+   "display_name": "reflection tokens"
+  },
+  {
+   "name": "relation extraction",
+   "display_name": "relation extraction"
+  },
+  {
+   "name": "retrieval augmented generation",
+   "display_name": "retrieval augmented generation"
+  },
+  {
+   "name": "retrieval models",
+   "display_name": "retrieval models"
+  },
+  {
+   "name": "retrieval-augmented generation",
+   "display_name": "retrieval-augmented generation"
+  },
+  {
+   "name": "retrieval-augmented generation (rag)",
+   "display_name": "retrieval-augmented generation (rag)"
+  },
+  {
+   "name": "retrieval-augmented generation models",
+   "display_name": "retrieval-augmented generation models"
+  },
+  {
+   "name": "self-correction for inaccurate retrieval",
+   "display_name": "self-correction for inaccurate retrieval"
+  },
+  {
+   "name": "self-critique mechanism",
+   "display_name": "self-critique mechanism"
+  },
+  {
+   "name": "self-reflective retrieval-augmented generation (self-rag)",
+   "display_name": "self-reflective retrieval-augmented generation (SELF-RAG)"
+  },
+  {
+   "name": "semantic pruning and structured subgraph retrieval",
+   "display_name": "semantic pruning and structured subgraph retrieval"
+  },
+  {
+   "name": "semantic similarity",
+   "display_name": "semantic similarity"
+  },
+  {
+   "name": "soft prompts for rag",
+   "display_name": "soft prompts for rag"
+  },
+  {
+   "name": "two-stage reinforcement fine-tuning",
+   "display_name": "two-stage reinforcement fine-tuning"
+  },
+  {
+   "name": "vector databases",
+   "display_name": "vector databases"
+  }
+ ],
+ "concept_edges": [
+  {
+   "paper_id": "2309.01431v2",
+   "rel": "TEACHES",
+   "concept": "counterfactual robustness in retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2309.01431v2",
+   "rel": "TEACHES",
+   "concept": "information integration in retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2309.01431v2",
+   "rel": "TEACHES",
+   "concept": "negative rejection in retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2309.01431v2",
+   "rel": "TEACHES",
+   "concept": "noise robustness in retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2309.01431v2",
+   "rel": "REQUIRES",
+   "concept": "information retrieval"
+  },
+  {
+   "paper_id": "2309.01431v2",
+   "rel": "REQUIRES",
+   "concept": "large language models"
+  },
+  {
+   "paper_id": "2309.01431v2",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2310.11511v1",
+   "rel": "TEACHES",
+   "concept": "on-demand retrieval in llms"
+  },
+  {
+   "paper_id": "2310.11511v1",
+   "rel": "TEACHES",
+   "concept": "reflection tokens"
+  },
+  {
+   "paper_id": "2310.11511v1",
+   "rel": "TEACHES",
+   "concept": "self-critique mechanism"
+  },
+  {
+   "paper_id": "2310.11511v1",
+   "rel": "TEACHES",
+   "concept": "self-reflective retrieval-augmented generation (self-rag)"
+  },
+  {
+   "paper_id": "2310.11511v1",
+   "rel": "REQUIRES",
+   "concept": "factual errors in llms"
+  },
+  {
+   "paper_id": "2310.11511v1",
+   "rel": "REQUIRES",
+   "concept": "large language models (llms)"
+  },
+  {
+   "paper_id": "2310.11511v1",
+   "rel": "REQUIRES",
+   "concept": "retrieval models"
+  },
+  {
+   "paper_id": "2310.11511v1",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation (rag)"
+  },
+  {
+   "paper_id": "2401.15884v3",
+   "rel": "TEACHES",
+   "concept": "corrective retrieval-augmented generation (crag)"
+  },
+  {
+   "paper_id": "2401.15884v3",
+   "rel": "TEACHES",
+   "concept": "self-correction for inaccurate retrieval"
+  },
+  {
+   "paper_id": "2401.15884v3",
+   "rel": "REQUIRES",
+   "concept": "large language models (llms)"
+  },
+  {
+   "paper_id": "2401.15884v3",
+   "rel": "REQUIRES",
+   "concept": "llm hallucinations"
+  },
+  {
+   "paper_id": "2401.15884v3",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation (rag)"
+  },
+  {
+   "paper_id": "2402.11626v1",
+   "rel": "TEACHES",
+   "concept": "limitations of multi-time rag"
+  },
+  {
+   "paper_id": "2402.11626v1",
+   "rel": "TEACHES",
+   "concept": "metacognition (for llms)"
+  },
+  {
+   "paper_id": "2402.11626v1",
+   "rel": "TEACHES",
+   "concept": "metacognitive retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2402.11626v1",
+   "rel": "REQUIRES",
+   "concept": "large language models (llms)"
+  },
+  {
+   "paper_id": "2402.11626v1",
+   "rel": "REQUIRES",
+   "concept": "llm hallucination"
+  },
+  {
+   "paper_id": "2402.11626v1",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation (rag)"
+  },
+  {
+   "paper_id": "2403.14197v1",
+   "rel": "TEACHES",
+   "concept": "definition of context quantity and quality for retrieval-augmented models"
+  },
+  {
+   "paper_id": "2403.14197v1",
+   "rel": "TEACHES",
+   "concept": "extractive open-domain question answering"
+  },
+  {
+   "paper_id": "2403.14197v1",
+   "rel": "TEACHES",
+   "concept": "impact of context quality on fusion-in-decoder training"
+  },
+  {
+   "paper_id": "2403.14197v1",
+   "rel": "REQUIRES",
+   "concept": "information retrieval systems"
+  },
+  {
+   "paper_id": "2403.14197v1",
+   "rel": "REQUIRES",
+   "concept": "large language models"
+  },
+  {
+   "paper_id": "2403.14197v1",
+   "rel": "REQUIRES",
+   "concept": "natural language generation"
+  },
+  {
+   "paper_id": "2403.14197v1",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation models"
+  },
+  {
+   "paper_id": "2405.13002v1",
+   "rel": "TEACHES",
+   "concept": "collaborative retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2405.13002v1",
+   "rel": "TEACHES",
+   "concept": "duetrag framework"
+  },
+  {
+   "paper_id": "2405.13002v1",
+   "rel": "TEACHES",
+   "concept": "enhancing rag robustness"
+  },
+  {
+   "paper_id": "2405.13002v1",
+   "rel": "TEACHES",
+   "concept": "referee model selection"
+  },
+  {
+   "paper_id": "2405.13002v1",
+   "rel": "REQUIRES",
+   "concept": "catastrophic forgetting"
+  },
+  {
+   "paper_id": "2405.13002v1",
+   "rel": "REQUIRES",
+   "concept": "fine-tuning (llms)"
+  },
+  {
+   "paper_id": "2405.13002v1",
+   "rel": "REQUIRES",
+   "concept": "large language models"
+  },
+  {
+   "paper_id": "2405.13002v1",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2405.19893v1",
+   "rel": "TEACHES",
+   "concept": "limitations of similarity-based rag"
+  },
+  {
+   "paper_id": "2405.19893v1",
+   "rel": "TEACHES",
+   "concept": "multi-layered thoughts for rag"
+  },
+  {
+   "paper_id": "2405.19893v1",
+   "rel": "REQUIRES",
+   "concept": "large language models"
+  },
+  {
+   "paper_id": "2405.19893v1",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2405.19893v1",
+   "rel": "REQUIRES",
+   "concept": "semantic similarity"
+  },
+  {
+   "paper_id": "2406.03790v2",
+   "rel": "TEACHES",
+   "concept": "differentiable instance selection"
+  },
+  {
+   "paper_id": "2406.03790v2",
+   "rel": "TEACHES",
+   "concept": "etrag"
+  },
+  {
+   "paper_id": "2406.03790v2",
+   "rel": "TEACHES",
+   "concept": "soft prompts for rag"
+  },
+  {
+   "paper_id": "2406.03790v2",
+   "rel": "REQUIRES",
+   "concept": "deep learning"
+  },
+  {
+   "paper_id": "2406.03790v2",
+   "rel": "REQUIRES",
+   "concept": "pretrained language models"
+  },
+  {
+   "paper_id": "2406.03790v2",
+   "rel": "REQUIRES",
+   "concept": "relation extraction"
+  },
+  {
+   "paper_id": "2406.03790v2",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2408.08535v1",
+   "rel": "TEACHES",
+   "concept": "advanced retrieval-augmented generation in fact-checking"
+  },
+  {
+   "paper_id": "2408.08535v1",
+   "rel": "TEACHES",
+   "concept": "communitykg-rag"
+  },
+  {
+   "paper_id": "2408.08535v1",
+   "rel": "TEACHES",
+   "concept": "leveraging knowledge graph community structures"
+  },
+  {
+   "paper_id": "2408.08535v1",
+   "rel": "REQUIRES",
+   "concept": "fact-checking"
+  },
+  {
+   "paper_id": "2408.08535v1",
+   "rel": "REQUIRES",
+   "concept": "knowledge graphs"
+  },
+  {
+   "paper_id": "2408.08535v1",
+   "rel": "REQUIRES",
+   "concept": "large language models"
+  },
+  {
+   "paper_id": "2408.08535v1",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2409.01864v1",
+   "rel": "TEACHES",
+   "concept": "llm applications in musicology"
+  },
+  {
+   "paper_id": "2409.01864v1",
+   "rel": "TEACHES",
+   "concept": "llm challenges in musicology"
+  },
+  {
+   "paper_id": "2409.01864v1",
+   "rel": "TEACHES",
+   "concept": "llm hallucinations in humanities research"
+  },
+  {
+   "paper_id": "2409.01864v1",
+   "rel": "REQUIRES",
+   "concept": "large language models"
+  },
+  {
+   "paper_id": "2409.01864v1",
+   "rel": "REQUIRES",
+   "concept": "musicology"
+  },
+  {
+   "paper_id": "2409.01864v1",
+   "rel": "REQUIRES",
+   "concept": "natural language processing"
+  },
+  {
+   "paper_id": "2411.00437v2",
+   "rel": "TEACHES",
+   "concept": "adaptive context filtering"
+  },
+  {
+   "paper_id": "2411.00437v2",
+   "rel": "TEACHES",
+   "concept": "answer existence judgment"
+  },
+  {
+   "paper_id": "2411.00437v2",
+   "rel": "TEACHES",
+   "concept": "end-to-end retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2411.00437v2",
+   "rel": "REQUIRES",
+   "concept": "large language models"
+  },
+  {
+   "paper_id": "2411.00437v2",
+   "rel": "REQUIRES",
+   "concept": "llm hallucinations"
+  },
+  {
+   "paper_id": "2411.00437v2",
+   "rel": "REQUIRES",
+   "concept": "open-domain question answering"
+  },
+  {
+   "paper_id": "2411.00437v2",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2412.15404v1",
+   "rel": "TEACHES",
+   "concept": "improving data science literature access with rag"
+  },
+  {
+   "paper_id": "2412.15404v1",
+   "rel": "TEACHES",
+   "concept": "llm hallucination mitigation using rag"
+  },
+  {
+   "paper_id": "2412.15404v1",
+   "rel": "TEACHES",
+   "concept": "rag framework for academic literature navigation"
+  },
+  {
+   "paper_id": "2412.15404v1",
+   "rel": "REQUIRES",
+   "concept": "data science"
+  },
+  {
+   "paper_id": "2412.15404v1",
+   "rel": "REQUIRES",
+   "concept": "generative artificial intelligence"
+  },
+  {
+   "paper_id": "2412.15404v1",
+   "rel": "REQUIRES",
+   "concept": "large language models"
+  },
+  {
+   "paper_id": "2412.15404v1",
+   "rel": "REQUIRES",
+   "concept": "llm hallucinations"
+  },
+  {
+   "paper_id": "2501.11929v1",
+   "rel": "TEACHES",
+   "concept": "aloftrag framework"
+  },
+  {
+   "paper_id": "2501.11929v1",
+   "rel": "TEACHES",
+   "concept": "automatic local fine-tuning for rag"
+  },
+  {
+   "paper_id": "2501.11929v1",
+   "rel": "REQUIRES",
+   "concept": "fine-tuning"
+  },
+  {
+   "paper_id": "2501.11929v1",
+   "rel": "REQUIRES",
+   "concept": "large language models"
+  },
+  {
+   "paper_id": "2501.11929v1",
+   "rel": "REQUIRES",
+   "concept": "retrieval augmented generation"
+  },
+  {
+   "paper_id": "2502.01113v3",
+   "rel": "TEACHES",
+   "concept": "gfm-rag"
+  },
+  {
+   "paper_id": "2502.01113v3",
+   "rel": "TEACHES",
+   "concept": "graph foundation model (gfm)"
+  },
+  {
+   "paper_id": "2502.01113v3",
+   "rel": "TEACHES",
+   "concept": "graph-enhanced retrieval"
+  },
+  {
+   "paper_id": "2502.01113v3",
+   "rel": "REQUIRES",
+   "concept": "graph neural networks (gnns)"
+  },
+  {
+   "paper_id": "2502.01113v3",
+   "rel": "REQUIRES",
+   "concept": "large language models (llms)"
+  },
+  {
+   "paper_id": "2502.01113v3",
+   "rel": "REQUIRES",
+   "concept": "multi-hop reasoning"
+  },
+  {
+   "paper_id": "2502.01113v3",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation (rag)"
+  },
+  {
+   "paper_id": "2509.10467v1",
+   "rel": "TEACHES",
+   "concept": "dsrag framework"
+  },
+  {
+   "paper_id": "2509.10467v1",
+   "rel": "TEACHES",
+   "concept": "multimodal knowledge graph construction from documents"
+  },
+  {
+   "paper_id": "2509.10467v1",
+   "rel": "TEACHES",
+   "concept": "semantic pruning and structured subgraph retrieval"
+  },
+  {
+   "paper_id": "2509.10467v1",
+   "rel": "REQUIRES",
+   "concept": "domain-specific tasks"
+  },
+  {
+   "paper_id": "2509.10467v1",
+   "rel": "REQUIRES",
+   "concept": "knowledge graphs"
+  },
+  {
+   "paper_id": "2509.10467v1",
+   "rel": "REQUIRES",
+   "concept": "large language models (llms)"
+  },
+  {
+   "paper_id": "2509.10467v1",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation (rag)"
+  },
+  {
+   "paper_id": "2512.17194v1",
+   "rel": "TEACHES",
+   "concept": "explainable multi-modal retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2512.17194v1",
+   "rel": "TEACHES",
+   "concept": "two-stage reinforcement fine-tuning"
+  },
+  {
+   "paper_id": "2512.17194v1",
+   "rel": "REQUIRES",
+   "concept": "large language model hallucinations"
+  },
+  {
+   "paper_id": "2512.17194v1",
+   "rel": "REQUIRES",
+   "concept": "multi-modal large language models"
+  },
+  {
+   "paper_id": "2512.17194v1",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2603.04647v1",
+   "rel": "TEACHES",
+   "concept": "coordinated semantic alignment"
+  },
+  {
+   "paper_id": "2603.04647v1",
+   "rel": "TEACHES",
+   "concept": "evidence constraints"
+  },
+  {
+   "paper_id": "2603.04647v1",
+   "rel": "REQUIRES",
+   "concept": "factual consistency"
+  },
+  {
+   "paper_id": "2603.04647v1",
+   "rel": "REQUIRES",
+   "concept": "large language models"
+  },
+  {
+   "paper_id": "2603.04647v1",
+   "rel": "REQUIRES",
+   "concept": "retrieval augmented generation"
+  },
+  {
+   "paper_id": "2604.18509v2",
+   "rel": "TEACHES",
+   "concept": "mass-rag framework"
+  },
+  {
+   "paper_id": "2604.18509v2",
+   "rel": "TEACHES",
+   "concept": "multi-agent evidence synthesis"
+  },
+  {
+   "paper_id": "2604.18509v2",
+   "rel": "REQUIRES",
+   "concept": "agent-based systems"
+  },
+  {
+   "paper_id": "2604.18509v2",
+   "rel": "REQUIRES",
+   "concept": "large language models"
+  },
+  {
+   "paper_id": "2604.18509v2",
+   "rel": "REQUIRES",
+   "concept": "llm hallucination"
+  },
+  {
+   "paper_id": "2604.18509v2",
+   "rel": "REQUIRES",
+   "concept": "retrieval-augmented generation"
+  },
+  {
+   "paper_id": "2607.01852v1",
+   "rel": "TEACHES",
+   "concept": "answer quality score (aqs)"
+  },
+  {
+   "paper_id": "2607.01852v1",
+   "rel": "TEACHES",
+   "concept": "chunking strategies"
+  },
+  {
+   "paper_id": "2607.01852v1",
+   "rel": "TEACHES",
+   "concept": "retrieval-augmented generation (rag)"
+  },
+  {
+   "paper_id": "2607.01852v1",
+   "rel": "REQUIRES",
+   "concept": "embedding models"
+  },
+  {
+   "paper_id": "2607.01852v1",
+   "rel": "REQUIRES",
+   "concept": "large language models (llms)"
+  },
+  {
+   "paper_id": "2607.01852v1",
+   "rel": "REQUIRES",
+   "concept": "ragas framework"
+  },
+  {
+   "paper_id": "2607.01852v1",
+   "rel": "REQUIRES",
+   "concept": "vector databases"
+  }
+ ],
+ "cites": [
+  [
+   "2309.01431v2",
+   "2112.04426"
+  ],
+  [
+   "2309.01431v2",
+   "2208.03299"
+  ],
+  [
+   "2309.01431v2",
+   "2301.00303"
+  ],
+  [
+   "2309.01431v2",
+   "2301.07597"
+  ],
+  [
+   "2309.01431v2",
+   "2301.12652"
+  ],
+  [
+   "2309.01431v2",
+   "2302.04023"
+  ],
+  [
+   "2309.01431v2",
+   "2302.12813"
+  ],
+  [
+   "2309.01431v2",
+   "2304.06364"
+  ],
+  [
+   "2309.01431v2",
+   "2304.08979"
+  ],
+  [
+   "2309.01431v2",
+   "2304.09848"
+  ],
+  [
+   "2309.01431v2",
+   "2304.14732"
+  ],
+  [
+   "2309.01431v2",
+   "2305.04812"
+  ],
+  [
+   "2309.01431v2",
+   "2305.05862"
+  ],
+  [
+   "2309.01431v2",
+   "2305.08322"
+  ],
+  [
+   "2309.01431v2",
+   "2306.16092"
+  ],
+  [
+   "2309.01431v2",
+   "2307.03109"
+  ],
+  [
+   "2309.01431v2",
+   "2307.09705"
+  ],
+  [
+   "2309.01431v2",
+   "2307.11019"
+  ],
+  [
+   "2309.01431v2",
+   "2307.16789"
+  ],
+  [
+   "2309.01431v2",
+   "2307.16877"
+  ],
+  [
+   "2310.11511v1",
+   "1707.06347"
+  ],
+  [
+   "2310.11511v1",
+   "1803.05457"
+  ],
+  [
+   "2310.11511v1",
+   "1909.05858"
+  ],
+  [
+   "2310.11511v1",
+   "1909.08593"
+  ],
+  [
+   "2310.11511v1",
+   "2112.09332"
+  ],
+  [
+   "2310.11511v1",
+   "2203.11147"
+  ],
+  [
+   "2310.11511v1",
+   "2208.03299"
+  ],
+  [
+   "2310.11511v1",
+   "2212.08037"
+  ],
+  [
+   "2310.11511v1",
+   "2302.00083"
+  ],
+  [
+   "2310.11511v1",
+   "2302.04761"
+  ],
+  [
+   "2310.11511v1",
+   "2303.08774"
+  ],
+  [
+   "2310.11511v1",
+   "2303.16634"
+  ],
+  [
+   "2310.11511v1",
+   "2303.17651"
+  ],
+  [
+   "2310.11511v1",
+   "2304.01904"
+  ],
+  [
+   "2310.11511v1",
+   "2304.03728"
+  ],
+  [
+   "2310.11511v1",
+   "2304.09848"
+  ],
+  [
+   "2310.11511v1",
+   "2305.00633"
+  ],
+  [
+   "2310.11511v1",
+   "2305.06311"
+  ],
+  [
+   "2310.11511v1",
+   "2305.06983"
+  ],
+  [
+   "2310.11511v1",
+   "2305.14251"
+  ],
+  [
+   "2401.15884v3",
+   "2102.03315"
+  ],
+  [
+   "2401.15884v3",
+   "2112.09924"
+  ],
+  [
+   "2401.15884v3",
+   "2202.01110"
+  ],
+  [
+   "2401.15884v3",
+   "2302.10198"
+  ],
+  [
+   "2401.15884v3",
+   "2302.13971"
+  ],
+  [
+   "2401.15884v3",
+   "2303.08774"
+  ],
+  [
+   "2401.15884v3",
+   "2304.03728"
+  ],
+  [
+   "2401.15884v3",
+   "2305.10403"
+  ],
+  [
+   "2401.15884v3",
+   "2305.14387"
+  ],
+  [
+   "2401.15884v3",
+   "2307.06908"
+  ],
+  [
+   "2401.15884v3",
+   "2307.09288"
+  ],
+  [
+   "2401.15884v3",
+   "2309.01219"
+  ],
+  [
+   "2401.15884v3",
+   "2401.01313"
+  ],
+  [
+   "2401.15884v3",
+   "2403.05313"
+  ],
+  [
+   "2401.15884v3",
+   "2403.10131"
+  ],
+  [
+   "2402.11626v1",
+   "1809.09600"
+  ],
+  [
+   "2402.11626v1",
+   "2002.08909"
+  ],
+  [
+   "2402.11626v1",
+   "2112.09332"
+  ],
+  [
+   "2402.11626v1",
+   "2208.03299"
+  ],
+  [
+   "2402.11626v1",
+   "2210.03350"
+  ],
+  [
+   "2402.11626v1",
+   "2210.03629"
+  ],
+  [
+   "2402.11626v1",
+   "2212.03533"
+  ],
+  [
+   "2402.11626v1",
+   "2212.14024"
+  ],
+  [
+   "2402.11626v1",
+   "2301.12652"
+  ],
+  [
+   "2402.11626v1",
+   "2302.00083"
+  ],
+  [
+   "2402.11626v1",
+   "2303.11366"
+  ],
+  [
+   "2402.11626v1",
+   "2305.06983"
+  ],
+  [
+   "2402.11626v1",
+   "2305.15294"
+  ],
+  [
+   "2402.11626v1",
+   "2307.09288"
+  ],
+  [
+   "2402.11626v1",
+   "2308.05342"
+  ],
+  [
+   "2402.11626v1",
+   "2312.11036"
+  ],
+  [
+   "2403.14197v1",
+   "2203.05115"
+  ],
+  [
+   "2403.14197v1",
+   "2207.13332"
+  ],
+  [
+   "2403.14197v1",
+   "2208.03299"
+  ],
+  [
+   "2403.14197v1",
+   "2209.14290"
+  ],
+  [
+   "2403.14197v1",
+   "2211.05110"
+  ],
+  [
+   "2403.14197v1",
+   "2212.10002"
+  ],
+  [
+   "2403.14197v1",
+   "2307.03172"
+  ],
+  [
+   "2405.13002v1",
+   "1809.09600"
+  ],
+  [
+   "2405.13002v1",
+   "2208.03299"
+  ],
+  [
+   "2405.13002v1",
+   "2301.12652"
+  ],
+  [
+   "2405.13002v1",
+   "2303.08774"
+  ],
+  [
+   "2405.13002v1",
+   "2305.14325"
+  ],
+  [
+   "2405.13002v1",
+   "2305.19118"
+  ],
+  [
+   "2405.13002v1",
+   "2307.09288"
+  ],
+  [
+   "2405.13002v1",
+   "2309.01219"
+  ],
+  [
+   "2405.13002v1",
+   "2310.00280"
+  ],
+  [
+   "2405.13002v1",
+   "2310.01352"
+  ],
+  [
+   "2405.13002v1",
+   "2310.07713"
+  ],
+  [
+   "2405.13002v1",
+   "2401.10225"
+  ],
+  [
+   "2405.13002v1",
+   "2403.10131"
+  ],
+  [
+   "2405.19893v1",
+   "2207.13332"
+  ],
+  [
+   "2405.19893v1",
+   "2211.09699"
+  ],
+  [
+   "2405.19893v1",
+   "2301.12652"
+  ],
+  [
+   "2405.19893v1",
+   "2302.00083"
+  ],
+  [
+   "2405.19893v1",
+   "2303.08774"
+  ],
+  [
+   "2405.19893v1",
+   "2303.18223"
+  ],
+  [
+   "2405.19893v1",
+   "2305.16635"
+  ],
+  [
+   "2405.19893v1",
+   "2305.18290"
+  ],
+  [
+   "2405.19893v1",
+   "2307.09288"
+  ],
+  [
+   "2405.19893v1",
+   "2309.10305"
+  ],
+  [
+   "2405.19893v1",
+   "2309.16609"
+  ],
+  [
+   "2405.19893v1",
+   "2310.04408"
+  ],
+  [
+   "2405.19893v1",
+   "2310.11511v1"
+  ],
+  [
+   "2405.19893v1",
+   "2312.10997"
+  ],
+  [
+   "2408.08535v1",
+   "1810.04805"
+  ],
+  [
+   "2408.08535v1",
+   "2010.00309"
+  ],
+  [
+   "2408.08535v1",
+   "2201.08860"
+  ],
+  [
+   "2408.08535v1",
+   "2302.13971"
+  ],
+  [
+   "2408.08535v1",
+   "2305.14623"
+  ],
+  [
+   "2408.08535v1",
+   "2305.16128"
+  ],
+  [
+   "2408.08535v1",
+   "2306.04136"
+  ],
+  [
+   "2408.08535v1",
+   "2306.08190"
+  ],
+  [
+   "2408.08535v1",
+   "2307.03172"
+  ],
+  [
+   "2408.08535v1",
+   "2310.05002"
+  ],
+  [
+   "2408.08535v1",
+   "2310.05046"
+  ],
+  [
+   "2408.08535v1",
+   "2311.07509"
+  ],
+  [
+   "2408.08535v1",
+   "2401.05856"
+  ],
+  [
+   "2409.01864v1",
+   "2101.00027"
+  ],
+  [
+   "2409.01864v1",
+   "2112.04359"
+  ],
+  [
+   "2409.01864v1",
+   "2203.15556"
+  ],
+  [
+   "2409.01864v1",
+   "2303.08774"
+  ],
+  [
+   "2409.01864v1",
+   "2309.11495"
+  ],
+  [
+   "2409.01864v1",
+   "2309.16609"
+  ],
+  [
+   "2409.01864v1",
+   "2310.11511v1"
+  ],
+  [
+   "2409.01864v1",
+   "2401.04088"
+  ],
+  [
+   "2409.01864v1",
+   "2401.10225"
+  ],
+  [
+   "2409.01864v1",
+   "2401.15884v3"
+  ],
+  [
+   "2409.01864v1",
+   "2402.06196"
+  ],
+  [
+   "2409.01864v1",
+   "2403.14403"
+  ],
+  [
+   "2409.01864v1",
+   "2404.14219"
+  ],
+  [
+   "2409.01864v1",
+   "2406.19314"
+  ],
+  [
+   "2411.00437v2",
+   "1901.04085"
+  ],
+  [
+   "2411.00437v2",
+   "1904.07531"
+  ],
+  [
+   "2411.00437v2",
+   "2010.12527"
+  ],
+  [
+   "2411.00437v2",
+   "2104.10129"
+  ],
+  [
+   "2411.00437v2",
+   "2301.12652"
+  ],
+  [
+   "2411.00437v2",
+   "2303.07678"
+  ],
+  [
+   "2411.00437v2",
+   "2305.15225"
+  ],
+  [
+   "2411.00437v2",
+   "2311.08377"
+  ],
+  [
+   "2411.00437v2",
+   "2312.11805"
+  ],
+  [
+   "2411.00437v2",
+   "2406.13213"
+  ],
+  [
+   "2412.15404v1",
+   "1802.01168"
+  ],
+  [
+   "2412.15404v1",
+   "2007.01282"
+  ],
+  [
+   "2412.15404v1",
+   "2210.00881"
+  ],
+  [
+   "2412.15404v1",
+   "2305.14627"
+  ],
+  [
+   "2412.15404v1",
+   "2306.11644"
+  ],
+  [
+   "2412.15404v1",
+   "2307.11760"
+  ],
+  [
+   "2412.15404v1",
+   "2309.15217"
+  ],
+  [
+   "2412.15404v1",
+   "2309.16035"
+  ],
+  [
+   "2412.15404v1",
+   "2310.03184"
+  ],
+  [
+   "2412.15404v1",
+   "2310.20158"
+  ],
+  [
+   "2412.15404v1",
+   "2311.04310"
+  ],
+  [
+   "2412.15404v1",
+   "2311.09860"
+  ],
+  [
+   "2412.15404v1",
+   "2401.03729"
+  ],
+  [
+   "2412.15404v1",
+   "2402.01788"
+  ],
+  [
+   "2412.15404v1",
+   "2404.11792"
+  ],
+  [
+   "2412.15404v1",
+   "2407.03192"
+  ],
+  [
+   "2412.15404v1",
+   "2407.15353"
+  ],
+  [
+   "2412.15404v1",
+   "2408.04187"
+  ],
+  [
+   "2501.11929v1",
+   "1503.02531"
+  ],
+  [
+   "2501.11929v1",
+   "1806.00920"
+  ],
+  [
+   "2501.11929v1",
+   "1909.07005"
+  ],
+  [
+   "2501.11929v1",
+   "1910.07475"
+  ],
+  [
+   "2501.11929v1",
+   "1910.11856"
+  ],
+  [
+   "2501.11929v1",
+   "2104.07567"
+  ],
+  [
+   "2501.11929v1",
+   "2104.12741"
+  ],
+  [
+   "2501.11929v1",
+   "2106.09685"
+  ],
+  [
+   "2501.11929v1",
+   "2210.02928"
+  ],
+  [
+   "2501.11929v1",
+   "2212.10560"
+  ],
+  [
+   "2501.11929v1",
+   "2305.14483"
+  ],
+  [
+   "2501.11929v1",
+   "2308.06259"
+  ],
+  [
+   "2501.11929v1",
+   "2312.10997"
+  ],
+  [
+   "2501.11929v1",
+   "2401.07883"
+  ],
+  [
+   "2501.11929v1",
+   "2402.03216"
+  ],
+  [
+   "2501.11929v1",
+   "2402.07483"
+  ],
+  [
+   "2501.11929v1",
+   "2403.10131"
+  ],
+  [
+   "2501.11929v1",
+   "2406.04744"
+  ],
+  [
+   "2501.11929v1",
+   "2406.14773"
+  ],
+  [
+   "2501.11929v1",
+   "2406.17761"
+  ],
+  [
+   "2502.01113v3",
+   "1712.00409"
+  ],
+  [
+   "2502.01113v3",
+   "2001.08361"
+  ],
+  [
+   "2502.01113v3",
+   "2210.09984"
+  ],
+  [
+   "2502.01113v3",
+   "2307.16883"
+  ],
+  [
+   "2502.01113v3",
+   "2308.03281"
+  ],
+  [
+   "2502.01113v3",
+   "2309.07852"
+  ],
+  [
+   "2502.01113v3",
+   "2312.10997"
+  ],
+  [
+   "2502.01113v3",
+   "2403.01121"
+  ],
+  [
+   "2502.01113v3",
+   "2404.16130"
+  ],
+  [
+   "2502.01113v3",
+   "2405.17428"
+  ],
+  [
+   "2502.01113v3",
+   "2405.18414"
+  ],
+  [
+   "2502.01113v3",
+   "2405.20139"
+  ],
+  [
+   "2502.01113v3",
+   "2406.13217"
+  ],
+  [
+   "2502.01113v3",
+   "2407.10671"
+  ],
+  [
+   "2502.01113v3",
+   "2407.11005"
+  ],
+  [
+   "2502.01113v3",
+   "2407.15831"
+  ],
+  [
+   "2502.01113v3",
+   "2408.08921"
+  ],
+  [
+   "2502.01113v3",
+   "2409.13731"
+  ],
+  [
+   "2502.01113v3",
+   "2501.00309"
+  ],
+  [
+   "2509.10467v1",
+   "2408.08921"
+  ],
+  [
+   "2509.10467v1",
+   "2505.17058"
+  ],
+  [
+   "2512.17194v1",
+   "1604.06174"
+  ],
+  [
+   "2512.17194v1",
+   "1910.13461"
+  ],
+  [
+   "2512.17194v1",
+   "2104.06039"
+  ],
+  [
+   "2512.17194v1",
+   "2210.02928"
+  ],
+  [
+   "2512.17194v1",
+   "2303.08774"
+  ],
+  [
+   "2512.17194v1",
+   "2310.09696"
+  ],
+  [
+   "2512.17194v1",
+   "2402.03300"
+  ],
+  [
+   "2512.17194v1",
+   "2412.16720"
+  ],
+  [
+   "2512.17194v1",
+   "2501.12948"
+  ],
+  [
+   "2512.17194v1",
+   "2501.13297"
+  ],
+  [
+   "2512.17194v1",
+   "2502.13923"
+  ],
+  [
+   "2512.17194v1",
+   "2503.01785"
+  ],
+  [
+   "2512.17194v1",
+   "2504.07615"
+  ],
+  [
+   "2512.17194v1",
+   "2504.08269"
+  ],
+  [
+   "2512.17194v1",
+   "2504.08758"
+  ],
+  [
+   "2603.04647v1",
+   "2311.04177"
+  ],
+  [
+   "2603.04647v1",
+   "2402.07483"
+  ],
+  [
+   "2603.04647v1",
+   "2406.11147"
+  ],
+  [
+   "2603.04647v1",
+   "2408.01107"
+  ],
+  [
+   "2603.04647v1",
+   "2412.20927"
+  ],
+  [
+   "2603.04647v1",
+   "2503.00353"
+  ],
+  [
+   "2603.04647v1",
+   "2504.04915"
+  ],
+  [
+   "2603.04647v1",
+   "2510.01231"
+  ],
+  [
+   "2603.04647v1",
+   "2511.01149"
+  ],
+  [
+   "2603.04647v1",
+   "2511.03981"
+  ],
+  [
+   "2603.04647v1",
+   "2511.05752"
+  ],
+  [
+   "2603.04647v1",
+   "2512.06711"
+  ],
+  [
+   "2603.04647v1",
+   "2512.09440"
+  ],
+  [
+   "2603.04647v1",
+   "2512.09444"
+  ],
+  [
+   "2603.04647v1",
+   "2512.13980"
+  ],
+  [
+   "2604.18509v2",
+   "1704.00051"
+  ],
+  [
+   "2604.18509v2",
+   "1705.03551"
+  ],
+  [
+   "2604.18509v2",
+   "1803.05457"
+  ],
+  [
+   "2604.18509v2",
+   "2005.11401"
+  ],
+  [
+   "2604.18509v2",
+   "2005.14165"
+  ],
+  [
+   "2604.18509v2",
+   "2112.04426"
+  ],
+  [
+   "2604.18509v2",
+   "2112.09118"
+  ],
+  [
+   "2604.18509v2",
+   "2202.05262"
+  ],
+  [
+   "2604.18509v2",
+   "2204.06092"
+  ],
+  [
+   "2604.18509v2",
+   "2206.07682"
+  ],
+  [
+   "2604.18509v2",
+   "2207.06300"
+  ],
+  [
+   "2604.18509v2",
+   "2208.03299"
+  ],
+  [
+   "2604.18509v2",
+   "2212.10511"
+  ],
+  [
+   "2604.18509v2",
+   "2301.12652"
+  ],
+  [
+   "2604.18509v2",
+   "2302.00083"
+  ],
+  [
+   "2604.18509v2",
+   "2303.08774"
+  ],
+  [
+   "2604.18509v2",
+   "2305.14283"
+  ],
+  [
+   "2604.18509v2",
+   "2305.14627"
+  ],
+  [
+   "2604.18509v2",
+   "2307.03172"
+  ],
+  [
+   "2604.18509v2",
+   "2307.09288"
+  ],
+  [
+   "2607.01852v1",
+   "2312.10997"
+  ],
+  [
+   "2607.01852v1",
+   "2409.04701"
+  ]
+ ]
+}

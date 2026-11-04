@@ -1,0 +1,245 @@
+{
+ "question": "What should I read before Self-RAG?”",
+ "provider": "gemini",
+ "model": "gemini-3.5-flash-lite",
+ "recorded_at": "2026-11-04T15:03:11Z",
+ "events": [
+  {
+   "t": 17553,
+   "event": "delta",
+   "data": {
+    "text": "**"
+   }
+  },
+  {
+   "t": 17555,
+   "event": "delta",
+   "data": {
+    "text": "Plan:**\n1. Delegate to the **Sequencer** to determine the prerequisite reading order and"
+   }
+  },
+  {
+   "t": 17560,
+   "event": "delta",
+   "data": {
+    "text": " papers for \"Self-RAG\" using the concept-dependency graph.\n2. Formulate a structured and faithful"
+   }
+  },
+  {
+   "t": 17562,
+   "event": "delta",
+   "data": {
+    "text": " response based on the Sequencer's output, preserving any partial findings or external/in-corpus distinctions.\n\nLet"
+   }
+  },
+  {
+   "t": 17617,
+   "event": "delta",
+   "data": {
+    "text": "'s delegate the task to the Sequencer."
+   }
+  },
+  {
+   "t": 17784,
+   "event": "step",
+   "data": {
+    "kind": "plan",
+    "glyph": "◆",
+    "color": "var(--blue)",
+    "title": "Team leader delegates to sequencer",
+    "body": "Determine the prerequisite reading order and papers for the paper/concept 'Self-RAG' using the concept-dependency graph. Provide the ordered list of prerequisites and note any distinctions between in-corpus papers and external/missing prerequisites.",
+    "ms": "",
+    "detailLabel": "DELEGATION",
+    "detail": [
+     "delegate_task_to_member(member_id=\"sequencer\", task=\"Determine the prerequisite reading order and papers for the paper/concept 'Self-RAG' using the concept-dependency graph. Provide the ordered list of prerequisites and note any distinctions between in-corpus papers and external/missing prerequisites.\")"
+    ]
+   }
+  },
+  {
+   "t": 36815,
+   "event": "step",
+   "data": {
+    "kind": "retrieve",
+    "glyph": "⬡",
+    "color": "var(--blue)",
+    "title": "Knowledge graph · find_papers · Sequencer",
+    "body": "Graph lookup returned 1 result(s).",
+    "ms": "0.02s",
+    "detailLabel": "GRAPH RESULT",
+    "detail": [
+     "2310.11511v1 · Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection"
+    ],
+    "query": "Self-RAG"
+   }
+  },
+  {
+   "t": 54649,
+   "event": "step",
+   "data": {
+    "kind": "retrieve",
+    "glyph": "⬡",
+    "color": "var(--blue)",
+    "title": "Knowledge graph · get_prerequisites · Sequencer",
+    "body": "Reading plan with 1 prerequisite paper(s); 3 concept(s) have no in-corpus teacher.",
+    "ms": "0.01s",
+    "detailLabel": "GRAPH RESULT",
+    "detail": [
+     "1. Evaluating Chunking Strategies for Retrieval-Augmented Generation on Academic Texts (2607.01852v1) — retrieval-augmented generation (rag)",
+     "2. Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection (2310.11511v1) — (target paper)",
+     "untaught: factual errors in LLMs",
+     "untaught: large language models (llms)",
+     "untaught: retrieval models"
+    ],
+    "query": "2310.11511v1"
+   }
+  },
+  {
+   "t": 96586,
+   "event": "delta",
+   "data": {
+    "text": "To understand"
+   }
+  },
+  {
+   "t": 96635,
+   "event": "delta",
+   "data": {
+    "text": " **Self-RAG** (*\"Self-RAG: Learning to Retrieve, Generate, and"
+   }
+  },
+  {
+   "t": 96690,
+   "event": "delta",
+   "data": {
+    "text": " Critique through Self-Reflection\"*, paper `2310.11511v1`), the concept"
+   }
+  },
+  {
+   "t": 96795,
+   "event": "delta",
+   "data": {
+    "text": "-dependency graph suggests the following prerequisite reading order. \n\nPlease note that while some foundational papers are available in the corpus, certain prerequisite"
+   }
+  },
+  {
+   "t": 96855,
+   "event": "delta",
+   "data": {
+    "text": " concepts do not currently have an in-corpus teacher.\n\n### In-Corpus Prerequisite Reading Order\n\n1. **Step 1:"
+   }
+  },
+  {
+   "t": 96889,
+   "event": "delta",
+   "data": {
+    "text": " Retrieval-Augmented Generation (RAG)**\n   - **Paper:** `2607.018"
+   }
+  },
+  {
+   "t": 96940,
+   "event": "delta",
+   "data": {
+    "text": "52v1` — *Evaluating Chunking Strategies for Retrieval-Augmented Generation on Academic Texts*\n   -"
+   }
+  },
+  {
+   "t": 97025,
+   "event": "delta",
+   "data": {
+    "text": " **Why read this first:** Establishes the foundational mechanics of chunking and retrieval-augmented generation.\n\n2."
+   }
+  },
+  {
+   "t": 97065,
+   "event": "delta",
+   "data": {
+    "text": " **Step 2: Self-RAG**\n   - **Paper:** `2310.11"
+   }
+  },
+  {
+   "t": 97113,
+   "event": "delta",
+   "data": {
+    "text": "511v1` — *Self-RAG: Learning to Retrieve, Generate, and Critique through Self-"
+   }
+  },
+  {
+   "t": 97193,
+   "event": "delta",
+   "data": {
+    "text": "Reflection* (Target Paper)\n   - **Why read this:** Builds directly upon standard RAG by introducing self-reflection tokens"
+   }
+  },
+  {
+   "t": 97275,
+   "event": "delta",
+   "data": {
+    "text": " to dynamically critique retrieval and generation quality.\n\n---\n\n### Untaught Concepts (No In-Corpus Teacher)\nThe"
+   }
+  },
+  {
+   "t": 97327,
+   "event": "delta",
+   "data": {
+    "text": " dependency graph indicates that Self-RAG also builds upon the following concepts, which do not have corresponding papers inside the current corpus:\n*"
+   }
+  },
+  {
+   "t": 97387,
+   "event": "delta",
+   "data": {
+    "text": " **Large language models (LLMs)**\n* **Retrieval models**\n* **Factual errors in LLMs**\n\n####"
+   }
+  },
+  {
+   "t": 97457,
+   "event": "delta",
+   "data": {
+    "text": " Suggested External Reading (Not in Corpus)\nSince these prerequisite concepts are not covered by papers in the corpus, you may wish"
+   }
+  },
+  {
+   "t": 97521,
+   "event": "delta",
+   "data": {
+    "text": " to consult external literature:\n* **For Large Language Models (LLMs):** Literature on transformer-based architectures and"
+   }
+  },
+  {
+   "t": 97600,
+   "event": "delta",
+   "data": {
+    "text": " instruction tuning (e.g., *Attention Is All You Need*).\n* **For Retrieval Models:** Foundational dense and"
+   }
+  },
+  {
+   "t": 97657,
+   "event": "delta",
+   "data": {
+    "text": " sparse retrieval literature (e.g., BM25 or DPR / Dense Passage Retrieval).\n* **For Factual"
+   }
+  },
+  {
+   "t": 97704,
+   "event": "delta",
+   "data": {
+    "text": " Errors in LLMs:** Research on hallucination, factuality evaluation, and faithfulness in text generation."
+   }
+  },
+  {
+   "t": 99365,
+   "event": "answer",
+   "data": {
+    "answer": "**Plan:**\n1. Delegate to the **Sequencer** to determine the prerequisite reading order and papers for \"Self-RAG\" using the concept-dependency graph.\n2. Formulate a structured and faithful response based on the Sequencer's output, preserving any partial findings or external/in-corpus distinctions.\n\nLet's delegate the task to the Sequencer.To understand **Self-RAG** (*\"Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection\"*, paper `2310.11511v1`), the concept-dependency graph suggests the following prerequisite reading order. \n\nPlease note that while some foundational papers are available in the corpus, certain prerequisite concepts do not currently have an in-corpus teacher.\n\n### In-Corpus Prerequisite Reading Order\n\n1. **Step 1: Retrieval-Augmented Generation (RAG)**\n   - **Paper:** `2607.01852v1` — *Evaluating Chunking Strategies for Retrieval-Augmented Generation on Academic Texts*\n   - **Why read this first:** Establishes the foundational mechanics of chunking and retrieval-augmented generation.\n\n2. **Step 2: Self-RAG**\n   - **Paper:** `2310.11511v1` — *Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection* (Target Paper)\n   - **Why read this:** Builds directly upon standard RAG by introducing self-reflection tokens to dynamically critique retrieval and generation quality.\n\n---\n\n### Untaught Concepts (No In-Corpus Teacher)\nThe dependency graph indicates that Self-RAG also builds upon the following concepts, which do not have corresponding papers inside the current corpus:\n* **Large language models (LLMs)**\n* **Retrieval models**\n* **Factual errors in LLMs**\n\n#### Suggested External Reading (Not in Corpus)\nSince these prerequisite concepts are not covered by papers in the corpus, you may wish to consult external literature:\n* **For Large Language Models (LLMs):** Literature on transformer-based architectures and instruction tuning (e.g., *Attention Is All You Need*).\n* **For Retrieval Models:** Foundational dense and sparse retrieval literature (e.g., BM25 or DPR / Dense Passage Retrieval).\n* **For Factual Errors in LLMs:** Research on hallucination, factuality evaluation, and faithfulness in text generation.",
+    "claims": []
+   }
+  },
+  {
+   "t": 99365,
+   "event": "done",
+   "data": {
+    "errored": false
+   }
+  }
+ ]
+}
