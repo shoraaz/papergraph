@@ -11,6 +11,7 @@ Measures RAG quality of the PaperGraph agent team using four RAGAS metrics:
 HOW IT WORKS
 ------------
 This script calls build_papergraph_team() DIRECTLY (no HTTP server needed)
+against the stores selected by STORE_PROFILE (demo = the exported snapshot)
 using the non-streaming Team.run() API, which returns a TeamRunOutput object.
 See: https://docs.agno.com/teams/running-teams#run-output
 
@@ -155,6 +156,16 @@ def _require_ragas():
 # Context extraction helpers
 # ---------------------------------------------------------------------------
 
+def _contexts_from_tool_output(text: str) -> list[str]:
+    try:
+        data = json.loads(text)
+    except (json.JSONDecodeError, TypeError):
+        return [text]
+    if isinstance(data, dict) and isinstance(data.get("results"), list):
+        return [str(r.get("text", "")).strip() for r in data["results"]]
+    return [text]
+
+
 def _extract_retrieved_contexts(team_run_output) -> list[str]:
     """
     Extract all retrieved text chunks from the Retriever agent's tool call
@@ -166,15 +177,10 @@ def _extract_retrieved_contexts(team_run_output) -> list[str]:
     history for that member, including tool call results as 'tool' role
     messages.
 
-    The Retriever agent uses two tools:
-      - KnowledgeTools (search_knowledge / search / analyze) — returns
-        formatted chunk text from Qdrant
-      - Neo4jTools (run_cypher_query / query) — returns graph query results
-
-    Both appear as tool-role messages. We collect all of them as contexts.
-    Confirmed correct via a live debug run against the real Team — see
-    this module's docstring for what real tool-role message content
-    looks like.
+    Since v2 the agents use typed tools (tools.py) that return JSON:
+      - search_corpus -> {"results": [{"text": ...}, ...]}: each chunk's
+        text becomes its own context (what RAGAS context precision expects)
+      - graph tools   -> structured facts; kept as one JSON context each
     """
     contexts: list[str] = []
 
@@ -189,9 +195,9 @@ def _extract_retrieved_contexts(team_run_output) -> list[str]:
 
             if role == "tool" and content:
                 text = content if isinstance(content, str) else str(content)
-                text = text.strip()
-                if text and text not in contexts:
-                    contexts.append(text)
+                for ctx in _contexts_from_tool_output(text.strip()):
+                    if ctx and ctx not in contexts:
+                        contexts.append(ctx)
 
     # Fallback: if no tool messages found (e.g. an out-of-corpus question
     # that correctly never triggered retrieval, or a rate-limited run that
@@ -210,33 +216,46 @@ def _extract_retrieved_contexts(team_run_output) -> list[str]:
 # Single eval runner
 # ---------------------------------------------------------------------------
 
+_STORES = None
+
+
+def _stores():
+    """Open the configured stores once (STORE_PROFILE=demo evaluates the
+    snapshot the public demo serves; =full evaluates Qdrant + Neo4j)."""
+    global _STORES
+    if _STORES is None:
+        from stores import open_stores
+
+        _STORES = _LOOP.run_until_complete(open_stores())
+    return _STORES
+
+
+import asyncio as _asyncio  # noqa: E402
+
+_LOOP = _asyncio.new_event_loop()
+
+
 def run_single_question(question: str, session_id: str) -> tuple[str, list[str]]:
     """
-    Run one question through the PaperGraph agent team.
+    Run one question through the PaperGraph agent team (non-streaming
+    arun, so we get a TeamRunOutput with .content and .member_responses).
+    All questions share one event loop because the stores' clients are
+    bound to the loop they were opened on.
 
-    Uses Team.run() in NON-streaming mode (stream=False) so we get a clean
-    TeamRunOutput object with .content and .member_responses.
-    See: https://docs.agno.com/teams/running-teams#run-output
-
-    Returns:
-        (answer, retrieved_contexts)
-        - answer: the team leader's final response string
-        - retrieved_contexts: list of retrieved chunk/query result strings
+    Returns (answer, retrieved_contexts).
     """
     from agents import ModelChoice, build_papergraph_team
+    from config import SHARED_WORKSPACE
+    from tools import build_toolset
 
     model_choice = ModelChoice(
         provider="gemini",
-        model_id=os.environ.get("PAPERGRAPH_MODEL", "gemini-flash-latest"),
+        model_id=os.environ.get("PAPERGRAPH_MODEL", "gemini-2.5-flash"),
         api_key=os.environ.get("GOOGLE_API_KEY"),
     )
-
-    team = build_papergraph_team(
-        session_user_id=session_id,
-        model_choice=model_choice,
-    )
-
-    run_output = team.run(question, stream=False)
+    tools = build_toolset(_stores(), [SHARED_WORKSPACE, session_id])
+    team = build_papergraph_team(tools, model_choice)
+    run_output = _LOOP.run_until_complete(team.arun(question, stream=False))
 
     answer = ""
     if run_output and run_output.content:

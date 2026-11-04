@@ -2,6 +2,8 @@
 
 This document consolidates key architectural decisions, empirical findings, and design trade-offs across PaperGraph.
 
+> **v2 note:** sections 2 and 3 describe the v1 data layer and streaming bridge as originally built. v2 replaced Mem0 with client-sent history, the thread + queue bridge with Agno's async stream, raw Cypher / KnowledgeTools with typed workspace-bound tools, and added the demo snapshot profile. The reasoning for those changes is in [SYSTEM_DESIGN.md](SYSTEM_DESIGN.md); the agent-behaviour decisions in section 1 still hold.
+
 ---
 
 ## 1. Agent Design & Self-RAG Enforcement (`agents.py`)
@@ -13,7 +15,7 @@ PaperGraph uses an Agno `Team` comprising specialized sub-agents led by a Team L
 * **SequencerAgent**: GraphRAG specialist running Cypher traversals and topological sorting over `REQUIRES` concept edges.
 * **JargonAgent**: Paragraph-by-paragraph plain-English explanations.
 * **ClaimVerifierAgent**: Corrective RAG verifier scoring paper abstract/intro claims against experimental results (`ClaimCheck`).
-* **PaperGraphTeam**: Leader orchestrating delegation, session memory (Mem0), and final synthesis.
+* **PaperGraphTeam**: Leader orchestrating delegation and final synthesis (v1 also held Mem0 session memory; v2 receives recent turns with each request).
 
 ### 1.2 Mandatory Grader Delegation
 * **Pattern**: Self-RAG requires an explicit grading step.
@@ -43,14 +45,14 @@ PaperGraph uses an Agno `Team` comprising specialized sub-agents led by a Team L
 PaperGraph leverages three open-source data stores:
 1. **Neo4j**: Graph structure storing paper-to-paper citation (`CITES`) and paper-to-concept (`TEACHES`/`REQUIRES`) edges.
 2. **Qdrant**: Dense/sparse hybrid vector store with BAAI/bge-base-en-v1.5 embeddings and cross-encoder reranking (`BAAI/bge-reranker-v2-m3`).
-3. **Mem0**: Local session memory tracking conversation context per session UUID.
+3. **Mem0** (v1 only): Local session memory tracking conversation context per session UUID. Removed in v2 — it billed the server's own Gemini key on every request and kept server-side state.
 
 ### 2.2 Workspace Isolation
 Multi-tenant uploads isolate visitor data:
 * **Base Corpus**: Tagged with `workspace_id = "shared"`.
 * **User Uploads**: Tagged with `workspace_id = <session_id>`.
 * **Qdrant Isolation**: Hard server-side enforcement via custom `WorkspaceScopedQdrant` wrapper overriding filter generation.
-* **Neo4j Isolation**: Cypher queries filter on `p.workspace_id IN [$workspace_id, 'shared']`.
+* **Neo4j Isolation**: Cypher queries filter on `p.workspace_id IN [$workspace_id, 'shared']` — in v1 via prompt instructions to LLM-written Cypher; in v2 via parameterized queries in `stores/neo4j_store.py` that take the scope from the server.
 
 ---
 
@@ -58,7 +60,8 @@ Multi-tenant uploads isolate visitor data:
 
 ### 3.1 Thread-Safe Event Queue for SSE
 * **Challenge**: Non-blocking SSE streaming requires incremental delivery, but Agno's `team.run(stream=True)` runs synchronously.
-* **Solution**: A background worker thread executes `team.run(...)` and pushes raw events to a `queue.Queue`. The async FastAPI event loop consumes items using `asyncio.to_thread(event_queue.get)` and yields formatted Server-Sent Events (SSE) in real time.
+* **Solution (v1)**: A background worker thread executes `team.run(...)` and pushes raw events to a `queue.Queue`. The async FastAPI event loop consumes items using `asyncio.to_thread(event_queue.get)` and yields formatted Server-Sent Events (SSE) in real time.
+* **Superseded (v2)**: that bridge parked one default-executor thread per open stream and froze the server around 30 concurrent queries. v2 iterates `team.arun(stream=True)` directly — see SYSTEM_DESIGN.md §2 and §6.
 
 ### 3.2 BYOK (Bring Your Own Key) Model Handling
 * Requests can supply custom LLM credentials (`provider`, `model_id`, `api_key`).

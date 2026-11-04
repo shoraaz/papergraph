@@ -4,6 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PaperGraph — agentic research copilot</title>
+<meta name="description" content="Agentic RAG over arXiv papers: Qdrant hybrid search + Neo4j concept graph, Self-RAG grading and Corrective RAG claim checks, streamed live." />
+<script src="config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -355,7 +357,7 @@
         <div class="key-dot" id="keyDot"></div>
         <div style="min-width:0;flex:1;">
           <div style="font-size:12.5px;font-weight:500;" id="keyTitle">Bring your own key</div>
-          <div class="mono" id="keySub" style="font-size:11px;color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">running in demo mode</div>
+          <div class="mono" id="keySub" style="font-size:11px;color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">needed for live questions</div>
         </div>
         <div style="font-size:11px;color:var(--text-3);">▸</div>
       </div>
@@ -372,7 +374,7 @@
       <button class="tab on" data-view="chat">Chat &amp; trace<div class="bar"></div></button>
       <button class="tab" data-view="graph">Graph &amp; reading order<div class="bar"></div></button>
       <div style="margin-left:auto;display:flex;align-items:center;gap:14px;">
-        <div class="mono" id="modelLabel" style="font-size:11px;color:var(--text-2);">demo mode</div>
+        <div class="mono" id="modelLabel" style="font-size:11px;color:var(--text-2);">no key · replays only</div>
         <div style="width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px var(--green-bg);"></div>
         <button class="theme-btn" id="btnTheme">☾</button>
       </div>
@@ -390,6 +392,7 @@
               <button class="pill blue" onclick="sendQuery('What benchmarks are used in RAG papers?')">📊 Benchmarks in RAG (RGB paper)</button>
               <button class="pill blue" onclick="sendQuery('How does RAG for Academic Literature Navigation work?')">🎓 Academic Literature RAG</button>
             </div>
+            <div id="replayBox" style="display:none;"></div>
           </div>
         </div>
       </div>
@@ -411,9 +414,24 @@
 
 <script>
 // ============================ config & state ============================
-const API = (localStorage.getItem('pg_api') || (window.location.origin.startsWith('file:') ? 'http://localhost:8000' : window.location.origin));
-const SESSION = 's_' + Math.random().toString(36).slice(2, 8);
-document.getElementById('sessionId').textContent = SESSION;
+// API base: same origin by default (Vercel / docker). Point a static
+// frontend at a separately hosted API with window.PAPERGRAPH_API_BASE
+// (frontend/config.js) or localStorage 'pg_api'.
+const API_BASE = (window.PAPERGRAPH_API_BASE || safeGet(localStorage, 'pg_api') ||
+  (window.location.origin.startsWith('file:') ? 'http://localhost:8000' : '')).replace(/\/$/, '');
+const API = API_BASE + '/api';
+
+function safeGet(store, k) { try { return store.getItem(k); } catch(e) { return null; } }
+function safeSet(store, k, v) { try { v === null ? store.removeItem(k) : store.setItem(k, v); } catch(e) {} }
+function randomId() {
+  try { return crypto.randomUUID().replace(/-/g, ''); }
+  catch(e) { return Array.from({length: 32}, () => Math.floor(Math.random() * 16).toString(16)).join(''); }
+}
+
+// 128-bit random session id (it scopes this tab's uploads); kept per tab.
+const SESSION = safeGet(sessionStorage, 'pg_session') || ('s_' + randomId());
+safeSet(sessionStorage, 'pg_session', SESSION);
+document.getElementById('sessionId').textContent = SESSION.slice(0, 10) + '…';
 
 const PROVIDERS = [
   {k:'gemini', label:'Google (Gemini)', ph:'AIza…'},
@@ -423,9 +441,17 @@ const PROVIDERS = [
 const INGEST_LABELS = ['Fetch + parse PDF','Chunk & embed → Qdrant','Extract concepts → Neo4j','Link TEACHES / REQUIRES'];
 const KIND_LABEL = {plan:'plan',retrieve:'retrieve',grade:'grade',correct:'correct',synthesize:'synthesize',error:'error'};
 
-// Load persisted BYOK from localStorage if present
-let savedBYOK = null;
-try { savedBYOK = JSON.parse(localStorage.getItem('pg_byok')); } catch(e){}
+// BYOK: the key lives in sessionStorage (gone when the tab closes) unless
+// the visitor ticks "remember on this device" (localStorage).
+function loadBYOK() {
+  for (const [store, remember] of [[sessionStorage, false], [localStorage, true]]) {
+    try {
+      const v = JSON.parse(store.getItem('pg_byok'));
+      if (v && v.api_key) return {...v, remember};
+    } catch(e) {}
+  }
+  return null;
+}
 
 let activeAbortController = null;
 
@@ -433,8 +459,13 @@ let state = {
   view: 'chat',
   running: false,
   papers: [],
-  theme: localStorage.getItem('pg_theme') || 'light',
-  byok: savedBYOK || {provider:'gemini', model_id:null, api_key:null, saved:false},
+  corpus: null,          // graph view payload (static data/corpus.json or /api/graph)
+  hasUploads: false,     // once true, corpus comes from the API (includes own papers)
+  history: [],           // last few turns, sent with each query (server is stateless)
+  replays: [],
+  server: {ingest_enabled: false, require_byok: true},
+  theme: safeGet(localStorage, 'pg_theme') || 'light',
+  byok: loadBYOK() || {provider:'gemini', model_id:null, api_key:null, saved:false, remember:false},
 };
 
 function setSendButtonState(running) {
@@ -484,11 +515,25 @@ function toast(msg) {
 function applyTheme() {
   document.documentElement.setAttribute('data-pgtheme', state.theme);
   $('#btnTheme').textContent = state.theme === 'dark' ? '☀' : '☾';
-  localStorage.setItem('pg_theme', state.theme);
+  safeSet(localStorage, 'pg_theme', state.theme);
 }
 
 function saveBYOK() {
-  localStorage.setItem('pg_byok', JSON.stringify(state.byok));
+  safeSet(sessionStorage, 'pg_byok', null);
+  safeSet(localStorage, 'pg_byok', null);
+  if (!state.byok.api_key) return;
+  safeSet(state.byok.remember ? localStorage : sessionStorage, 'pg_byok', JSON.stringify(state.byok));
+}
+
+async function fetchWithTimeout(url, opts = {}, ms = 20000) {
+  const controller = new AbortController();
+  const t = setTimeout(() => controller.abort(), ms);
+  try { return await fetch(url, {...opts, signal: controller.signal}); }
+  finally { clearTimeout(t); }
+}
+
+function keyHeaders() {
+  return state.byok.api_key ? {'X-LLM-Api-Key': state.byok.api_key} : {};
 }
 
 // Markdown renderer
@@ -565,44 +610,98 @@ function renderMarkdown(src) {
 }
 
 // ============================ sidebar ============================
-async function loadPapers(attempt = 1) {
-  const maxAttempts = 5;
-  // Render free tier cold-starts can take 30-60s — use a generous per-request
-  // timeout and show friendly messaging so users aren't alarmed by the wait.
-  const PER_REQUEST_TIMEOUT_MS = 70000;
+// The shared corpus is a static file (frontend/data/corpus.json, written by
+// `etl.py export`) served by the CDN — the sidebar and graph render
+// instantly, without waiting for the API to wake. The API is only asked
+// once this tab has uploads of its own (full deployments).
+async function fetchCorpus(force = false) {
+  if (state.corpus && !force) return state.corpus;
+  if (!state.hasUploads) {
+    try {
+      const r = await fetchWithTimeout('data/corpus.json', {cache: 'no-cache'}, 8000);
+      if (r.ok) { state.corpus = await r.json(); return state.corpus; }
+    } catch(e) {}
+  }
+  const r = await fetchWithTimeout(`${API}/graph?session_id=${encodeURIComponent(SESSION)}`, {}, 60000);
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({}));
+    throw new Error(err.detail || 'HTTP ' + r.status);
+  }
+  state.corpus = await r.json();
+  return state.corpus;
+}
+
+async function loadPapers(attempt = 1, force = false) {
+  const maxAttempts = 4;
   if (attempt === 1) {
     $('#corpusCount').textContent = 'loading…';
-    $('#paperList').innerHTML = '<div style="padding:14px;font-size:12.5px;color:var(--text-2);display:flex;align-items:center;gap:10px;"><div class="ingest-dot active"></div><span>Connecting… (may take ~30s on first load)</span></div>';
+    $('#paperList').innerHTML = '<div style="padding:14px;font-size:12.5px;color:var(--text-2);display:flex;align-items:center;gap:10px;"><div class="ingest-dot active"></div><span>Loading corpus…</span></div>';
   }
-
   try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), PER_REQUEST_TIMEOUT_MS);
-    const r = await fetch(`${API}/papers?session_id=${encodeURIComponent(SESSION)}`, { signal: controller.signal });
-    clearTimeout(timeoutId);
-
-    if (!r.ok) {
-      const errJson = await r.json().catch(() => ({}));
-      throw new Error(errJson.detail || 'HTTP ' + r.status);
-    }
-    const data = await r.json();
-    state.papers = data.papers || [];
-    if (state.papers.length === 0 && attempt < maxAttempts) {
-      $('#paperList').innerHTML = `<div style="padding:14px;font-size:12.5px;color:var(--text-2);display:flex;align-items:center;gap:10px;"><div class="ingest-dot active"></div><span>Server is starting up… (attempt ${attempt}/${maxAttempts})</span></div>`;
-      setTimeout(() => loadPapers(attempt + 1), 2000);
-      return;
-    }
-    renderPapers(data.count ?? state.papers.length);
+    const data = await fetchCorpus(force || attempt > 1);
+    state.papers = [...(data.papers || [])]
+      .sort((a, b) => (a.own - b.own) || a.title.localeCompare(b.title))
+      .map(p => ({id: p.id, title: p.title, arxiv: p.arxiv, own: !!p.own}));
+    renderPapers(state.papers.length);
   } catch(e) {
     if (attempt < maxAttempts) {
       $('#corpusCount').textContent = `connecting (${attempt})…`;
-      $('#paperList').innerHTML = `<div style="padding:14px;font-size:12.5px;color:var(--text-2);display:flex;align-items:center;gap:10px;"><div class="ingest-dot active"></div><span>Server waking up… (attempt ${attempt}/${maxAttempts})</span></div>`;
-      setTimeout(() => loadPapers(attempt + 1), 1000);
+      setTimeout(() => loadPapers(attempt + 1, force), 1500 * attempt);
       return;
     }
     $('#corpusCount').textContent = 'error';
-    $('#paperList').innerHTML = '<div style="padding:14px;font-size:12.5px;color:var(--text-2);line-height:1.5;">Could not connect to PaperGraph backend. <br><small style="color:var(--text-3);">The server may still be waking up.</small><br><button onclick="loadPapers(1)" class="act blue" style="margin-top:8px;padding:6px 12px;font-size:12px;">Retry Loading</button></div>';
+    $('#paperList').innerHTML = '<div style="padding:14px;font-size:12.5px;color:var(--text-2);line-height:1.5;">Could not load the corpus. <br><button onclick="loadPapers(1, true)" class="act blue" style="margin-top:8px;padding:6px 12px;font-size:12px;">Retry</button></div>';
   }
+}
+
+// Feature flags + warm-up: the first API call wakes a cold instance and
+// starts loading the embedding model while the visitor is still reading.
+async function loadServerConfig() {
+  try {
+    const r = await fetchWithTimeout(`${API}/config`, {}, 30000);
+    if (r.ok) state.server = {...state.server, ...(await r.json())};
+  } catch(e) {}
+  updateIngestUI();
+}
+
+async function loadReplays() {
+  try {
+    const r = await fetchWithTimeout('replays/index.json', {cache: 'no-cache'}, 8000);
+    if (!r.ok) return;
+    const idx = await r.json();
+    state.replays = Array.isArray(idx.replays) ? idx.replays : [];
+  } catch(e) { state.replays = []; }
+  renderReplayButtons();
+}
+
+function renderReplayButtons() {
+  const box = $('#replayBox');
+  if (!box) return;
+  box.innerHTML = '';
+  if (!state.replays.length) { box.style.display = 'none'; return; }
+  box.style.display = '';
+  box.appendChild(el('div', {class: 'lbl', style: 'margin:18px 0 8px;'}, 'No key? Watch a recorded run'));
+  const row = el('div', {style: 'display:flex;gap:10px;flex-wrap:wrap;justify-content:center;'});
+  state.replays.forEach(rp => row.appendChild(
+    el('button', {class: 'pill', onclick: () => playReplay(rp)}, '▶ ' + (rp.title || rp.question))
+  ));
+  box.appendChild(row);
+}
+
+async function playReplay(rp) {
+  if (state.running) return;
+  try {
+    const r = await fetchWithTimeout('replays/' + encodeURIComponent(rp.file), {}, 10000);
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const rec = await r.json();
+    sendQuery(rec.question || rp.question, {replay: rec});
+  } catch(e) { toast('Could not load that recording'); }
+}
+
+function updateIngestUI() {
+  const btn = $('#btnAdd');
+  if (!btn) return;
+  btn.title = state.server.ingest_enabled ? '' : 'Uploads need the full (self-hosted) deployment';
 }
 
 function renderPapers(count) {
@@ -677,29 +776,56 @@ function claimView(c) {
   ]);
 }
 
-// Send query with buttery smooth SSE token-by-token streaming & collapsible thinking drawer
-async function sendQuery(message) {
+// One renderer for live runs and recorded replays: both feed the same
+// (event, payload) pairs into handleEvent().
+function parseFrames(buf, onEvent) {
+  buf = buf.replace(/\r\n/g, '\n');
+  const frames = buf.split('\n\n');
+  const rest = frames.pop();
+  for (const frame of frames) {
+    let ev = 'message', data = '';
+    frame.split('\n').forEach(line => {
+      if (line.startsWith('event:')) ev = line.slice(6).trim();
+      else if (line.startsWith('data:')) data += line.slice(5).trim();
+    });
+    if (!data) continue;
+    try { onEvent(ev, JSON.parse(data)); } catch(e) {}
+  }
+  return rest;
+}
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+async function sendQuery(message, opts = {}) {
+  const replay = opts.replay || null;
   if (state.running) {
     stopQuery();
     return;
   }
   if (!message || !message.trim()) return;
+  if (!replay && !state.byok.api_key) {
+    openKeys({pending: message});
+    return;
+  }
 
   state.running = true;
   setSendButtonState(true);
   $('#input').value = '';
   activeAbortController = new AbortController();
+  const signal = activeAbortController.signal;
 
   const empty = $('#emptyState'); if (empty) empty.remove();
   const thread = $('#thread');
 
   thread.appendChild(el('div', {class: 'bubble'}, message));
 
-  // Collapsible Reasoning Trace Card (Modern AI Thinking Drawer style)
   const stepsBox = el('div', {class: 'steps'});
   const stepsContainer = el('div', {class: 'steps-container'}, stepsBox);
   const progress = el('div', {class: 'progress'});
   const corrChip = el('div', {class: 'chip corr', style: 'display:none;'}, 'corrective pass');
+  const replayChip = replay
+    ? el('div', {class: 'chip', title: 'Recorded ' + (replay.recorded_at || '') }, 'recorded run · ' + (replay.model || replay.provider || 'model'))
+    : null;
   const runLabel = el('div', {class: 'chip pulse'}, 'Thinking… 0 steps');
   const arrow = el('span', {class: 'arrow'}, '▾');
   const toggleBtn = el('div', {class: 'trace-toggle'}, [el('span', {}, 'Show trace'), arrow]);
@@ -710,18 +836,13 @@ async function sendQuery(message) {
   }}, [
     el('div', {class: 't'}, [el('span', {class: 't-icon'}, '🧠'), el('span', {}, 'Reasoning trace')]),
     runLabel,
+    replayChip,
     corrChip,
     toggleBtn,
   ]);
 
-  const trace = el('div', {class: 'trace'}, [
-    traceHd,
-    el('div', {class: 'progress-track'}, progress),
-    stepsContainer,
-  ]);
-  thread.appendChild(trace);
+  thread.appendChild(el('div', {class: 'trace'}, [traceHd, el('div', {class: 'progress-track'}, progress), stepsContainer]));
 
-  // Synthesized Answer Card
   const md = el('div', {class: 'md'});
   const cursor = el('span', {class: 'cursor'});
   const answerCap = el('div', {class: 'cap'}, 'SYNTHESIZED ANSWER');
@@ -740,153 +861,141 @@ async function sendQuery(message) {
   scrollHost.onscroll = () => {
     isAutoScroll = (scrollHost.scrollHeight - scrollHost.scrollTop - scrollHost.clientHeight) < 60;
   };
-  const toBottom = () => {
-    if (isAutoScroll) scrollHost.scrollTop = scrollHost.scrollHeight;
-  };
+  const toBottom = () => { if (isAutoScroll) scrollHost.scrollTop = scrollHost.scrollHeight; };
   toBottom();
 
-  let stepCount = 0, answerText = '', corrections = 0, eventCount = 0, hasErrored = false;
+  let stepCount = 0, answerText = '', corrections = 0, eventCount = 0, hasErrored = false, finished = false;
   const bump = () => {
     stepCount++;
     progress.style.width = Math.min(100, stepCount * 14) + '%';
     runLabel.textContent = `Thinking… ${stepCount} step${stepCount > 1 ? 's' : ''}`;
   };
+  const errorStep = (title, body, color = 'var(--red)', glyph = '!') =>
+    stepsBox.appendChild(stepView({kind: 'error', glyph, color, title, body, detailLabel: '', detail: []}));
 
-  try {
-    const resp = await fetch(`${API}/query`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      signal: activeAbortController.signal,
-      body: JSON.stringify({
-        message,
-        session_id: SESSION,
-        model: {
-          provider: state.byok.provider,
-          model_id: state.byok.model_id,
-          api_key: state.byok.api_key,
-        },
-      }),
-    });
-
-    if (!resp.ok || !resp.body) {
-      let errDetail = 'HTTP ' + resp.status;
-      try {
-        const errJson = await resp.json();
-        if (errJson && errJson.detail) errDetail = errJson.detail;
-      } catch(e){}
-      throw new Error(errDetail);
-    }
-
-    const reader = resp.body.getReader();
-    const dec = new TextDecoder();
-    let buf = '';
-
-    while (true) {
-      const { value, done } = await reader.read();
-      if (done) break;
-      buf += dec.decode(value, { stream: true });
-      // Normalize line endings for Windows compatibility
-      buf = buf.replace(/\r\n/g, '\n');
-      const frames = buf.split('\n\n');
-      buf = frames.pop();
-
-      for (const frame of frames) {
-        let ev = 'message', data = '';
-        frame.split('\n').forEach(line => {
-          if (line.startsWith('event:')) ev = line.slice(6).trim();
-          else if (line.startsWith('data:')) data += line.slice(5).trim();
-        });
-
-        if (!data) continue;
-        let payload;
-        try { payload = JSON.parse(data); } catch(e) { continue; }
-        eventCount++;
-
-        if (ev === 'step') {
-          if (payload.kind === 'error') {
-            hasErrored = true;
-            answer.style.display = 'none';
-            if (payload.body && !payload.body.includes('💡')) {
-              payload.body += ' 💡 Tip: Try switching model or provider in Bring Your Own Key settings (e.g. Gemini 2.0 Flash or Groq).';
-            }
-          }
-          if (payload.kind === 'correct') { corrections++; corrChip.style.display = ''; }
-          stepsBox.appendChild(stepView(payload));
-          bump();
-          toBottom();
-        } else if (ev === 'delta') {
-          if (!hasErrored) {
-            if (answer.style.display === 'none') answer.style.display = '';
-            answerText += payload.text || '';
-            md.innerHTML = renderMarkdown(answerText);
-            toBottom();
-          }
-        } else if (ev === 'answer') {
-          if (!hasErrored && payload.answer) {
-            answerText = payload.answer;
-            md.innerHTML = renderMarkdown(answerText);
-          }
-          cursor.style.display = 'none';
-          if (!hasErrored) {
-            if (corrections) answerCap.textContent = `SYNTHESIZED ANSWER · ${corrections} corrective pass${corrections > 1 ? 'es' : ''}`;
-            if (Array.isArray(payload.claims) && payload.claims.length) {
-              claimsSection.style.display = '';
-              payload.claims.forEach(c => claimsBox.appendChild(claimView(c)));
-            }
-          }
-          progress.style.width = '100%';
-          runLabel.className = 'chip';
-          runLabel.textContent = hasErrored ? 'errored' : `${stepCount} steps · done`;
-          toBottom();
-        } else if (ev === 'done') {
-          cursor.style.display = 'none';
-          runLabel.className = 'chip';
-          if (payload.errored || hasErrored) {
-            hasErrored = true;
-            answer.style.display = 'none';
-            runLabel.textContent = 'errored';
-          } else {
-            runLabel.textContent = `${stepCount} steps · done`;
-          }
+  function handleEvent(ev, payload) {
+    eventCount++;
+    if (ev === 'step') {
+      if (payload.kind === 'error') { hasErrored = true; answer.style.display = 'none'; }
+      if (payload.kind === 'correct') { corrections++; corrChip.style.display = ''; }
+      stepsBox.appendChild(stepView(payload));
+      bump();
+      toBottom();
+    } else if (ev === 'delta') {
+      if (!hasErrored) {
+        if (answer.style.display === 'none') answer.style.display = '';
+        answerText += payload.text || '';
+        md.innerHTML = renderMarkdown(answerText);
+        toBottom();
+      }
+    } else if (ev === 'answer') {
+      if (!hasErrored && payload.answer) {
+        answerText = payload.answer;
+        if (answer.style.display === 'none') answer.style.display = '';
+        md.innerHTML = renderMarkdown(answerText);
+      }
+      cursor.style.display = 'none';
+      if (!hasErrored) {
+        if (corrections) answerCap.textContent = `SYNTHESIZED ANSWER · ${corrections} corrective pass${corrections > 1 ? 'es' : ''}`;
+        if (Array.isArray(payload.claims) && payload.claims.length) {
+          claimsSection.style.display = '';
+          payload.claims.forEach(c => claimsBox.appendChild(claimView(c)));
         }
       }
+      progress.style.width = '100%';
+      toBottom();
+    } else if (ev === 'done') {
+      finished = true;
+      cursor.style.display = 'none';
+      runLabel.className = 'chip';
+      if (payload.errored || hasErrored) {
+        hasErrored = true;
+        answer.style.display = 'none';
+        runLabel.textContent = 'errored';
+      } else {
+        runLabel.textContent = `${stepCount} steps · done`;
+      }
+    }
+  }
+
+  try {
+    if (replay) {
+      // Replay with the recorded pacing, compressed so a 60 s run plays in ~15 s.
+      let prevT = 0;
+      for (const e of (replay.events || [])) {
+        if (signal.aborted) throw new DOMException('aborted', 'AbortError');
+        const gap = Math.max(0, (e.t || 0) - prevT);
+        prevT = e.t || 0;
+        await sleep(e.event === 'delta' ? Math.min(gap, 35) : Math.min(gap / 4, 900));
+        handleEvent(e.event, e.data);
+      }
+    } else {
+      const resp = await fetch(`${API}/query`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', ...keyHeaders()},
+        signal,
+        body: JSON.stringify({
+          message,
+          session_id: SESSION,
+          model: {provider: state.byok.provider, model_id: state.byok.model_id || null},
+          history: state.history.slice(-6),
+        }),
+      });
+
+      if (!resp.ok || !resp.body) {
+        let detail = 'HTTP ' + resp.status;
+        try { const j = await resp.json(); if (j && j.detail) detail = typeof j.detail === 'string' ? j.detail : JSON.stringify(j.detail); } catch(e) {}
+        const retry = resp.headers.get('Retry-After');
+        const err = new Error(detail);
+        err.status = resp.status;
+        err.retryAfter = retry ? parseInt(retry, 10) : null;
+        throw err;
+      }
+
+      const reader = resp.body.getReader();
+      const dec = new TextDecoder();
+      let buf = '';
+      while (true) {
+        const {value, done} = await reader.read();
+        if (done) break;
+        buf = parseFrames(buf + dec.decode(value, {stream: true}), handleEvent);
+      }
+      parseFrames(buf + '\n\n', handleEvent);
     }
 
     if (eventCount === 0) {
-      cursor.style.display = 'none';
       answer.style.display = 'none';
       runLabel.className = 'chip';
       runLabel.textContent = 'no response';
-      stepsBox.appendChild(stepView({
-        kind: 'error', glyph: '!', color: 'var(--red)',
-        title: 'No response from server',
-        body: 'The connection closed before any data arrived. Verify your API key in BYOK settings or try Gemini / Groq.',
-        detailLabel: '', detail: []
-      }));
-      toast('No response — check backend logs or BYOK key');
+      errorStep('No response from server', 'The connection closed before any data arrived. Try again in a moment.');
+    } else if (!finished) {
+      runLabel.className = 'chip';
+      runLabel.textContent = 'connection lost';
+      errorStep('Stream interrupted', 'The connection closed before the run finished.', 'var(--yellow)');
+    } else if (!hasErrored && !replay) {
+      state.history.push({role: 'user', content: message.slice(0, 4000)});
+      state.history.push({role: 'assistant', content: answerText.slice(0, 4000)});
+      state.history = state.history.slice(-6);
     }
   } catch(e) {
-    cursor.style.display = 'none';
     answer.style.display = 'none';
     runLabel.className = 'chip';
-
     if (e.name === 'AbortError') {
       runLabel.textContent = 'interrupted';
-      stepsBox.appendChild(stepView({
-        kind: 'error', glyph: '⏹', color: 'var(--yellow)',
-        title: 'Generation Interrupted',
-        body: 'Response generation was stopped by user.',
-        detailLabel: '', detail: []
-      }));
+      errorStep('Generation interrupted', 'Stopped by you. The server cancels the run, so your quota stops being spent.', 'var(--yellow)', '⏹');
       toast('Query stopped');
+    } else if (e.status === 401) {
+      runLabel.textContent = 'key needed';
+      errorStep('API key problem', e.message);
+      openKeys({pending: message});
+    } else if (e.status === 429 || e.status === 503) {
+      runLabel.textContent = e.status === 429 ? 'rate limited' : 'busy';
+      const wait = e.retryAfter ? ` Try again in ~${e.retryAfter}s.` : '';
+      errorStep(e.status === 429 ? 'Slow down a little' : 'At capacity', e.message + (e.message.includes('Try again') ? '' : wait), 'var(--yellow)');
+      toast(e.status === 429 ? 'Rate limited' + wait : 'Server busy' + wait);
     } else {
       runLabel.textContent = 'error';
-      stepsBox.appendChild(stepView({
-        kind: 'error', glyph: '!', color: 'var(--red)',
-        title: 'Connection / API Error',
-        body: String(e.message || e) + ' 💡 Tip: Check your API key in Bring Your Own Key settings or try another model.',
-        detailLabel: '', detail: []
-      }));
+      errorStep('Connection / API error', String(e.message || e));
       toast('Query failed: ' + (e.message || e));
     }
   } finally {
@@ -905,11 +1014,9 @@ async function renderGraph() {
   host.innerHTML = '<div class="empty">Loading concept graph…</div>';
   let data;
   try {
-    const r = await fetch(`${API}/graph?session_id=${encodeURIComponent(SESSION)}`);
-    if (!r.ok) throw new Error(r.status);
-    data = await r.json();
+    data = await fetchCorpus();
   } catch(e) {
-    host.innerHTML = '<div class="empty">Can’t load graph — backend offline.</div>';
+    host.innerHTML = '<div class="empty">Can’t load the concept graph right now.</div>';
     return;
   }
 
@@ -1137,33 +1244,41 @@ function closeModal() { $('#modalRoot').innerHTML = ''; }
 
 async function fetchLiveModels(provider, apiKey) {
   try {
-    const url = `${API}/models/${provider}${apiKey ? '?api_key=' + encodeURIComponent(apiKey) : ''}`;
-    const r = await fetch(url);
-    if (r.ok) {
-      const d = await r.json();
-      return d.models || [];
-    }
-  } catch(e){}
+    const r = await fetchWithTimeout(`${API}/models/${provider}`, {
+      method: 'POST',
+      headers: apiKey ? {'X-LLM-Api-Key': apiKey} : {},
+    }, 15000);
+    if (r.ok) return (await r.json()).models || [];
+  } catch(e) {}
   return [];
 }
 
-function openKeys() {
+function openKeys(opts = {}) {
   const body = el('div', {class: 'sh-body'});
   const provSeg = el('div', {class: 'seg'});
-  const FREE_HINTS = {gemini:'gemini-2.0-flash', groq:'llama-3.1-8b-instant', openrouter:'meta-llama/llama-3.1-8b-instruct:free'};
-  
+  const FREE_HINTS = {gemini: 'gemini-2.5-flash', groq: 'llama-3.3-70b-versatile', openrouter: 'meta-llama/llama-3.3-70b-instruct:free'};
+
   const keyInput = el('input', {
     type: 'password',
+    autocomplete: 'off',
     placeholder: (PROVIDERS.find(p => p.k === state.byok.provider) || PROVIDERS[0]).ph,
     value: state.byok.api_key || ''
   });
-  
-  const modelInput = el('input', {
-    placeholder: 'e.g. ' + FREE_HINTS[state.byok.provider],
-    value: state.byok.model_id || ''
-  });
-
+  const modelInput = el('input', {placeholder: 'e.g. ' + FREE_HINTS[state.byok.provider], value: state.byok.model_id || ''});
   const modelSelect = el('select', {style: 'display:none;'});
+  const listBtn = el('button', {class: 'pill', style: 'white-space:nowrap;', onclick: async () => {
+    listBtn.textContent = 'Loading…';
+    const models = await fetchLiveModels(state.byok.provider, (keyInput.value || '').trim());
+    listBtn.textContent = 'List models';
+    if (!models.length) { toast('No models returned — check the key'); return; }
+    modelSelect.innerHTML = '';
+    models.forEach(m => modelSelect.appendChild(el('option', {value: m.id}, m.name || m.id)));
+    modelSelect.style.display = '';
+    modelInput.style.display = 'none';
+  }}, 'List models');
+
+  const remember = el('input', {type: 'checkbox', id: 'byokRemember'});
+  remember.checked = !!state.byok.remember;
 
   PROVIDERS.forEach(pv => {
     const b = el('button', {
@@ -1172,6 +1287,8 @@ function openKeys() {
         state.byok.provider = pv.k;
         keyInput.placeholder = pv.ph;
         modelInput.placeholder = 'e.g. ' + FREE_HINTS[pv.k];
+        modelSelect.style.display = 'none';
+        modelInput.style.display = '';
         provSeg.querySelectorAll('.pill').forEach(x => x.classList.remove('on'));
         b.classList.add('on');
       }
@@ -1183,24 +1300,45 @@ function openKeys() {
     const rawKey = (keyInput.value || '').trim();
     state.byok.api_key = rawKey.length > 0 ? rawKey : null;
     state.byok.saved = !!state.byok.api_key;
+    state.byok.remember = remember.checked;
     state.byok.model_id = (modelSelect.style.display !== 'none' && modelSelect.value) ? modelSelect.value : (modelInput.value.trim() || null);
     saveBYOK();
     updateKeyUI();
-    toast(state.byok.saved ? 'API Key saved & active' : 'Key cleared — back to demo mode');
     closeModal();
+    toast(state.byok.saved ? 'Key active for this ' + (state.byok.remember ? 'device' : 'tab') : 'Key cleared');
+    if (state.byok.saved && opts.pending) sendQuery(opts.pending);
   }}, 'Use key');
 
+  if (opts.pending) {
+    body.appendChild(el('div', {class: 'hint', style: 'margin-top:0;'},
+      'Live questions run on your own LLM key, so this demo costs nothing to host and you keep control of your quota. Free keys: Google AI Studio (Gemini) or Groq.'));
+  }
   body.appendChild(el('div', {}, [el('div', {class: 'lbl', style: 'margin-bottom:8px;'}, 'Provider'), provSeg]));
-  body.appendChild(el('div', {}, [el('div', {class: 'lbl', style: 'margin-bottom:8px;'}, 'Model ID (optional)'), el('div', {class: 'field'}, [modelInput, modelSelect])]));
+  body.appendChild(el('div', {}, [el('div', {class: 'lbl', style: 'margin-bottom:8px;'}, 'Model ID (optional)'), el('div', {class: 'field'}, [modelInput, modelSelect, listBtn])]));
   body.appendChild(el('div', {}, [el('div', {class: 'lbl', style: 'margin-bottom:8px;'}, 'API Key'), el('div', {class: 'field'}, [keyInput, saveBtn])]));
-  body.appendChild(el('div', {class: 'hint'}, 'Free models: Gemini (gemini-2.0-flash), Groq (llama-3.1-8b-instant), OpenRouter (meta-llama/llama-3.1-8b-instruct:free). Your key is saved locally in this browser and sent directly to your provider per request.'));
+  body.appendChild(el('label', {style: 'display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-2);cursor:pointer;'}, [remember, 'Remember on this device (otherwise kept only until this tab closes)']));
+  body.appendChild(el('div', {class: 'hint'}, 'Your key is sent in a request header to the PaperGraph API, which uses it for this request only, passes it straight to your provider, and never stores or logs it.'));
+  if (opts.pending && state.replays.length) {
+    body.appendChild(el('div', {style: 'display:flex;gap:8px;flex-wrap:wrap;'},
+      state.replays.slice(0, 3).map(rp => el('button', {class: 'pill', onclick: () => { closeModal(); playReplay(rp); }}, '▶ Watch a recorded run: ' + (rp.title || rp.question)))));
+  }
   body.appendChild(el('div', {style: 'display:flex;'}, el('button', {class: 'close', onclick: closeModal}, 'Done')));
 
-  showModal('Bring your own key', 'Run the agent on your own Gemini, Groq, or OpenRouter account.', body);
+  showModal('Bring your own key', 'Run the agents on your own Gemini, Groq, or OpenRouter account.', body);
+  setTimeout(() => keyInput.focus(), 50);
 }
 
 // ============================ Ingest Modal ============================
 function openIngest() {
+  if (!state.server.ingest_enabled) {
+    const info = el('div', {class: 'sh-body'}, [
+      el('div', {class: 'hint', style: 'margin-top:0;'}, 'The public demo serves a read-only snapshot of the corpus (exported from Neo4j + Qdrant), so it can stay online at zero cost. Uploading your own paper needs the full stack — clone the repo and run `docker compose up`.'),
+      el('div', {style: 'display:flex;'}, el('button', {class: 'close', onclick: closeModal}, 'OK')),
+    ]);
+    showModal('Uploads are off on the demo', 'Ingestion writes to Qdrant + Neo4j, which only the full deployment runs.', info);
+    return;
+  }
+  if (!state.byok.api_key) { openKeys(); toast('Ingestion uses your key for concept extraction'); return; }
   const body = el('div', {class: 'sh-body'});
   const seg = el('div', {class: 'seg'}, [el('button', {class: 'pill on'}, 'arXiv ID')]);
   const input = el('input', {placeholder: '2401.15884  or  arxiv.org/abs/2401.15884'});
@@ -1228,20 +1366,19 @@ function openIngest() {
     try {
       const resp = await fetch(`${API}/ingest`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {'Content-Type': 'application/json', ...keyHeaders()},
         body: JSON.stringify({
           session_id: SESSION,
           mode: 'arxiv',
           value: val.replace(/^.*\//, ''),
-          model: {
-            provider: state.byok.provider,
-            model_id: state.byok.model_id,
-            api_key: state.byok.api_key
-          }
+          model: {provider: state.byok.provider, model_id: state.byok.model_id || null},
         })
       });
 
-      if (!resp.ok || !resp.body) throw new Error('Ingest HTTP ' + resp.status);
+      if (!resp.ok || !resp.body) {
+        const j = await resp.json().catch(() => ({}));
+        throw new Error(j.detail || ('Ingest HTTP ' + resp.status));
+      }
 
       const reader = resp.body.getReader();
       const d = new TextDecoder();
@@ -1274,7 +1411,9 @@ function openIngest() {
       if (ok) {
         btn.textContent = 'Ingested ✓';
         toast('Paper added to your workspace');
-        await loadPapers();
+        state.hasUploads = true;
+        state.corpus = null;
+        await loadPapers(1, true);
         setTimeout(closeModal, 1200);
       } else {
         btn.textContent = 'Failed';
@@ -1307,12 +1446,12 @@ function showModal(title, desc, body) {
 }
 
 function updateKeyUI() {
-  const on = state.byok.saved;
+  const on = state.byok.saved && !!state.byok.api_key;
   const prov = PROVIDERS.find(p => p.k === state.byok.provider) || PROVIDERS[0];
   $('#keyDot').className = 'key-dot' + (on ? ' on' : '');
   $('#keyTitle').textContent = on ? ('Your key · ' + prov.label) : 'Bring your own key';
-  $('#keySub').textContent = on ? ('saved · ' + prov.label) : 'running in demo mode';
-  $('#modelLabel').textContent = on ? (prov.label + ' · byok') : 'demo mode';
+  $('#keySub').textContent = on ? (state.byok.remember ? 'remembered on this device' : 'this tab only') : 'needed for live questions';
+  $('#modelLabel').textContent = on ? (prov.label + ' · ' + (state.byok.model_id || 'default model')) : 'no key · replays only';
 }
 
 function toggleMobileSidebar(open) {
@@ -1354,6 +1493,8 @@ document.addEventListener('keydown', e => {
 applyTheme();
 updateKeyUI();
 loadPapers();
+loadReplays();
+loadServerConfig();
 </script>
 </body>
 </html>

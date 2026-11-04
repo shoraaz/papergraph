@@ -1,13 +1,13 @@
+# Optional: Render deploys the same container. Note Render's free plan
+# still sleeps after ~15 idle minutes; the frontend's static corpus and
+# recorded replays keep the page useful while it wakes. Vercel (see
+# vercel.json) or Cloud Run give faster cold starts.
 services:
   - type: web
     name: papergraph
-    env: python
-    buildCommand: "uv sync"
-    startCommand: "sh -c 'uv run uvicorn server:app --host 0.0.0.0 --port ${PORT:-10000}'"
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
     envVars:
-      - key: PORT
-        value: 10000
-      - key: PYTHON_VERSION
-        value: 3.11.0
-      - key: ENABLE_RERANKER
-        value: "false"
+      - key: STORE_PROFILE
+        value: demo
