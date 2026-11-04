@@ -66,3 +66,11 @@ async def test_section_filter_and_validation(stores):
 async def test_empty_scope_refused(stores):
     with pytest.raises(ValueError):
         build_toolset(stores, [])
+
+
+async def test_filtered_search_says_when_slice_is_exhausted(stores):
+    ts = build_toolset(stores, [SHARED])
+    out = json.loads(await ts.search_corpus("anything", paper_id="2310.11511", section="results"))
+    assert out["count"] < 6 and "everything indexed" in out["note"]
+    unfiltered = json.loads(await ts.search_corpus("retrieval"))
+    assert "note" not in unfiltered

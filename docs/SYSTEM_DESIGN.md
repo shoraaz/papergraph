@@ -102,7 +102,7 @@ Cheapest check first, so abuse is rejected before it costs anything:
 | 3 | Visitor key present (`X-LLM-Api-Key`) | µs | 401 |
 | 4 | Key accepted by provider (one cheap authenticated GET, cached by SHA-256 for 10 min) | ~100–300 ms once per key | 401 |
 | 5 | Concurrency slot: ≤ `MAX_CONCURRENT_RUNS` per instance, ≤ 2 per client | µs | 503 / 429 + `Retry-After` |
-| 6 | Run: async Agno stream, ≤ 150 s, ≤ 6 tool calls per agent, ≤ 10 delegations | — | error step, slot released |
+| 6 | Run: async Agno stream, ≤ 280 s (under Vercel's 300 s cap), ≤ 6 tool calls per agent, ≤ 10 delegations | — | error step, slot released |
 
 A client disconnect cancels the run (`aclosing` around `team.arun`), so a closed tab stops spending the visitor's tokens. The slot is released from both the stream's `finally` and the response's background task (idempotent), so a client that disconnects before the first byte can't leak capacity.
 
@@ -160,7 +160,7 @@ python loadtest/sse_load.py --url http://localhost:8000 --users 1000
 | Upstash unreachable | Rate limiter fails **open** to per-instance memory counters (logged once). Limits get per-instance-loose, the API stays up. |
 | Visitor key invalid | 401 before any agent starts (cached verdict, 60 s for invalid keys). |
 | Provider rate-limits or errors mid-run | First provider error is shown once (key redacted), stream ends, slot released. |
-| Run exceeds 150 s | Stopped with an explanatory error step; protects the visitor's quota. |
+| Run exceeds 280 s | Stopped with an explanatory error step; protects the visitor's quota. |
 | Client closes tab | Run cancelled, slot released. |
 | Instance at capacity | 503 + `Retry-After: 15`; UI shows "at capacity". |
 | One client floods | 429 after 6/min or 40/hour; ≤ 2 runs in flight. |
