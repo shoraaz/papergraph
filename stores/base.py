@@ -107,7 +107,7 @@ class ChunkHit:
     text: str
     score: float
 
-    def to_dict(self, max_chars: int = 1200) -> dict:
+    def to_dict(self, max_chars: int = 800) -> dict:
         text = self.text if len(self.text) <= max_chars else self.text[:max_chars] + " …"
         return {
             "paper_id": self.paper_id,

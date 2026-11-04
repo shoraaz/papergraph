@@ -34,6 +34,7 @@ from stores import Stores
 from stores.base import SECTIONS, build_prerequisite_report, normalize_paper_ref
 
 MAX_K = 8
+SEARCH_K = 4  # chunks per search: enough evidence, small enough for free-tier token limits
 
 # Tool names, shared with event_mapper.py so the trace UI can classify calls.
 VECTOR_TOOLS = ("search_corpus",)
@@ -80,12 +81,12 @@ def build_toolset(stores: Stores, workspaces: Sequence[str]) -> Toolset:
         hits = await stores.vector.search(
             query,
             scope,
-            k=6,
+            k=SEARCH_K,
             paper_id=normalize_paper_ref(paper_id) if paper_id else None,
             sections=sections,
         )
         out = {"query": query, "results": [h.to_dict() for h in hits[:MAX_K]], "count": len(hits)}
-        if (paper_id or sections) and len(hits) < 6:
+        if (paper_id or sections) and len(hits) < SEARCH_K:
             # Filtered to a small slice of one paper and got fewer hits than
             # asked for: that IS the whole slice. Say so, or models keep
             # rephrasing the query and burn calls on identical results.
